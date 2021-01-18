@@ -7,5 +7,5 @@ This assignment is more about breaking the ice with github, and to learn how com
 
 |   #   | File            | Description                                  |
 | :---: | --------------- | -------------------------------------------- |
-|   1   | givenMain.cpp   | The main program to perform the comments on. |
-|   2   | Commentfile     | This file show to apply the comments.        |
+|   1   | Program.cpp     | The main program to perform the comments on. |
+|   2   | Comment_file    | This file show to apply the comments.        |
