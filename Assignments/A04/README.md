@@ -5,7 +5,7 @@ This assignment is more about breaking the ice with github, and to learn how com
 
 ### Files
 
-|   #   | File            | Description                                           |
-| :---: | --------------- | ------------------------------------------------------|
-|   1   | Program.cpp     | The main program given to perform the comments on.    |
-|   2   | Comment_file    | This file shows the proprer way to apply the comments.|
+|   #   | File                             | Description                       |
+| :---: | -------------------------------- | --------------------------------- |
+|   1   | [main.cpp](main.cpp)             | The main program                  |
+|   2   | [Given_main.cpp](Given_main.cpp) | The main programs before any comments. |
