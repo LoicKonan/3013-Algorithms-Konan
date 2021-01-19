@@ -1,19 +1,25 @@
-/*
-    Author:           Loic Konan
-    Email:            loickonan.lk@gmail.com
-    Label:            3013 Comments
-    Title:            Linked List Comments
-    Course:           3013
-    Semester:         Spring 2021
-    Description:
-         Program created a Linked List with various Nodes.
-    Usage:
-         Creates a Linked List that can be used for further 
-         applications such as expanding into a lookup table
-         or hash table / hash map.
-    Files:
-         3013 Comments.cpp
-*/
+/*****************************************************************************
+*
+*    Author:           Loic Konan
+*    Email:            loickonan.lk@gmail.com
+*    Label:            3013 Commenting C++ code
+*    Title:            Linked List Comments
+*    Course:           CMPS 3013
+*    Semester:         Spring 2021
+*    Description:
+*        Program create a Linked List with various Nodes.
+*        This program implements a class that allows a linked list
+*        to be used just like an array. It overloads the "[]" to simulate
+*        accessing seperate array elements. It also overloads the "+" signs
+*        allowing a user "push" items onto the end of the list, 
+*        as well as "pop" items off the end of our array.
+*    Usage:
+*        - $ ./main filename
+*
+*    Files:
+*         3013 main.cpp    : driver program
+******************************************************************************/
+
 
 #include <iostream>
 #include <string>
@@ -24,30 +30,34 @@ int A[100];
 
 
 /*
-  Struct Name: Node
-  Description:
-       Node struct used to create nodes that are
-       members of a linked list.
-  Public Methods:
-       - Default constructor
-       - Programmer defined constructor that accepts
-         an integer passed in.
-  Usage:
-       - Used to create nodes that will be links within
-         a linked list. 
-       - Includes an integer as well as 
-         a struct Node pointer to keep track of the index
-         of the linked list.
- */
+*  Struct Name: Node
+*  Description:
+*       Node struct, used to represents a node of some 
+*       data and also a pointer to another structure of the same kind.
+*       This pointer holds the address of the next node and creates
+*       the link between two nodes.
+*  Public Methods:
+*       - Default constructor
+*       - Programmer defined constructor that accepts
+*         an integer.
+*  Usage:
+*       - examples of how to use your struct for linked list. 
+*       - Used to create nodes that will be links within a linked list. 
+*       
+*/
 
-struct Node {
+
+struct Node 
+{
     int x;
     Node* next;
-    Node() {
+    Node() 
+    {
         x = -1;
         next = NULL;
     }
-    Node(int n) {
+    Node(int n) 
+    {
         x = n;
         next = NULL;
     }
@@ -55,98 +65,105 @@ struct Node {
 
 
 /*
-    Class Name: List
-    Description:
-        This class implements a linked list with various methods
-        such as push and pop to add or remove nodes from the list.
-        There are also methods for printing results or sections as
-        well as overloaded operators to perform operations on the
-        class objects.
-    Public Methods:
-        - List() - default constructor
-        - void Push(int val)
-        - void Insert(int val)
-        - void PrintTail()
-        - string Print()
-        - int Pop()
-        - List operator+(const List& Rhs)
-        - int operator[](int index)
-        - friend ostream& operator<<(ostream& os, List L)
-    Private Methods:
-        - No Private or Protected methods
-    Usage:
-        - Create a class object of a Linked List
-        - Add or remove nodes to or from the Linked List
-        - Print results
-        - print and outfile results
- */
+*    Class Name: List
+*    Description:
+*        This class implements a linked list with various methods
+*        such as push and pop to add or remove nodes from the list.
+*        There are also function for printing results and
+*        overloaded operators to perform operations on the class objects.
+*    Public Methods:
+*        - List() - default constructor
+*        - void Push(int val)
+*        - void Insert(int val)
+*        - void PrintTail()
+*        - string Print()
+*        - int Pop()
+*        - List operator+(const List& Rhs)
+*        - int operator[](int index)
+*        - friend ostream& operator<<(ostream& os, List L)
+*    Private Methods:
+*        - No Private methods
+*        - No Protected methods
+*    Usage:
+*        - Create a class object of a Linked List
+*        - insert or delete nodes from the Linked List
+*        - Print results
+*        - print and outfile results
+*/
 
-class List {
+class List 
+{
 private:
     Node* Head;
     Node* Tail;
     int Size;
 
 public:
-    List() {
+    List() 
+    {
         Head = Tail = NULL;
         Size = 0;
     }
 
-    void Push(int val) {
+    void Push(int val) 
+    {
         // allocate new memory and init node
         Node* Temp = new Node(val);
 
-        if (!Head && !Tail) {
+        if (!Head && !Tail) 
+        {
             Head = Tail = Temp;
         }
-        else {
+        else
+         {
             Tail->next = Temp;
             Tail = Temp;
         }
         Size++;
     }
 
-    void Insert(int val) {
+    void Insert(int val) 
+    {
         // allocate new memory and init node
         Node* Temp = new Node(val);
 
-        /* The Temp Node Pointer "next" is set to equal the head index of the Linked List.
-           If the new Node becomes the Tail, then the Tail is set to equal the head thereby
-           inserting the new element at the end of the Linked list growing it by a size of 1.
-        */
-
         Temp->next = Head;
         Head = Temp;
-        if (!Tail) {
+        if (!Tail)      
+        {
             Tail = Head;
         }
         Size++;
     }
 
-    void PrintTail() {
+    void PrintTail() 
+    {
         cout << Tail->x << endl;
     }
 
-    string Print() {
+    string Print()
+     {
         Node* Temp = Head;
         string list;
 
-        while (Temp != NULL) {
-            list += to_string(Temp->x) + "->";      // to_string requires #include<string>
+        while (Temp != NULL)
+         {
+            list += to_string(Temp->x) + "->";  
             Temp = Temp->next;
         }
 
         return list;
     }
 
-    // not implemented, would need to call the node destructor, would need to be user defined
-    int Pop() {
+    // not implemented.
+    int Pop() 
+    {
         Size--;
         return 0; //
     }
 
-    List operator+(const List& Rhs) {
+    List operator+(const List& Rhs) 
+    {
         // Create a new list that will contain both when done
         List NewList;
 
@@ -154,7 +171,8 @@ public:
         Node* Temp = Head;
 
         // Loop through local list and Push values onto new list
-        while (Temp != NULL) {
+        while (Temp != NULL)
+         {
             NewList.Push(Temp->x);
             Temp = Temp->next;
         }
@@ -163,7 +181,8 @@ public:
         Temp = Rhs.Head;
 
         // Same as above, loop and push
-        while (Temp != NULL) {
+        while (Temp != NULL)
+         {
             NewList.Push(Temp->x);
             Temp = Temp->next;
         }
@@ -174,17 +193,21 @@ public:
 
     // Implementation of [] operator.  This function returns an
     // int value as if the list were an array.
-    int operator[](int index) {
+    int operator[](int index) 
+    {
         Node* Temp = Head;
 
         // Error Control
-        if (index >= Size) {
+        if (index >= Size) 
+        {
             cout << "Index out of bounds, exiting";
             exit(0);
         }
-        else {
+        else
+         {
 
-            for (int i = 0; i < index; i++) {
+            for (int i = 0; i < index; i++)
+             {
                 Temp = Temp->next;
             }
             return Temp->x;
@@ -192,7 +215,8 @@ public:
     }
 
 
-    friend ostream& operator<<(ostream& os, List L) {
+    friend ostream& operator<<(ostream& os, List L) 
+    {
         os << L.Print();
         return os;
     }
@@ -201,15 +225,17 @@ public:
 
 int main(int argc, char** argv) 
 {
-    // Declaring Objects into memory, two different Linked List objects
+    // Declare two different Linked List objects.
     List L1;
     List L2;
 
-    for (int i = 0; i < 25; i++) {
+    for (int i = 0; i < 25; i++)
+     {
         L1.Push(i);
     }
 
-    for (int i = 50; i < 100; i++) {
+    for (int i = 50; i < 100; i++) 
+    {
         L2.Push(i);
     }
 
@@ -217,13 +243,11 @@ int main(int argc, char** argv)
     L1.PrintTail();
     L2.PrintTail();
 
-    // Arithmetic on the Objects, possible by overloading the + operator
+    // Using overloading "the + operator" to add the objects.
     List L3 = L1 + L2;
     cout << L3 << endl;
 
-    /* Printing out the contents up to the index passed in as long
-       as the index is not out of the range of the current size.
-    */
+    // Print out the contents.
     cout << L3[5] << endl;
     return 0;
 } 
