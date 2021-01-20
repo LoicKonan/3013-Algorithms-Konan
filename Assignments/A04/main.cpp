@@ -20,14 +20,12 @@
 *         3013 main.cpp    : driver program
 ******************************************************************************/
 
-
 #include <iostream>
 #include <string>
 
 using namespace std;
 
 int A[100];
-
 
 /*
 *  Struct Name: Node
@@ -45,24 +43,21 @@ int A[100];
 *       - Used to create nodes that will be links within a linked list. 
 *       
 */
-
-
-struct Node 
+struct Node
 {
     int x;
-    Node* next;
-    Node() 
+    Node *next;
+    Node()
     {
         x = -1;
         next = NULL;
     }
-    Node(int n) 
+    Node(int n)
     {
         x = n;
         next = NULL;
     }
 };
-
 
 /*
 *    Class Name: List
@@ -90,89 +85,168 @@ struct Node
 *        - Print results
 *        - print and outfile results
 */
-
-class List 
+class List
 {
 private:
-    Node* Head;
-    Node* Tail;
+    Node *Head;
+    Node *Tail;
     int Size;
 
 public:
-    List() 
+    // constructor inits everything
+    List()
     {
         Head = Tail = NULL;
         Size = 0;
     }
 
-    void Push(int val) 
+    /**
+     * Public : Push
+     * 
+     * Description:
+     *      allocate new memory and init node
+     * 
+     * Params:
+     *      - int val
+     * 
+     * Returns:
+     *      void
+     */
+
+    void Push(int val)
     {
         // allocate new memory and init node
-        Node* Temp = new Node(val);
+        Node *Temp = new Node(val);
 
-        if (!Head && !Tail) 
+        // List is empty
+        if (!Head && !Tail)
         {
-            Head = Tail = Temp;
+            Head = Tail = Temp; // Point head and tail to new node
         }
+        // List not empty
         else
-         {
+        {
             Tail->next = Temp;
             Tail = Temp;
         }
         Size++;
     }
 
-    void Insert(int val) 
+    /**
+     * Public : Insert
+     * 
+     * Description:
+     *      allocate new memory and init node
+     * 
+     * Params:
+     *      - int val
+     * 
+     * Returns:
+     *      void
+     */
+
+    void Insert(int val)
     {
         // allocate new memory and init node
-        Node* Temp = new Node(val);
+        Node *Temp = new Node(val);
 
         Temp->next = Head;
         Head = Temp;
-        if (!Tail)      
+        if (!Tail)
         {
             Tail = Head;
         }
         Size++;
     }
 
-    void PrintTail() 
+    /**
+     * Public : PrintTail
+     * 
+     * Description:
+     *      Print the tail.
+     * 
+     * Params:
+     *      - None
+     * 
+     * Returns:
+     *      void
+     */
+
+    void PrintTail()
     {
         cout << Tail->x << endl;
     }
 
+    /**
+     * Public : Print
+     * 
+     * Description:
+     *      Print the string list
+     * 
+     * Params:
+     *      - None
+     * 
+     * Returns:
+     *      [string] list
+     */
+
     string Print()
-     {
-        Node* Temp = Head;
+    {
+        Node *Temp = Head;
         string list;
 
         while (Temp != NULL)
-         {
-            list += to_string(Temp->x) + "->";  
+        {
+            list += to_string(Temp->x) + "->";
             Temp = Temp->next;
         }
 
         return list;
     }
 
-    // not implemented.
-    int Pop() 
+    /**
+     * Public : Pop
+     * 
+     * Description:
+     *      Remove a node
+     * 
+     * Params:
+     *      - None
+     * 
+     * Returns:
+     *      int
+     */
+
+    int Pop()
     {
         Size--;
-        return 0; //
+        return 0;
     }
 
-    List operator+(const List& Rhs) 
+    /**
+     * Public : Print
+     * 
+     * Description:
+     *          Return new concatenated version of lists
+     * 
+     * Params:
+     *          - const List &Rhs
+     * 
+     * Returns:
+     *          newList
+     */
+
+    List operator+(const List &Rhs)
     {
         // Create a new list that will contain both when done
         List NewList;
 
         // Get a reference to beginning of local list
-        Node* Temp = Head;
+        Node *Temp = Head;
 
         // Loop through local list and Push values onto new list
         while (Temp != NULL)
-         {
+        {
             NewList.Push(Temp->x);
             Temp = Temp->next;
         }
@@ -182,7 +256,7 @@ public:
 
         // Same as above, loop and push
         while (Temp != NULL)
-         {
+        {
             NewList.Push(Temp->x);
             Temp = Temp->next;
         }
@@ -191,31 +265,54 @@ public:
         return NewList;
     }
 
-    // Implementation of [] operator.  This function returns an
-    // int value as if the list were an array.
-    int operator[](int index) 
+    /**
+     * Public : operator
+     * 
+     * Description:
+     *      Implementation of [] operator
+     * 
+     * Params:
+     *      - int index
+     * 
+     * Returns:
+     *      [int] list
+     */
+
+    int operator[](int index)
     {
-        Node* Temp = Head;
+        Node *Temp = Head;
 
         // Error Control
-        if (index >= Size) 
+        if (index >= Size)
         {
             cout << "Index out of bounds, exiting";
             exit(0);
         }
         else
-         {
+        {
 
             for (int i = 0; i < index; i++)
-             {
+            {
                 Temp = Temp->next;
             }
             return Temp->x;
         }
     }
 
+    /**
+     * Public : ostream
+     * 
+     * Description:
+     *      overloading the cout operator to print a List object
+     * 
+     * Params:
+     *      - ostream &os, List L
+     * 
+     * Returns:
+     *      [string] list
+     */
 
-    friend ostream& operator<<(ostream& os, List L) 
+    friend ostream &operator<<(ostream &os, List L)
     {
         os << L.Print();
         return os;
@@ -223,18 +320,18 @@ public:
 };
 
 
-int main(int argc, char** argv) 
+int main(int argc, char **argv)
 {
     // Declare two different Linked List objects.
     List L1;
     List L2;
 
     for (int i = 0; i < 25; i++)
-     {
+    {
         L1.Push(i);
     }
 
-    for (int i = 50; i < 100; i++) 
+    for (int i = 50; i < 100; i++)
     {
         L2.Push(i);
     }
@@ -250,4 +347,4 @@ int main(int argc, char** argv)
     // Print out the contents.
     cout << L3[5] << endl;
     return 0;
-} 
+}
