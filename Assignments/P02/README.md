@@ -11,7 +11,7 @@ The time it takes to find each suggestion will be displayed in seconds.
 |   #   | File                           | Description                 |
 | :---: | ------------------------------ | --------------------------- |
 |   1   | [read_dict.cpp](read_dict.cpp) | Resizing the Stack main cpp |
-|   2   | []()                           | The input file              |
+|   2   | []()                           |              |
 
 
 ### Instructions
