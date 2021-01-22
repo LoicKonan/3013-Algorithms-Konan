@@ -6,9 +6,9 @@ If a number is even, push it onto the stack.
 If a number is odd, it will perform a pop operation removing the last even value from the stack.
 The stack cannot get smaller than 10 (our starting stack size).
 We need to keep track of the following:
-the max size the stack ever reached
-how many times the stack was resized (grown or reduced)
-final size of stack when program completed.
+ the max size the stack ever reached
+ how many times the stack was resized (grown or reduced)
+ final size of stack when program completed.
 
 ### Files
 
