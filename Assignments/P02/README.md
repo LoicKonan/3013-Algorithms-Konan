@@ -12,6 +12,7 @@ The time it takes to find each suggestion will be displayed in seconds.
 | :---: | ------------------------------ | --------------------------- |
 |   1   | [read_dict.cpp](read_dict.cpp) | Resizing the Stack main cpp |
 |   2   | []()                           |              |
+|   3   | []()                           |              |
 
 
 ### Instructions
