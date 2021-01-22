@@ -21,4 +21,4 @@ The time it takes to find each suggestion will be displayed in seconds.
 
 ### Example Command
 
-- ./read_dict.cpp
+-$ ./read_dict.cpp
