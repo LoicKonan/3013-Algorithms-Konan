@@ -1,7 +1,7 @@
 ## Program 1 - Resizing the Stack
 ### Loic Konan
 #### Description:
-This program will read numbers from the file [nums_dat](nums_dat).
+This program will read numbers from the file [nums.dat](nums.dat).
 If a number is even, push it onto the stack.
 If a number is odd, it will perform a pop operation removing the last even value from the stack.
 The stack cannot get smaller than 10 (our starting stack size).
