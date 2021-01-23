@@ -172,8 +172,8 @@ int ArrayStack::Peek()
         return A[top];
     }
 
-    return -99; // some sentinel value
-                // not a good solution
+    return -99; // sentinel value
+                
 }
 
 /**
@@ -197,8 +197,7 @@ int ArrayStack::Pop()
         return A[top--];
     }
 
-    return -99; // some sentinel value
-                // not a good solution
+    return -99; // sentinel value
 }
 
 /**
@@ -233,7 +232,7 @@ void ArrayStack::Print()
  *      [int] : item to be added
  * 
  * Returns:
- *      [bool] ; success = true
+ *      [bool] success = true
  */
 bool ArrayStack::Push(int x)
 {
@@ -328,13 +327,13 @@ void ArrayStack::CheckResize()
 {
     if (Full())
     {
-        ContainerGrow(); //shrinks
-        timesResized++;  //increments times resized
+        ContainerGrow(); // shrinks
+        timesResized++;  // increments times resized
     }
     else if (top < (size / 2) && size > 10)
     {
-        ContainerShrink(); //grows
-        timesResized++;    //increments times resized
+        ContainerShrink(); // grows
+        timesResized++;    // increments times resized
     }
 }
 
@@ -409,7 +408,7 @@ int ArrayStack::getTop()
 // MAIN DRIVER
 int main()
 {
-    ArrayStack stack; //stack for resizing
+    ArrayStack stack; // stack for resizing
                       // Ifstream and ofstream object to read data from the file.
     ifstream infile;
     ofstream outfile;
@@ -417,16 +416,16 @@ int main()
     // Calling the Function openFiles.
     openFiles(infile, outfile);
 
-    int num; //num to put into stack or to read a pop
+    int num; // num to put into stack or to read a pop
 
     while (!infile.eof())
     {
         infile >> num;
-        if (num % 2 == 0) //pushes evens
+        if (num % 2 == 0) // pushes evens
         {
             stack.Push(num);
         }
-        else //pops when odd is read
+        else // pops when odd is read
         {
             stack.Pop();
         }
@@ -461,14 +460,12 @@ void openFiles(ifstream &infile, ofstream &outfile)
     char inFileName[40];
     char outFileName[40];
 
-    cout << "Enter the input file name: ";
+    cout << "Enter the input file name: ";	 // 	Prompt the User
     cin >> inFileName;
 
-    // open input file
-    infile.open(inFileName);
+    infile.open(inFileName);                 // open input file
     cout << "Enter the output file name: ";
     cin >> outFileName;
 
-    // Open output file.
-    outfile.open(outFileName);
+    outfile.open(outFileName);               // Open output file.
 }
