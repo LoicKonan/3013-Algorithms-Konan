@@ -25,10 +25,9 @@
 *    Files:
 *             main.cpp    : driver program
 ******************************************************************************/
-
+#include "ArrayStack.h"
 #include <iostream>
 #include <fstream>
-#include "ArrayStack.h"
 
 using namespace std;
 
@@ -62,7 +61,7 @@ int main()
         }
     }
 
-    // Display the Heading and Result to the output file.
+   // Display the Heading and Result to the output file.
     outfile << "################################################################\n";
     outfile << "\t\tAssignment 4 - Resizing the Stack\n";
     outfile << "\t\tCMPS 3013\n";
@@ -101,3 +100,4 @@ void openFiles(ifstream &infile, ofstream &outfile)
 
     outfile.open(outFileName);               // Open output file.
 }
+
