@@ -24,4 +24,5 @@ final size of stack when program completed.
 
 ### Example Command
 
-- ./main.cpp
+ - $ ./main filename
+ - This will read in a file containing whatever values to be read into our program. 
