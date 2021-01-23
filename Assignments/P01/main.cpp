@@ -62,13 +62,14 @@ int main()
         }
     }
 
+    // Display the Heading and Result to the output file.
     outfile << "################################################################\n";
-    outfile << "Assignment 4 - Resizing the Stack\n\n";
-    outfile << "CMPS 3013\n\n";
-    outfile << "Loic Konan\n\n";
-    outfile << "Max Stack Size: " << stack.getMaxSize() << "\n\n";
-    outfile << "End Stack Size: " << stack.getSize() << "\n\n";
-    outfile << "Stack Resized:  " << stack.getTimesResized() << " Times\n\n";
+    outfile << "\t\tAssignment 4 - Resizing the Stack\n";
+    outfile << "\t\tCMPS 3013\n";
+    outfile << "\t\tLoic Konan\n\n";
+    outfile << "\t\tMax Stack Size: " << stack.getMaxSize() << "\n";
+    outfile << "\t\tEnd Stack Size: " << stack.getSize() << "\n";
+    outfile << "\t\tStack Resized:  " << stack.getTimesResized() << " Times\n\n";
     outfile << "################################################################\n";
 }
 
