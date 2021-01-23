@@ -26,6 +26,7 @@
 *             main.cpp    : driver program
 ******************************************************************************/
 
+
 #include <iostream>
 #include <fstream>
 
@@ -34,6 +35,7 @@ using namespace std;
 
 // Funtion Prototype to Asked the user for name of files to be use.
 void openFiles(ifstream &, ofstream &);
+
 
 /**
  * ArrayStack
@@ -76,17 +78,17 @@ public:
 };
 
 /**
-	 * ArrayStack
-	 *
-	 * Description:
-	 *      Default Constructor
-	 *
-	 * Params:
-	 *     - None
-	 *
-	 * Returns:
-	 *     - NULL
-*/
+ * ArrayStack
+ *
+ * Description:
+ *      Default Constructor
+ *
+ * Params:
+ *     - None
+ *
+ * Returns:
+ *     - NULL
+ */
 ArrayStack::ArrayStack()
 {
     size = 10;
@@ -97,17 +99,17 @@ ArrayStack::ArrayStack()
 }
 
 /**
-	 * ArrayStack
-	 *
-	 * Description:
-	 *      Programmer Define Constructor size parameter
-	 *
-	 * Params:
-	 *     - int size
-	 *
-	 * Returns:
-	 *     - NULL
-	 */
+ * ArrayStack
+ *
+ * Description:
+ *      Programmer Define Constructor size parameter
+ *
+ * Params:
+ *     - int size
+ *
+ * Returns:
+ *     - NULL
+ */
 ArrayStack::ArrayStack(int s)
 {
     size = 10;
@@ -118,51 +120,51 @@ ArrayStack::ArrayStack(int s)
 }
 
 /**
-	 * Public bool: Empty
-	 *
-	 * Description:
-	 *      Is the Stack empty?
-	 *
-	 * Params:
-	 *      NULL
-	 *
-	 * Returns:
-	 *      [bool] true = empty
-	 */
+ * Public bool: Empty
+ *
+ * Description:
+ *      Is the Stack empty?
+ *
+ * Params:
+ *      NULL
+ *
+ * Returns:
+ *      [bool] true = empty
+ */
 bool ArrayStack::Empty()
 {
     return (top <= -1);
 }
 
 /**
-	 * Public bool: Full
-	 *
-	 * Description:
-	 *      Is Stack full?
-	 *
-	 * Params:
-	 *      NULL
-	 *
-	 * Returns:
-	 *      [bool] true = full
-	 */
+ * Public bool: Full
+ *
+ * Description:
+ *      Is Stack full?
+ *
+ * Params:
+ *      NULL
+ *
+ * Returns:
+ *      [bool] true = full
+ */
 bool ArrayStack::Full()
 {
     return (top >= size - 1);
 }
 
 /**
-	 * Public int: Peek
-	 *
-	 * Description:
-	 *      Returns top value without altering the stack
-	 *
-	 * Params:
-	 *      NULL
-	 *
-	 * Returns:
-	 *      [int] top value if any
-	 */
+ * Public int: Peek
+ *
+ * Description:
+ *      Returns top value without altering the stack
+ *
+ * Params:
+ *      NULL
+ *
+ * Returns:
+ *      [int] top value if any
+ */
 int ArrayStack::Peek()
 {
     if (!Empty())
@@ -175,18 +177,18 @@ int ArrayStack::Peek()
 }
 
 /**
-	 * Public int: Pop
-	 *
-	 * Description:
-	 *      Returns top value and removes it from stack
-	 *		also checks if it needs to be resized
-	 *
-	 * Params:
-	 *      NULL
-	 *
-	 * Returns:
-	 *      [int] top value if any
-	 */
+ * Public int: Pop
+ *
+ * Description:
+ *      Returns top value and removes it from stack
+ *		also checks if it needs to be resized
+ *
+ * Params:
+ *      NULL
+ *
+ * Returns:
+ *      [int] top value if any
+ */
 int ArrayStack::Pop()
 {
     if (!Empty())
@@ -200,17 +202,17 @@ int ArrayStack::Pop()
 }
 
 /**
-	 * Public void: Print
-	 *
-	 * Description:
-	 *      Prints stack to standard out
-	 *
-	 * Params:
-	 *      NULL
-	 *
-	 * Returns:
-	 *      NULL
-	 */
+ * Public void: Print
+ *
+ * Description:
+ *      Prints stack to standard out
+ *
+ * Params:
+ *      NULL
+ *
+ * Returns:
+ *      NULL
+ */
 void ArrayStack::Print()
 {
     for (int i = 0; i <= top; i++)
@@ -221,18 +223,18 @@ void ArrayStack::Print()
 }
 
 /**
-	 * Public bool: Push
-	 *
-	 * Description:
-	 *      Adds an item to top of stack and checks 
-	 *		if resize is needed
-	 *
-	 * Params:
-	 *      [int] : item to be added
-	 *
-	 * Returns:
-	 *      [bool] ; success = true
-	 */
+ * Public bool: Push
+ *
+ * Description:
+ *      Adds an item to top of stack and checks 
+ *		if resize is needed
+ *
+ * Params:
+ *      [int] : item to be added
+ * 
+ * Returns:
+ *      [bool] ; success = true
+ */
 bool ArrayStack::Push(int x)
 {
     A[++top] = x;
@@ -241,18 +243,18 @@ bool ArrayStack::Push(int x)
 }
 
 /**
-	 * Public void: ContainerGrow
-	 *
-	 * Description:
-	 *      Resizes the container for the stack by 1.75 
-	 *      its capacity
-	 *
-	 * Params:
-	 *      NULL
-	 *
-	 * Returns:
-	 *      NULL
-	 */
+ * Public void: ContainerGrow
+ *
+ * Description:
+ *      Resizes the container for the stack by 1.75 
+ *      its capacity
+ *
+ * Params:
+ *      NULL
+ *
+ * Returns:
+ *      NULL
+ */
 void ArrayStack::ContainerGrow()
 {
     int newSize = size * 1.75; // 175% size of original
@@ -277,18 +279,18 @@ void ArrayStack::ContainerGrow()
 }
 
 /**
-	 * Public void: ContainerShrink
-	 *
-	 * Description:
-	 *      Resizes the container for the stack by .5
-	 *      its capacity
-	 *
-	 * Params:
-	 *      NULL
-	 *
-	 * Returns:
-	 *      NULL
-	 */
+ * Public void: ContainerShrink
+ *
+ * Description:
+ *      Resizes the container for the stack by .5
+ *      its capacity
+ *
+ * Params:
+ *      NULL
+ *
+ * Returns:
+ *      NULL
+ */
 void ArrayStack::ContainerShrink()
 {
     int newSize = size / 2; // halves size of original
@@ -311,17 +313,17 @@ void ArrayStack::ContainerShrink()
 }
 
 /**
-	 * Public void: CheckResize
-	 *
-	 * Description:
-	 *      checks if the stack needs to be resized
-	 *
-	 * Params:
-	 *      NULL
-	 *
-	 * Returns:
-	 *      NULL
-	 */
+ * Public void: CheckResize
+ *
+ * Description:
+ *      checks if the stack needs to be resized
+ *
+ * Params:
+ *      NULL
+ *
+ * Returns:
+ *      NULL
+ */
 void ArrayStack::CheckResize()
 {
     if (Full())
@@ -337,68 +339,68 @@ void ArrayStack::CheckResize()
 }
 
 /**
-	 * Public void: getSize
-	 *
-	 * Description:
-	 *      gets the size of the stack
-	 *
-	 * Params:
-	 *      NULL
-	 *
-	 * Returns:
-	 *      [int] size
-	 */
+ * Public void: getSize
+ *
+ * Description:
+ *      gets the size of the stack
+ *
+ * Params:
+ *      NULL
+ *
+ * Returns:
+ *      [int] size
+ */
 int ArrayStack::getSize()
 {
     return size;
 }
 
 /**
-	 * Public void: getTimesResized
-	 *
-	 * Description:
-	 *      gets the times the stack was resized
-	 *
-	 * Params:
-	 *      NULL
-	 *
-	 * Returns:
-	 *      [int] timesResized
-	 */
+ * Public void: getTimesResized
+ *
+ * Description:
+ *      gets the times the stack was resized
+ *
+ * Params:
+ *      NULL
+ *
+ * Returns:
+ *      [int] timesResized
+ */
 int ArrayStack::getTimesResized()
 {
     return timesResized;
 }
 
 /**
-	 * Public void: getMaxSize
-	 *
-	 * Description:
-	 *      gets the max size of the stack
-	 *
-	 * Params:
-	 *      NULL
-	 *
-	 * Returns:
-	 *      [int] MaxSize
-	 */
+ * Public void: getMaxSize
+ *
+ * Description:
+ *      gets the max size of the stack
+ *
+ * Params:
+ *      NULL
+ *
+ * Returns:
+ *      [int] MaxSize
+ */
 int ArrayStack::getMaxSize()
 {
     return MaxSize;
 }
 
 /**
-	 * Public void: getMaxSize
-	 *
-	 * Description:
-	 *      gets the top of the stack
-	 *
-	 * Params:
-	 *      NULL
-	 *
-	 * Returns:
-	 *      [int] tope
-	 */
+ * Public void: getMaxSize
+ *
+ * Description:
+ *      gets the top of the stack
+ *
+ * Params:
+ *      NULL
+ *
+ * Returns:
+ *      [int] tope
+ */
 int ArrayStack::getTop()
 {
     return top;
