@@ -266,7 +266,7 @@ bool ArrayStack::Push(int x)
  * Public void: ContainerGrow
  *
  * Description:
- *              Resizes the container for the stack by 1.75 
+ *              Resizes the container for the stack by 1.50 
  *              its capacity
  *
  * Params:
@@ -277,7 +277,7 @@ bool ArrayStack::Push(int x)
  */
 void ArrayStack::ContainerGrow()
 {
-    int newSize = size * 1.75; // 175% size of original
+    int newSize = size * 1.50; // 150% size of original
     int *B = new int[newSize]; // allocate new memory
 
     for (int i = 0; i < size; i++)
