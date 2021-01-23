@@ -63,7 +63,6 @@ void openFiles(ifstream &, ofstream &);
 *    Usage:
 *        
 */
-
 class ArrayStack
 {
 private:
@@ -113,6 +112,7 @@ ArrayStack::ArrayStack()
     MaxSize = size;
 }
 
+
 /**
  * ArrayStack
  *
@@ -134,6 +134,7 @@ ArrayStack::ArrayStack(int s)
     MaxSize = size;
 }
 
+
 /**
  * Public bool: Empty
  *
@@ -151,6 +152,7 @@ bool ArrayStack::Empty()
     return (top <= -1);
 }
 
+
 /**
  * Public bool: Full
  *
@@ -167,6 +169,7 @@ bool ArrayStack::Full()
 {
     return (top >= size - 1);
 }
+
 
 /**
  * Public int: Peek
@@ -189,6 +192,7 @@ int ArrayStack::Peek()
 
     return -99; // sentinel value
 }
+
 
 /**
  * Public int: Pop
@@ -214,6 +218,7 @@ int ArrayStack::Pop()
     return -99; // sentinel value
 }
 
+
 /**
  * Public void: Print
  *
@@ -235,6 +240,7 @@ void ArrayStack::Print()
     cout << endl;
 }
 
+
 /**
  * Public bool: Push
  *
@@ -254,6 +260,7 @@ bool ArrayStack::Push(int x)
     CheckResize();
     return true;
 }
+
 
 /**
  * Public void: ContainerGrow
@@ -291,6 +298,7 @@ void ArrayStack::ContainerGrow()
     }
 }
 
+
 /**
  * Public void: ContainerShrink
  *
@@ -325,6 +333,7 @@ void ArrayStack::ContainerShrink()
     A = B; // reset array pointer
 }
 
+
 /**
  * Public void: CheckResize
  *
@@ -351,6 +360,7 @@ void ArrayStack::CheckResize()
     }
 }
 
+
 /**
  * Public void: getSize
  *
@@ -367,6 +377,7 @@ int ArrayStack::getSize()
 {
     return size;
 }
+
 
 /**
  * Public void: getTimesResized
@@ -385,6 +396,7 @@ int ArrayStack::getTimesResized()
     return timesResized;
 }
 
+
 /**
  * Public void: getMaxSize
  *
@@ -402,6 +414,7 @@ int ArrayStack::getMaxSize()
     return MaxSize;
 }
 
+
 /**
  * Public void: getMaxSize
  *
@@ -418,6 +431,7 @@ int ArrayStack::getTop()
 {
     return top;
 }
+
 
 // Main Driver
 int main()
@@ -455,7 +469,8 @@ int main()
     outfile << "################################################################\n";
 }
 
-/****************************************************************************
+
+/**
  * 
  * Function Name: openFiles () 
  * 
@@ -468,7 +483,7 @@ int main()
  * Returns:
  *          Void
  * 
- ***************************************************************************/
+ */
 void openFiles(ifstream &infile, ofstream &outfile)
 {
     char inFileName[40];
