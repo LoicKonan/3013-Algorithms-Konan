@@ -7,7 +7,7 @@ This program will read numbers from the file [nums.dat](nums.dat).
 If a number is even, push it onto the stack.
 If a number is odd, it will perform a pop operation removing the last even value from the stack.
 The stack cannot get smaller than 10 (our starting stack size).
-We need to keep track ofthe max size the stack ever reached,
+We need to keep track of the max size the stack ever reached,
 how many times the stack was resized (grown or reduced) and
 final size of stack when program completed.
 
