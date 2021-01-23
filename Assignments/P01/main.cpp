@@ -173,7 +173,6 @@ int ArrayStack::Peek()
     }
 
     return -99; // sentinel value
-                
 }
 
 /**
