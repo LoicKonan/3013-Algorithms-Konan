@@ -92,16 +92,16 @@ public:
 
 
 /**
- * ArrayStack
+ *  Public :  ArrayStack
  *
  * Description:
- *      Default Constructor
+ *            Default Constructor
  *
  * Params:
- *     - None
+ *          - None
  *
  * Returns:
- *     - NULL
+ *          - NULL
  */
 ArrayStack::ArrayStack()
 {
@@ -114,16 +114,16 @@ ArrayStack::ArrayStack()
 
 
 /**
- * ArrayStack
+ *  Public : ArrayStack
  *
  * Description:
- *      Programmer Define Constructor
+ *           Programmer Define Constructor
  *
  * Params:
- *     - int size
+ *           - int size
  *
  * Returns:
- *     - NULL
+ *           - NULL
  */
 ArrayStack::ArrayStack(int s)
 {
@@ -139,10 +139,10 @@ ArrayStack::ArrayStack(int s)
  * Public bool: Empty
  *
  * Description:
- *      Is the Stack empty?
+ *              Is the Stack empty?
  *
  * Params:
- *      NULL
+ *              NULL
  *
  * Returns:
  *      [bool] true = empty
@@ -157,10 +157,10 @@ bool ArrayStack::Empty()
  * Public bool: Full
  *
  * Description:
- *      Is Stack full?
+ *              Is Stack full?
  *
  * Params:
- *      NULL
+ *              NULL
  *
  * Returns:
  *      [bool] true = full
@@ -172,13 +172,13 @@ bool ArrayStack::Full()
 
 
 /**
- * Public int: Peek
+ * Public int:  Peek
  *
  * Description:
- *      Returns top value without altering the stack
+ *              Returns top value without altering the stack
  *
  * Params:
- *      NULL
+ *              NULL
  *
  * Returns:
  *      [int] top value if any
@@ -198,11 +198,11 @@ int ArrayStack::Peek()
  * Public int: Pop
  *
  * Description:
- *      Returns top value and removes it from stack
- *		also checks if it needs to be resized
+ *             Returns top value and removes it from stack
+ *		       also checks if it needs to be resized
  *
  * Params:
- *      NULL
+ *             NULL
  *
  * Returns:
  *      [int] top value if any
@@ -223,13 +223,13 @@ int ArrayStack::Pop()
  * Public void: Print
  *
  * Description:
- *      Prints stack to standard out
+ *              Prints stack to standard out
  *
  * Params:
- *      NULL
+ *              NULL
  *
  * Returns:
- *      NULL
+ *              NULL
  */
 void ArrayStack::Print()
 {
@@ -245,8 +245,8 @@ void ArrayStack::Print()
  * Public bool: Push
  *
  * Description:
- *      Adds an item to top of stack and checks 
- *		if resize is needed
+ *              Adds an item to top of stack and checks 
+ *		        if resize is needed
  *
  * Params:
  *      [int] : item to be added
@@ -266,14 +266,14 @@ bool ArrayStack::Push(int x)
  * Public void: ContainerGrow
  *
  * Description:
- *      Resizes the container for the stack by 1.75 
- *      its capacity
+ *              Resizes the container for the stack by 1.75 
+ *              its capacity
  *
  * Params:
- *      NULL
+ *              NULL
  *
  * Returns:
- *      NULL
+ *              NULL
  */
 void ArrayStack::ContainerGrow()
 {
@@ -303,14 +303,14 @@ void ArrayStack::ContainerGrow()
  * Public void: ContainerShrink
  *
  * Description:
- *      Resizes the container for the stack by .5
- *      its capacity
+ *              Resizes the container for the stack by .5
+ *              its capacity
  *
  * Params:
- *      NULL
+ *              NULL
  *
  * Returns:
- *      NULL
+ *              NULL
  */
 void ArrayStack::ContainerShrink()
 {
@@ -338,13 +338,13 @@ void ArrayStack::ContainerShrink()
  * Public void: CheckResize
  *
  * Description:
- *      checks if the stack needs to be resized
+ *              checks if the stack needs to be resized
  *
  * Params:
- *      NULL
+ *              NULL
  *
  * Returns:
- *      NULL
+ *              NULL
  */
 void ArrayStack::CheckResize()
 {
@@ -365,10 +365,10 @@ void ArrayStack::CheckResize()
  * Public void: getSize
  *
  * Description:
- *      gets the size of the stack
+ *              gets the size of the stack
  *
  * Params:
- *      NULL
+ *              NULL
  *
  * Returns:
  *      [int] size
@@ -383,10 +383,10 @@ int ArrayStack::getSize()
  * Public void: getTimesResized
  *
  * Description:
- *      gets the times the stack was resized
+ *              gets the times the stack was resized
  *
  * Params:
- *      NULL
+ *              NULL
  *
  * Returns:
  *      [int] timesResized
@@ -401,10 +401,10 @@ int ArrayStack::getTimesResized()
  * Public void: getMaxSize
  *
  * Description:
- *      gets the max size of the stack
+ *              gets the max size of the stack
  *
  * Params:
- *      NULL
+ *              NULL
  *
  * Returns:
  *      [int] MaxSize
@@ -419,10 +419,10 @@ int ArrayStack::getMaxSize()
  * Public void: getMaxSize
  *
  * Description:
- *      gets the top of the stack
+ *              gets the top of the stack
  *
  * Params:
- *      NULL
+ *              NULL
  *
  * Returns:
  *      [int] tope
@@ -481,7 +481,7 @@ int main()
  *  Parameters: ifstream& infile, ofstream& outfile
  * 
  * Returns:
- *          Void
+ *              Void
  * 
  */
 void openFiles(ifstream &infile, ofstream &outfile)
