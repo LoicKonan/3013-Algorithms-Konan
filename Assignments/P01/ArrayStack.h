@@ -18,6 +18,37 @@ using namespace std;
  *      - 
  *
  */
+
+
+
+/*
+*    Class Name: ArrayStack
+*    Description:
+*                Array based stack
+*        
+*    Public Methods:
+*           ArrayStack();
+*           ArrayStack(int s);
+*           bool Empty();
+*           bool Full();
+*           int Peek();
+*           int Pop();
+*           void Print();
+*           bool Push(int x);
+*           void ContainerGrow();
+*           void ContainerShrink();
+*           void CheckResize();
+*           int getSize();
+*           int getTimesResized();
+*           int getMaxSize();
+*           int getTop();
+*    Private Methods:
+*        - No Private methods
+*        - No Protected methods
+*    Usage:
+*        
+*/
+
 class ArrayStack
 {
 private:
