@@ -1,5 +1,7 @@
 ## Program 1 - Resizing the Stack
+
 ### Loic Konan
+
 #### Description:
 This program will read numbers from the file [nums.dat](nums.dat).
 If a number is even, push it onto the stack.
@@ -24,5 +26,5 @@ final size of stack when program completed.
 
 ### Example Command
 
- - $ ./main filename
- - This will read in a file containing whatever values to be read into our program. 
+- $ ./main filename
+- This will read in a file containing whatever values to be read into our program. 
