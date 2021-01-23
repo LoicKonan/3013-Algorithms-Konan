@@ -17,7 +17,7 @@
 *           when program completed.
 * 
 *    Usage:
-*        Enter main file name, then the input file and the output file.
+*        Enter the main file name, then the input file and the output file.
 *        - $ ./ main.cpp
 *        - $ ./ nums_dat
 *        - $ ./ output.txt
