@@ -31,7 +31,7 @@ ArrayStack::ArrayStack()
  * ArrayStack
  *
  * Description:
- *      Programmer Define Constructor size parameter
+ *      Programmer Define Constructor
  *
  * Params:
  *     - int size

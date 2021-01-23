@@ -36,7 +36,7 @@ using namespace std;
 void openFiles(ifstream &, ofstream &);
 
 
-// MAIN DRIVER
+// Main Driver
 int main()
 {
     ArrayStack stack; // stack for resizing
