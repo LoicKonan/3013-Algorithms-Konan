@@ -408,35 +408,34 @@ int ArrayStack::getTop()
 int main()
 {
     ArrayStack stack; // stack for resizing
-                      // Ifstream and ofstream object to read data from the file.
-    ifstream infile;
+                      
+    ifstream infile;  // Ifstream and ofstream object to read data.
     ofstream outfile;
 
-    // Calling the Function openFiles.
-    openFiles(infile, outfile);
+    openFiles(infile, outfile);   // Calling the Function openFiles.
 
     int num; // num to put into stack or to read a pop
 
     while (!infile.eof())
     {
         infile >> num;
-        if (num % 2 == 0) // pushes evens
+        if (num % 2 == 0) // pushe when evens.
         {
             stack.Push(num);
         }
-        else // pops when odd is read
+        else // pops when odd.
         {
             stack.Pop();
         }
     }
 
-    outfile << "################################################################\n";
-    outfile << "\tAssignment 4 - Resizing the Stack\n";
-    outfile << "\tCMPS 3013\n";
-    outfile << "\tLoic Konan\n\n";
-    outfile << "\tMax Stack Size: " << stack.getMaxSize() << "\n";
-    outfile << "\tEnd Stack Size: " << stack.getSize() << "\n";
-    outfile << "\tStack Resized:  " << stack.getTimesResized() << " Times\n\n";
+    outfile << "################################################################\n\n";
+    outfile << "Assignment 4 - Resizing the Stack\n\n";
+    outfile << "CMPS 3013\n\n";
+    outfile << "Loic Konan\n\n";
+    outfile << "Max Stack Size: " << stack.getMaxSize() << "\n\n";
+    outfile << "End Stack Size: " << stack.getSize() << "\n\n";
+    outfile << "Stack Resized:  " << stack.getTimesResized() << " Times\n\n";
     outfile << "################################################################\n";
 }
 
