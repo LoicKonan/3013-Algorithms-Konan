@@ -5,22 +5,6 @@
 
 using namespace std;
 
-/**
- * ArrayStack
- *
- * Description:
- *      Array based stack
- *
- * Public Methods:
- *      - 
- *
- * Usage:
- *      - 
- *
- */
-
-
-
 /*
 *    Class Name: ArrayStack
 *    Description:
