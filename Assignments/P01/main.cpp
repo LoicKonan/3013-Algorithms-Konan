@@ -62,7 +62,7 @@ int main()
         }
     }
 
-    outfile << "################################################################\n\n";
+    outfile << "################################################################\n";
     outfile << "Assignment 4 - Resizing the Stack\n\n";
     outfile << "CMPS 3013\n\n";
     outfile << "Loic Konan\n\n";

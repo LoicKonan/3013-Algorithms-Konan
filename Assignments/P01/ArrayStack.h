@@ -1,8 +1,7 @@
 #include <iostream>
 #include <fstream>
-
-#ifndef ArrayStack
-#define ArrayStack
+#ifndef ArrayStack_h
+#define ArrayStack_h
 
 using namespace std;
 
