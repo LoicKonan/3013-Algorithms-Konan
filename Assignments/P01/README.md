@@ -2,7 +2,8 @@
 
 ### Loic Konan
 
-#### Description:
+#### Description
+
 This program will read numbers from the file [nums.dat](nums.dat).
 If a number is even, push it onto the stack.
 If a number is odd, it will perform a pop operation removing the last even value from the stack.
@@ -26,6 +27,7 @@ final size of stack when program completed.
 - This program does not require any non standard libraries
 
 ### Example Command
+
  Enter the main file name, then the input file and the output file.
         - Example:
         - $ ./ main.cpp
