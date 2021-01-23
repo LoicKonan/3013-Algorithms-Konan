@@ -9,12 +9,12 @@
 *    Description:
 *        
 *           This program will read numbers from the file nums.dat. 
-*           If a number is even, push it onto the stack. If a number is odd,
-*           it will perform a pop operation removing the last even value
-*           from the stack. The stack cannot get smaller than 10 
-*           (our starting stack size). We need to keep track ofthe max size
-*           the stack ever reached, how many times the stack was resized
-*           (grown or reduced) and final size of stack when program completed.
+*           If a number is even it will push it onto the stack. If a number
+*           is odd, it will perform a pop operation removing the last 
+*           even value from the stack. The stack cannot get smaller than 10 
+*           (our starting stack size). We need to keep track of the max size
+*           and how many times the stack was resized and final size of stack
+*           when program completed.
 * 
 *    Usage:
 *        - $ ./ main.cpp
@@ -28,35 +28,475 @@
 
 using namespace std;
 
+/*****************************************************************************
+*
+*    Author:           Loic Konan
+*    Email:            loickonan.lk@gmail.com
+*    Label:            P01
+*    Title:            Assignment 4 - Resizing the Stack
+*    Course:           CMPS 3013
+*    Semester:         Spring 2021
+*    Description:
+*        
+*           This program will read numbers from the file nums.dat. 
+*           If a number is even it will push it onto the stack. If a number
+*           is odd, it will perform a pop operation removing the last 
+*           even value from the stack. The stack cannot get smaller than 10 
+*           (our starting stack size). We need to keep track of the max size
+*           and how many times the stack was resized and final size of stack
+*           when program completed.
+* 
+*    Usage:
+*        Enter main file name, then the input file and the output file.
+*        - $ ./ main.cpp
+*        - $ ./ nums_dat
+*        - $ ./ output.txt
+*
+*    Files:
+*             main.cpp    : driver program
+******************************************************************************/
 
-int main(){
-    ifstream fin("nums.dat");
-    int num=0;
+#include <iostream>
+#include <fstream>
 
-    int max=10;
-    int count=0;
-    int evens=0;
-    int odds=0;
-    int last=0;
+using namespace std;
 
-    while(!fin.eof())
+
+// Funtion Prototype to Asked the user for name of files to be use.
+void openFiles(ifstream &, ofstream &);
+
+/**
+ * ArrayStack
+ *
+ * Description:
+ *      Array based stack
+ *
+ * Public Methods:
+ *      - 
+ *
+ * Usage:
+ *      - 
+ *
+ */
+class ArrayStack
+{
+private:
+    int *A;           // pointer to array of int's
+    int size;         // current max stack size
+    int top;          // top of stack
+    int timesResized; // times stack resized
+    int MaxSize;      // the max size the stack reaches
+
+public:
+    ArrayStack();
+    ArrayStack(int s);
+    bool Empty();
+    bool Full();
+    int Peek();
+    int Pop();
+    void Print();
+    bool Push(int x);
+    void ContainerGrow();
+    void ContainerShrink();
+    void CheckResize();
+    int getSize();
+    int getTimesResized();
+    int getMaxSize();
+    int getTop();
+};
+
+/**
+	 * ArrayStack
+	 *
+	 * Description:
+	 *      Default Constructor
+	 *
+	 * Params:
+	 *     - None
+	 *
+	 * Returns:
+	 *     - NULL
+*/
+ArrayStack::ArrayStack()
+{
+    size = 10;
+    A = new int[size];
+    top = -1;
+    timesResized = 0;
+    MaxSize = size;
+}
+
+/**
+	 * ArrayStack
+	 *
+	 * Description:
+	 *      Programmer Define Constructor size parameter
+	 *
+	 * Params:
+	 *     - int size
+	 *
+	 * Returns:
+	 *     - NULL
+	 */
+ArrayStack::ArrayStack(int s)
+{
+    size = 10;
+    A = new int[s];
+    top = -1;
+    timesResized = 0;
+    MaxSize = size;
+}
+
+/**
+	 * Public bool: Empty
+	 *
+	 * Description:
+	 *      Is the Stack empty?
+	 *
+	 * Params:
+	 *      NULL
+	 *
+	 * Returns:
+	 *      [bool] true = empty
+	 */
+bool ArrayStack::Empty()
+{
+    return (top <= -1);
+}
+
+/**
+	 * Public bool: Full
+	 *
+	 * Description:
+	 *      Is Stack full?
+	 *
+	 * Params:
+	 *      NULL
+	 *
+	 * Returns:
+	 *      [bool] true = full
+	 */
+bool ArrayStack::Full()
+{
+    return (top >= size - 1);
+}
+
+/**
+	 * Public int: Peek
+	 *
+	 * Description:
+	 *      Returns top value without altering the stack
+	 *
+	 * Params:
+	 *      NULL
+	 *
+	 * Returns:
+	 *      [int] top value if any
+	 */
+int ArrayStack::Peek()
+{
+    if (!Empty())
     {
-        fin>>num;
-        if(num % 2 == 0){
-            count++;
-            evens++;
-            last=0;
-        }else{
-            count--;
-            odds++;
-            last=1;
-        }
-
-        if(count >= max){
-            max *= 1.75;
-        }
-
+        return A[top];
     }
 
-    cout<<max<<" "<<evens<<" "<<odds<<endl;
+    return -99; // some sentinel value
+                // not a good solution
+}
+
+/**
+	 * Public int: Pop
+	 *
+	 * Description:
+	 *      Returns top value and removes it from stack
+	 *		also checks if it needs to be resized
+	 *
+	 * Params:
+	 *      NULL
+	 *
+	 * Returns:
+	 *      [int] top value if any
+	 */
+int ArrayStack::Pop()
+{
+    if (!Empty())
+    {
+        CheckResize();
+        return A[top--];
+    }
+
+    return -99; // some sentinel value
+                // not a good solution
+}
+
+/**
+	 * Public void: Print
+	 *
+	 * Description:
+	 *      Prints stack to standard out
+	 *
+	 * Params:
+	 *      NULL
+	 *
+	 * Returns:
+	 *      NULL
+	 */
+void ArrayStack::Print()
+{
+    for (int i = 0; i <= top; i++)
+    {
+        cout << A[i] << " ";
+    }
+    cout << endl;
+}
+
+/**
+	 * Public bool: Push
+	 *
+	 * Description:
+	 *      Adds an item to top of stack and checks 
+	 *		if resize is needed
+	 *
+	 * Params:
+	 *      [int] : item to be added
+	 *
+	 * Returns:
+	 *      [bool] ; success = true
+	 */
+bool ArrayStack::Push(int x)
+{
+    A[++top] = x;
+    CheckResize();
+    return true;
+}
+
+/**
+	 * Public void: ContainerGrow
+	 *
+	 * Description:
+	 *      Resizes the container for the stack by 1.75 
+	 *      its capacity
+	 *
+	 * Params:
+	 *      NULL
+	 *
+	 * Returns:
+	 *      NULL
+	 */
+void ArrayStack::ContainerGrow()
+{
+    int newSize = size * 1.75; // 175% size of original
+    int *B = new int[newSize]; // allocate new memory
+
+    for (int i = 0; i < size; i++)
+    { // copy values to new array
+        B[i] = A[i];
+    }
+
+    delete[] A; // delete old array
+
+    size = newSize; // save new size
+
+    A = B; // reset array pointer
+
+    if (MaxSize < newSize)
+    {
+        MaxSize = size; // checks if maxsize needs
+                        // increase
+    }
+}
+
+/**
+	 * Public void: ContainerShrink
+	 *
+	 * Description:
+	 *      Resizes the container for the stack by .5
+	 *      its capacity
+	 *
+	 * Params:
+	 *      NULL
+	 *
+	 * Returns:
+	 *      NULL
+	 */
+void ArrayStack::ContainerShrink()
+{
+    int newSize = size / 2; // halves size of original
+    if (newSize < 10)
+    {
+        newSize = 10;
+    }
+    int *B = new int[newSize]; // allocate new memory
+
+    for (int i = 0; i <= top; i++)
+    { // copy values to new array
+        B[i] = A[i];
+    }
+
+    delete[] A; // delete old array
+
+    size = newSize; // save new size
+
+    A = B; // reset array pointer
+}
+
+/**
+	 * Public void: CheckResize
+	 *
+	 * Description:
+	 *      checks if the stack needs to be resized
+	 *
+	 * Params:
+	 *      NULL
+	 *
+	 * Returns:
+	 *      NULL
+	 */
+void ArrayStack::CheckResize()
+{
+    if (Full())
+    {
+        ContainerGrow(); //shrinks
+        timesResized++;  //increments times resized
+    }
+    else if (top < (size / 2) && size > 10)
+    {
+        ContainerShrink(); //grows
+        timesResized++;    //increments times resized
+    }
+}
+
+/**
+	 * Public void: getSize
+	 *
+	 * Description:
+	 *      gets the size of the stack
+	 *
+	 * Params:
+	 *      NULL
+	 *
+	 * Returns:
+	 *      [int] size
+	 */
+int ArrayStack::getSize()
+{
+    return size;
+}
+
+/**
+	 * Public void: getTimesResized
+	 *
+	 * Description:
+	 *      gets the times the stack was resized
+	 *
+	 * Params:
+	 *      NULL
+	 *
+	 * Returns:
+	 *      [int] timesResized
+	 */
+int ArrayStack::getTimesResized()
+{
+    return timesResized;
+}
+
+/**
+	 * Public void: getMaxSize
+	 *
+	 * Description:
+	 *      gets the max size of the stack
+	 *
+	 * Params:
+	 *      NULL
+	 *
+	 * Returns:
+	 *      [int] MaxSize
+	 */
+int ArrayStack::getMaxSize()
+{
+    return MaxSize;
+}
+
+/**
+	 * Public void: getMaxSize
+	 *
+	 * Description:
+	 *      gets the top of the stack
+	 *
+	 * Params:
+	 *      NULL
+	 *
+	 * Returns:
+	 *      [int] tope
+	 */
+int ArrayStack::getTop()
+{
+    return top;
+}
+
+// MAIN DRIVER
+int main()
+{
+    ArrayStack stack; //stack for resizing
+                      // Ifstream and ofstream object to read data from the file.
+    ifstream infile;
+    ofstream outfile;
+
+    // Calling the Function openFiles.
+    openFiles(infile, outfile);
+
+    int num; //num to put into stack or to read a pop
+
+    while (!infile.eof())
+    {
+        infile >> num;
+        if (num % 2 == 0) //pushes evens
+        {
+            stack.Push(num);
+        }
+        else //pops when odd is read
+        {
+            stack.Pop();
+        }
+    }
+
+    outfile << "################################################################\n";
+    outfile << "\tAssignment 4 - Resizing the Stack\n";
+    outfile << "\tCMPS 3013\n";
+    outfile << "\tLoic Konan\n\n";
+    outfile << "\tMax Stack Size: " << stack.getMaxSize() << "\n";
+    outfile << "\tEnd Stack Size: " << stack.getSize() << "\n";
+    outfile << "\tStack Resized:  " << stack.getTimesResized() << " Times\n\n";
+    outfile << "################################################################\n";
+}
+
+/****************************************************************************
+ * 
+ * Function Name: openFiles () 
+ * 
+ *  Description:
+ *               To prompt the user for the infile and outfile
+ *               name to be use.
+ * 
+ *  Parameters: ifstream& infile, ofstream& outfile
+ * 
+ * Returns:
+ *          Void
+ * 
+ ***************************************************************************/
+void openFiles(ifstream &infile, ofstream &outfile)
+{
+    char inFileName[40];
+    char outFileName[40];
+
+    cout << "Enter the input file name: ";
+    cin >> inFileName;
+
+    // open input file
+    infile.open(inFileName);
+    cout << "Enter the output file name: ";
+    cin >> outFileName;
+
+    // Open output file.
+    outfile.open(outFileName);
 }
