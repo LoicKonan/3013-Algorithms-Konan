@@ -4,7 +4,7 @@
 
 #### Description
 
-This program will read numbers from the file [nums.dat](nums.dat).
+This program will read numbers from the file  [nums_test.dat](nums_test.datt).
 If a number is even, push it onto the stack.
 If a number is odd, it will perform a pop operation removing the last even value from the stack.
 The stack cannot get smaller than 10 (our starting stack size).
