@@ -66,7 +66,7 @@ void openFiles(ifstream &, ofstream &);
 *    Usage:
 *        
 */
-class ArrayBasedStackCode
+class ArrayStack
 {
 private:
     int *A;           // pointer to array of int's
@@ -76,8 +76,8 @@ private:
     int MaxSize;      // the max size the stack reaches
 
 public:
-    ArrayBasedStackCode();
-    ArrayBasedStackCode(int s);
+    ArrayStack();
+    ArrayStack(int s);
     bool Empty();
     bool Full();
     int Peek();
@@ -87,15 +87,15 @@ public:
     void ContainerGrow();
     void ContainerShrink();
     void CheckResize();
-    int getSize();
-    int getTimesResized();
-    int getMaxSize();
-    int getTop();
+    int get_Size();
+    int get_timesResized();
+    int get_maxSize();
+    int get_Top();
 };
 
 
 /**
- *  Public :  ArrayBasedStackCode
+ *  Public :  ArrayStack
  *
  * Description:
  *            Default Constructor
@@ -106,7 +106,7 @@ public:
  * Returns:
  *          - NULL
  */
-ArrayBasedStackCode::ArrayBasedStackCode()
+ArrayStack::ArrayStack()
 {
     size = 10;
     A = new int[size];
@@ -117,7 +117,7 @@ ArrayBasedStackCode::ArrayBasedStackCode()
 
 
 /**
- *  Public : ArrayBasedStackCode
+ *  Public : ArrayStack
  *
  * Description:
  *           Programmer Define Constructor
@@ -128,7 +128,7 @@ ArrayBasedStackCode::ArrayBasedStackCode()
  * Returns:
  *           - NULL
  */
-ArrayBasedStackCode::ArrayBasedStackCode(int s)
+ArrayStack::ArrayStack(int s)
 {
     size = 10;
     A = new int[s];
@@ -150,7 +150,7 @@ ArrayBasedStackCode::ArrayBasedStackCode(int s)
  * Returns:
  *       [bool] true = empty
  */
-bool ArrayBasedStackCode::Empty()
+bool ArrayStack::Empty()
 {
     return (top <= -1);
 }
@@ -168,7 +168,7 @@ bool ArrayBasedStackCode::Empty()
  * Returns:
  *      [bool] true = full
  */
-bool ArrayBasedStackCode::Full()
+bool ArrayStack::Full()
 {
     return (top >= size - 1);
 }
@@ -186,7 +186,7 @@ bool ArrayBasedStackCode::Full()
  * Returns:
  *       [int] top value if any
  */
-int ArrayBasedStackCode::Peek()
+int ArrayStack::Peek()
 {
     if (!Empty())
     {
@@ -210,7 +210,7 @@ int ArrayBasedStackCode::Peek()
  * Returns:
  *      [int] top value if any
  */
-int ArrayBasedStackCode::Pop()
+int ArrayStack::Pop()
 {
     if (!Empty())
     {
@@ -234,7 +234,7 @@ int ArrayBasedStackCode::Pop()
  * Returns:
  *              NULL
  */
-void ArrayBasedStackCode::Print()
+void ArrayStack::Print()
 {
     for (int i = 0; i <= top; i++)
     {
@@ -257,7 +257,7 @@ void ArrayBasedStackCode::Print()
  * Returns:
  *      [bool] success = true
  */
-bool ArrayBasedStackCode::Push(int x)
+bool ArrayStack::Push(int x)
 {
     A[++top] = x;
     CheckResize();
@@ -278,26 +278,25 @@ bool ArrayBasedStackCode::Push(int x)
  * Returns:
  *              NULL
  */
-void ArrayBasedStackCode::ContainerGrow()
+void ArrayStack::ContainerGrow()
 {
-    int newSize = size * 1.50;      // 150% size of original
-    int *B = new int[newSize];      // allocate new memory
+    int newSize = size * 1.50;               // 150% size of original
+    int *B = new int[newSize];              // allocate new memory
 
     for (int i = 0; i < size; i++)
-    {                    // copy values to new array
+    {                                     // copy values to new array
         B[i] = A[i];
     }
 
-    delete[] A;       // delete old array
+    delete[] A;                        // delete old array
 
-    size = newSize;  // save new size
+    size = newSize;                   // save new size
 
-    A = B;          // reset array pointer
+    A = B;                           // reset array pointer
 
-    if (MaxSize < newSize)
+    if (MaxSize < newSize)          // If Max size is less
     {
-        MaxSize = size; // checks if maxsize needs
-                       // increase
+        MaxSize = size; 
     }
 }
 
@@ -306,7 +305,7 @@ void ArrayBasedStackCode::ContainerGrow()
  * Public void: ContainerShrink
  *
  * Description:
- *              Resizes the container for the stack by .5
+ *              Resizes the container for the stack by 0.5
  *              its capacity
  *
  * Params:
@@ -315,25 +314,25 @@ void ArrayBasedStackCode::ContainerGrow()
  * Returns:
  *              NULL
  */
-void ArrayBasedStackCode::ContainerShrink()
+void ArrayStack::ContainerShrink()
 {
-    int newSize = size / 2; // halves size of original
+    int newSize = size / 2;              // halves size of original
     if (newSize < 10)
     {
         newSize = 10;
     }
-    int *B = new int[newSize]; // allocate new memory
+    int *B = new int[newSize];        // allocate new memory
 
     for (int i = 0; i <= top; i++)
-    { // copy values to new array
+    {                               // copy values to new array
         B[i] = A[i];
     }
 
-    delete[] A; // delete old array
+    delete[] A;                 // delete old array
 
-    size = newSize; // save new size
+    size = newSize;           // save new size
 
-    A = B; // reset array pointer
+    A = B;                  // reset array pointer
 }
 
 
@@ -349,23 +348,23 @@ void ArrayBasedStackCode::ContainerShrink()
  * Returns:
  *              NULL
  */
-void ArrayBasedStackCode::CheckResize()
+void ArrayStack::CheckResize()
 {
     if (Full())
     {
-        ContainerGrow(); // shrinks
-        timesResized++;  // increments times resized
+        ContainerGrow();        // Call this function to make it shrinks
+        timesResized++;        // increments times resized
     }
     else if (top < (size / 2) && size > 10)
     {
-        ContainerShrink(); // grows
+        ContainerShrink();  // Call this function to make it grows
         timesResized++;    // increments times resized
     }
 }
 
 
 /**
- * Public void: getSize
+ * Public void: get_Size
  *
  * Description:
  *              gets the size of the stack
@@ -376,14 +375,14 @@ void ArrayBasedStackCode::CheckResize()
  * Returns:
  *       [int] size
  */
-int ArrayBasedStackCode::getSize()
+int ArrayStack::get_Size()
 {
     return size;
 }
 
 
 /**
- * Public void: getTimesResized
+ * Public void: get_timesResized
  *
  * Description:
  *              gets the times the stack was resized
@@ -394,14 +393,14 @@ int ArrayBasedStackCode::getSize()
  * Returns:
  *        [int] timesResized
  */
-int ArrayBasedStackCode::getTimesResized()
+int ArrayStack::get_timesResized()
 {
     return timesResized;
 }
 
 
 /**
- * Public void: getMaxSize
+ * Public void: get_maxSize
  *
  * Description:
  *              gets the max size of the stack
@@ -412,14 +411,14 @@ int ArrayBasedStackCode::getTimesResized()
  * Returns:
  *       [int] MaxSize
  */
-int ArrayBasedStackCode::getMaxSize()
+int ArrayStack::get_maxSize()
 {
     return MaxSize;
 }
 
 
 /**
- * Public void: getMaxSize
+ * Public void: get_Top
  *
  * Description:
  *              gets the top of the stack
@@ -428,9 +427,9 @@ int ArrayBasedStackCode::getMaxSize()
  *              NULL
  *
  * Returns:
- *      [int] tope
+ *      [int] top
  */
-int ArrayBasedStackCode::getTop()
+int ArrayStack::get_Top()
 {
     return top;
 }
@@ -439,21 +438,21 @@ int ArrayBasedStackCode::getTop()
 // Main Driver
 int main()
 {
-    ArrayBasedStackCode stack; // stack for resizing
+    ArrayStack stack; // stack for resizing
                       
     ifstream infile;  // Ifstream and ofstream object to read data.
     ofstream outfile;
 
     openFiles(infile, outfile);   // Calling the Function openFiles.
 
-    int num; // num to put into stack or to read a pop
+    int number; // num to put into stack or to read a pop
 
     while (!infile.eof())
     {
-        infile >> num;
-        if (num % 2 == 0) // pushe when evens.
+        infile >> number;
+        if (number % 2 == 0) // pushe when evens.
         {
-            stack.Push(num);
+            stack.Push(number);
         }
         else // pops when odd.
         {
@@ -466,9 +465,9 @@ int main()
     outfile << "\tAssignment 4 - Resizing the Stack\n";
     outfile << "\tCMPS 3013\n";
     outfile << "\tLoic Konan\n\n";
-    outfile << "\tMax Stack Size: " << stack.getMaxSize() << "\n";
-    outfile << "\tEnd Stack Size: " << stack.getSize() << "\n";
-    outfile << "\tStack Resized:  " << stack.getTimesResized() << " Times\n\n";
+    outfile << "\tMax Stack Size: " << stack.get_maxSize() << "\n";
+    outfile << "\tEnd Stack Size: " << stack.get_Size() << "\n";
+    outfile << "\tStack Resized:  " << stack.get_timesResized() << " Times\n\n";
     outfile << "################################################################\n";
 }
 
