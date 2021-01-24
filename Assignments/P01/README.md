@@ -22,7 +22,6 @@ final size of stack when program completed.
 |   4   | [nums.dat](nums.dat)           | Input file to test the code          |
 |   5   | [output.txt](output.txt)       | The output file to print the results |
 
-
 ### Instructions
 
 - This program does not require any non standard libraries
