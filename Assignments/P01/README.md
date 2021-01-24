@@ -31,7 +31,7 @@ final size of stack when program completed.
 ### Example Command
 
  Enter the main file name, then the input file and the output file.
->>
+>
 >> - Example:
 >>
         - $ ./ main.cpp
