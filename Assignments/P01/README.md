@@ -17,7 +17,7 @@ final size of stack when program completed.
 |   #   | File                             | Description                                            |
 | :---: | -------------------------------- | ------------------------------------------------------ |
 |   1   | [main.cpp](main.cpp)             | The main cpp  (The Driver)                             |
-|   2   | [nums.dat](nums.dat)             | The input file to test the code                        |
+|   2   | [nums.dat](nums.dat)             | Input file to test the code                            |
 |   3   | [output.txt](output.txt)         | The output file to print the results                   |
 |   4   | [ArrayStack.cpp](ArrayStack.cpp) | Where the member functions are all define              |
 |   5   | [ArrayStack.h](ArrayStack.h)     | Header file Where the member functions are all declare |
@@ -35,5 +35,5 @@ final size of stack when program completed.
 > Example:
 >>
         - $ ./ main.cpp
-        - $ ./ nums_dat
+        - $ ./ nums_test.dat
         - $ ./ output.txt
