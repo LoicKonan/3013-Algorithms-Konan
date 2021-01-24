@@ -17,15 +17,15 @@
 *           when program completed.
 * 
 *    Usage:
-*        Enter the main file name, then the input file and the output file.
-*        - $ ./ main.cpp
-*        - $ ./ nums_test.dat
-*        - $ ./ output.txt
+*           Enter the main file name, then the input file and the output file.
+*           - $ ./ main.cpp
+*           - $ ./ nums_test.dat
+*           - $ ./ output.txt
 *
 *    Files:
-*             main.cpp          : driver program
-*             nums_test.dat     : Input file
-*             output.txt        : Output file
+*           main.cpp          : driver program
+*           nums_test.dat     : Input file
+*           output.txt        : Output file
 *
 ******************************************************************************/
 
