@@ -21,6 +21,8 @@ final size of stack when program completed.
 |   3   | [output.txt](output.txt)         | The output file to print the results                   |
 |   4   | [ArrayStack.cpp](ArrayStack.cpp) | Where the member functions are all define              |
 |   5   | [ArrayStack.h](ArrayStack.h)     | Header file Where the member functions are all declare |
+|   6   | [nums_test.dat](nums_test.dat)   | Another Input file to test the code                    |
+|   7   | [commands.dat](commands.dat)     | Another Input file to test the code                    |
 
 ### Instructions
 
