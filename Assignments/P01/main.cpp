@@ -438,23 +438,23 @@ int ArrayStack::get_Top()
 // Main Driver
 int main()
 {
-    ArrayStack stack; // stack for resizing
+    ArrayStack stack;               // stack for resizing
                       
-    ifstream infile;  // Ifstream and ofstream object to read data.
+    ifstream infile;               // Ifstream and ofstream object to read data.
     ofstream outfile;
 
     openFiles(infile, outfile);   // Calling the Function openFiles.
 
-    int number; // num to put into stack or to read a pop
+    int number;                  // num to put into stack or to read a pop
 
     while (!infile.eof())
     {
         infile >> number;
-        if (number % 2 == 0) // pushe when evens.
+        if (number % 2 == 0)    // pushe when evens.
         {
             stack.Push(number);
         }
-        else // pops when odd.
+        else                  // pops when odd.
         {
             stack.Pop();
         }
