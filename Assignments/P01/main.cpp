@@ -145,7 +145,7 @@ ArrayStack::ArrayStack(int s)
  *              NULL
  *
  * Returns:
- *      [bool] true = empty
+ *       [bool] true = empty
  */
 bool ArrayStack::Empty()
 {
@@ -181,7 +181,7 @@ bool ArrayStack::Full()
  *              NULL
  *
  * Returns:
- *      [int] top value if any
+ *       [int] top value if any
  */
 int ArrayStack::Peek()
 {
@@ -190,7 +190,7 @@ int ArrayStack::Peek()
         return A[top];
     }
 
-    return -99; // sentinel value
+    return -99;         // sentinel value
 }
 
 
@@ -277,24 +277,24 @@ bool ArrayStack::Push(int x)
  */
 void ArrayStack::ContainerGrow()
 {
-    int newSize = size * 1.50; // 150% size of original
-    int *B = new int[newSize]; // allocate new memory
+    int newSize = size * 1.50;      // 150% size of original
+    int *B = new int[newSize];      // allocate new memory
 
     for (int i = 0; i < size; i++)
-    { // copy values to new array
+    {                    // copy values to new array
         B[i] = A[i];
     }
 
-    delete[] A; // delete old array
+    delete[] A;       // delete old array
 
-    size = newSize; // save new size
+    size = newSize;  // save new size
 
-    A = B; // reset array pointer
+    A = B;          // reset array pointer
 
     if (MaxSize < newSize)
     {
         MaxSize = size; // checks if maxsize needs
-                        // increase
+                       // increase
     }
 }
 
@@ -371,7 +371,7 @@ void ArrayStack::CheckResize()
  *              NULL
  *
  * Returns:
- *      [int] size
+ *       [int] size
  */
 int ArrayStack::getSize()
 {
@@ -389,7 +389,7 @@ int ArrayStack::getSize()
  *              NULL
  *
  * Returns:
- *      [int] timesResized
+ *        [int] timesResized
  */
 int ArrayStack::getTimesResized()
 {
@@ -407,7 +407,7 @@ int ArrayStack::getTimesResized()
  *              NULL
  *
  * Returns:
- *      [int] MaxSize
+ *       [int] MaxSize
  */
 int ArrayStack::getMaxSize()
 {
