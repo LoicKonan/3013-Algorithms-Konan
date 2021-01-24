@@ -29,7 +29,7 @@ final size of stack when program completed.
 
 ### Example Command
 
- Enter the main file name, then the input file and the output file.
+ You will be prompt to Enter the main file name, and the input file and the output file name.
 >
 > Example:
 >>
