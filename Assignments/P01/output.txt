@@ -3,8 +3,8 @@
 		CMPS 3013
 		Loic Konan
 
-		Max Stack Size: 780
-		End Stack Size: 596
-		Stack Resized:  1072 Times
+		Max Stack Size: 31618
+		End Stack Size: 10
+		Stack Resized:  45 Times
 
 ################################################################
