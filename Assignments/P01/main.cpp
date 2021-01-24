@@ -19,11 +19,14 @@
 *    Usage:
 *        Enter the main file name, then the input file and the output file.
 *        - $ ./ main.cpp
-*        - $ ./ nums_dat
+*        - $ ./ nums_test.dat
 *        - $ ./ output.txt
 *
 *    Files:
-*             main.cpp    : driver program
+*             main.cpp          : driver program
+*             nums_test.dat     : Input file
+*             output.txt        : Output file
+*
 ******************************************************************************/
 
 #include <iostream>
@@ -63,7 +66,7 @@ void openFiles(ifstream &, ofstream &);
 *    Usage:
 *        
 */
-class ArrayStack
+class ArrayBasedStackCode
 {
 private:
     int *A;           // pointer to array of int's
@@ -73,8 +76,8 @@ private:
     int MaxSize;      // the max size the stack reaches
 
 public:
-    ArrayStack();
-    ArrayStack(int s);
+    ArrayBasedStackCode();
+    ArrayBasedStackCode(int s);
     bool Empty();
     bool Full();
     int Peek();
@@ -92,7 +95,7 @@ public:
 
 
 /**
- *  Public :  ArrayStack
+ *  Public :  ArrayBasedStackCode
  *
  * Description:
  *            Default Constructor
@@ -103,7 +106,7 @@ public:
  * Returns:
  *          - NULL
  */
-ArrayStack::ArrayStack()
+ArrayBasedStackCode::ArrayBasedStackCode()
 {
     size = 10;
     A = new int[size];
@@ -114,7 +117,7 @@ ArrayStack::ArrayStack()
 
 
 /**
- *  Public : ArrayStack
+ *  Public : ArrayBasedStackCode
  *
  * Description:
  *           Programmer Define Constructor
@@ -125,7 +128,7 @@ ArrayStack::ArrayStack()
  * Returns:
  *           - NULL
  */
-ArrayStack::ArrayStack(int s)
+ArrayBasedStackCode::ArrayBasedStackCode(int s)
 {
     size = 10;
     A = new int[s];
@@ -147,7 +150,7 @@ ArrayStack::ArrayStack(int s)
  * Returns:
  *       [bool] true = empty
  */
-bool ArrayStack::Empty()
+bool ArrayBasedStackCode::Empty()
 {
     return (top <= -1);
 }
@@ -165,7 +168,7 @@ bool ArrayStack::Empty()
  * Returns:
  *      [bool] true = full
  */
-bool ArrayStack::Full()
+bool ArrayBasedStackCode::Full()
 {
     return (top >= size - 1);
 }
@@ -183,7 +186,7 @@ bool ArrayStack::Full()
  * Returns:
  *       [int] top value if any
  */
-int ArrayStack::Peek()
+int ArrayBasedStackCode::Peek()
 {
     if (!Empty())
     {
@@ -207,7 +210,7 @@ int ArrayStack::Peek()
  * Returns:
  *      [int] top value if any
  */
-int ArrayStack::Pop()
+int ArrayBasedStackCode::Pop()
 {
     if (!Empty())
     {
@@ -231,7 +234,7 @@ int ArrayStack::Pop()
  * Returns:
  *              NULL
  */
-void ArrayStack::Print()
+void ArrayBasedStackCode::Print()
 {
     for (int i = 0; i <= top; i++)
     {
@@ -254,7 +257,7 @@ void ArrayStack::Print()
  * Returns:
  *      [bool] success = true
  */
-bool ArrayStack::Push(int x)
+bool ArrayBasedStackCode::Push(int x)
 {
     A[++top] = x;
     CheckResize();
@@ -275,7 +278,7 @@ bool ArrayStack::Push(int x)
  * Returns:
  *              NULL
  */
-void ArrayStack::ContainerGrow()
+void ArrayBasedStackCode::ContainerGrow()
 {
     int newSize = size * 1.50;      // 150% size of original
     int *B = new int[newSize];      // allocate new memory
@@ -312,7 +315,7 @@ void ArrayStack::ContainerGrow()
  * Returns:
  *              NULL
  */
-void ArrayStack::ContainerShrink()
+void ArrayBasedStackCode::ContainerShrink()
 {
     int newSize = size / 2; // halves size of original
     if (newSize < 10)
@@ -346,7 +349,7 @@ void ArrayStack::ContainerShrink()
  * Returns:
  *              NULL
  */
-void ArrayStack::CheckResize()
+void ArrayBasedStackCode::CheckResize()
 {
     if (Full())
     {
@@ -373,7 +376,7 @@ void ArrayStack::CheckResize()
  * Returns:
  *       [int] size
  */
-int ArrayStack::getSize()
+int ArrayBasedStackCode::getSize()
 {
     return size;
 }
@@ -391,7 +394,7 @@ int ArrayStack::getSize()
  * Returns:
  *        [int] timesResized
  */
-int ArrayStack::getTimesResized()
+int ArrayBasedStackCode::getTimesResized()
 {
     return timesResized;
 }
@@ -409,7 +412,7 @@ int ArrayStack::getTimesResized()
  * Returns:
  *       [int] MaxSize
  */
-int ArrayStack::getMaxSize()
+int ArrayBasedStackCode::getMaxSize()
 {
     return MaxSize;
 }
@@ -427,7 +430,7 @@ int ArrayStack::getMaxSize()
  * Returns:
  *      [int] tope
  */
-int ArrayStack::getTop()
+int ArrayBasedStackCode::getTop()
 {
     return top;
 }
@@ -436,7 +439,7 @@ int ArrayStack::getTop()
 // Main Driver
 int main()
 {
-    ArrayStack stack; // stack for resizing
+    ArrayBasedStackCode stack; // stack for resizing
                       
     ifstream infile;  // Ifstream and ofstream object to read data.
     ofstream outfile;
