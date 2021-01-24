@@ -448,7 +448,7 @@ int main()
     int number;                  // num to put into stack or to read a pop
 
     while (!infile.eof())
-    {
+    {                            // Read in the data
         infile >> number;
         if (number % 2 == 0)    // pushe when evens.
         {
