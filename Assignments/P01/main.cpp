@@ -7,15 +7,15 @@
 *    Course:           CMPS 3013
 *    Semester:         Spring 2021
 *    Description:
-*        
-*           This program will read numbers from the file nums.dat. 
+*
+*           This program will read numbers from the file nums.dat.
 *           If a number is even it will push it onto the stack. If a number
-*           is odd, it will perform a pop operation removing the last 
-*           even value from the stack. The stack cannot get smaller than 10 
+*           is odd, it will perform a pop operation removing the last
+*           even value from the stack. The stack cannot get smaller than 10
 *           (our starting stack size). We need to keep track of the max size
 *           and how many times the stack was resized and final size of stack
 *           when program completed.
-* 
+*
 *    Usage:
 *           Enter the main file name, then the input file and the output file.
 *           - $ ./ main.cpp
@@ -36,14 +36,14 @@ using namespace std;
 
 
 // Funtion Prototype to Asked the user for name of files to be use.
-void openFiles(ifstream &, ofstream &);
+void openFiles(ifstream&, ofstream&);
 
 
 /*
 *    Class Name: ArrayStack
 *    Description:
 *                Array based stack
-*        
+*
 *    Public Methods:
 *           ArrayStack();
 *           ArrayStack(int s);
@@ -64,16 +64,16 @@ void openFiles(ifstream &, ofstream &);
 *        - No Private methods
 *        - No Protected methods
 *    Usage:
-*        
+*
 */
 class ArrayStack
 {
 private:
-    int *A;           // pointer to array of int's
-    int size;         // current max stack size
-    int top;          // top of stack
-    int timesResized; // times stack resized
-    int MaxSize;      // the max size the stack reaches
+    int* A;                     // pointer to array of int's
+    int size;                   // current max stack size
+    int top;                    // top of stack
+    int timesResized;           // times stack resized
+    int MaxSize;                // the max size the stack reaches
 
 public:
     ArrayStack();
@@ -193,7 +193,7 @@ int ArrayStack::Peek()
         return A[top];
     }
 
-    return -99;         // sentinel value
+    return -99;                            // sentinel value
 }
 
 
@@ -248,12 +248,12 @@ void ArrayStack::Print()
  * Public bool: Push
  *
  * Description:
- *              Adds an item to top of stack and checks 
+ *              Adds an item to top of stack and checks
  *		        if resize is needed
  *
  * Params:
  *      [int] : item to be added
- * 
+ *
  * Returns:
  *      [bool] success = true
  */
@@ -269,7 +269,7 @@ bool ArrayStack::Push(int x)
  * Public void: ContainerGrow
  *
  * Description:
- *              Resizes the container for the stack by 1.50 
+ *              Resizes the container for the stack by 1.50
  *              its capacity
  *
  * Params:
@@ -280,23 +280,23 @@ bool ArrayStack::Push(int x)
  */
 void ArrayStack::ContainerGrow()
 {
-    int newSize = size * 1.50;               // 150% size of original
-    int *B = new int[newSize];              // allocate new memory
+    int newSize = size * 1.50;             // 150% size of original
+    int* B = new int[newSize];             // allocate new memory
 
     for (int i = 0; i < size; i++)
-    {                                     // copy values to new array
+    {                                      // copy values to new array
         B[i] = A[i];
     }
 
-    delete[] A;                        // delete old array
+    delete[] A;                            // delete old array
 
-    size = newSize;                   // save new size
+    size = newSize;                        // save new size
 
-    A = B;                           // reset array pointer
+    A = B;                                 // reset array pointer
 
-    if (MaxSize < newSize)          // If Max size is less
+    if (MaxSize < newSize)                 // If Max size is less
     {
-        MaxSize = size; 
+        MaxSize = size;
     }
 }
 
@@ -316,23 +316,23 @@ void ArrayStack::ContainerGrow()
  */
 void ArrayStack::ContainerShrink()
 {
-    int newSize = size / 2;              // halves size of original
+    int newSize = size / 2;                // halves size of original
     if (newSize < 10)
     {
         newSize = 10;
     }
-    int *B = new int[newSize];        // allocate new memory
+    int* B = new int[newSize];             // allocate new memory
 
     for (int i = 0; i <= top; i++)
-    {                               // copy values to new array
+    {                                      // copy values to new array
         B[i] = A[i];
     }
 
-    delete[] A;                 // delete old array
+    delete[] A;                            // delete old array
 
-    size = newSize;           // save new size
+    size = newSize;                        // save new size
 
-    A = B;                  // reset array pointer
+    A = B;                                 // reset array pointer
 }
 
 
@@ -352,13 +352,13 @@ void ArrayStack::CheckResize()
 {
     if (Full())
     {
-        ContainerGrow();        // Call this function to make it shrinks
-        timesResized++;        // increments times resized
+        ContainerGrow();                   // Call this function to make it shrinks
+        timesResized++;                    // increments times resized
     }
     else if (top < (size / 2) && size > 10)
     {
-        ContainerShrink();  // Call this function to make it grows
-        timesResized++;    // increments times resized
+        ContainerShrink();                 // Call this function to make it grows
+        timesResized++;                    // increments times resized
     }
 }
 
@@ -438,29 +438,29 @@ int ArrayStack::get_Top()
 // Main Driver
 int main()
 {
-    ArrayStack stack;               // stack for resizing
-                      
-    ifstream infile;               // Ifstream and ofstream object to read data.
+    ArrayStack stack;                      // stack for resizing
+
+    ifstream infile;                       // Ifstream and ofstream object to read data.
     ofstream outfile;
 
-    openFiles(infile, outfile);   // Calling the Function openFiles.
+    openFiles(infile, outfile);            // Calling the Function openFiles.
 
-    int number;                  // num to put into stack or to read a pop
+    int number;                            // num to put into stack or to read a pop
 
     while (!infile.eof())
-    {                            // Read in the data
+    {                                      // Read in the data
         infile >> number;
-        if (number % 2 == 0)    // pushe when evens.
+        if (number % 2 == 0)               // pushe when evens.
         {
             stack.Push(number);
         }
-        else                  // pops when odd.
+        else                               // pops when odd.
         {
             stack.Pop();
         }
     }
 
-   // Display the Heading and Result to the output file.
+    // Display the Heading and Result to the output file.
     outfile << "################################################################\n";
     outfile << "\tAssignment 4 - Resizing the Stack\n";
     outfile << "\tCMPS 3013\n";
@@ -473,31 +473,30 @@ int main()
 
 
 /**
- * 
- * Function Name: openFiles () 
- * 
+ *
+ * Function Name: openFiles ()
+ *
  *  Description:
  *               To prompt the user for the infile and outfile
  *               name to be use.
- * 
+ *
  *  Parameters: ifstream& infile, ofstream& outfile
- * 
+ *
  * Returns:
  *              Void
- * 
+ *
  */
-void openFiles(ifstream &infile, ofstream &outfile)
+void openFiles(ifstream& infile, ofstream& outfile)
 {
     char inFileName[40];
     char outFileName[40];
 
-    cout << "Enter the input file name: ";	 // Prompt the User
+    cout << "Enter the input file name: ";    // Prompt the User
     cin >> inFileName;
 
-    infile.open(inFileName);                 // open input file
+    infile.open(inFileName);                  // open input file
     cout << "Enter the output file name: ";
     cin >> outFileName;
 
-    outfile.open(outFileName);               // Open output file.
+    outfile.open(outFileName);                // Open output file.
 }
-
