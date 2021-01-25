@@ -2,15 +2,24 @@
 
 ### Loic Konan
 
-#### Description
+#### Original Description:
+- The stack implementation has a Resize method that ONLY will make the stack larger as we add items.
+- This means that the stack will never shrink if we remove many items.
+- We should probably remedy this issue.
+- Too Full = 100% meaning no extra slots available in your array.
+- Too Empty = 15% meaning in a stack of 100, if you get down to 15 items you need to shrink your stack.
+- Enlarging = Double the size of the stack.
+- Shrinking - Cut the size of the stack in half.
 
-This program will read numbers from the file  [nums_test.dat](nums_test.dat).
-If a number is even, push it onto the stack.
-If a number is odd, it will perform a pop operation removing the last even value from the stack.
-The stack cannot get smaller than 10 (our starting stack size).
-We need to keep track of the max size the stack ever reached,
-how many times the stack was resized (grown or reduced) and
-final size of stack when program completed.
+### Testing Your Code
+- You will read numbers from the file nums_test.dat.
+- If a number is even, push it onto the stack.
+- If a number is odd, perform a pop operation removing the last even value from the stack.
+- Don't let your stack get smaller than 10 (our starting stack size).
+- You need to keep track of the following:
+>> - the max size the stack ever reached
+>> - how many times the stack was resized (grown or reduced)
+>> - final size of stack when program completed
 
 ### Files
 
