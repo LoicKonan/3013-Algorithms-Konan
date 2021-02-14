@@ -2,7 +2,7 @@
 
 ### Loic Konan
 
-#### Description:
+#### Description
 
 This program read in a dictionary file from dict_w_defs.json and store it in a linked list.
 After the dictionary (linked list) is loaded, we are going to perform "autosuggestions" when a user types characters at the console.
