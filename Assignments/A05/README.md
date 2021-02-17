@@ -1,6 +1,6 @@
-*** Assignment 5 - Run Times
+## Assignment 5 - Run Times
 
-*** Loic Konan
+### Loic Konan
 
 - Count = _____________________
 
