@@ -13,10 +13,11 @@ The time it takes to find each suggestion will be displayed in seconds.
 
 |  #  | File                           | Description                 |
 | :-: | ------------------------------ | --------------------------- |
-|  1  | [read_dict.cpp](read_dict.cpp) | Resizing the Stack main cpp |
-|  1  | [Banner](Banner)               | Banner for Assignment       |
-|  2  | []()                           |                             |
-|  3  | []()                           |                             |
+|  1  | [read_dict.cpp](read_dict.cpp) |  |
+|  2  | [dict_w_defs.json](dict_w_defs.json) |                       |
+|  3  | [Banner](Banner)               | Banner for Assignment       |
+|  4  | [Timer.hpp](Timer.hpp)         |                             |
+|  5  | []()                           |                             |
 
 ### Instructions
 
