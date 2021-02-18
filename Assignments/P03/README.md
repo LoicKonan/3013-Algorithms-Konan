@@ -1,4 +1,4 @@
-## Program 3 - Processing in Linear Time
+## Program 3 - Processing in Trie Tree Time
 
 ### Loic Konan
 
