@@ -6,9 +6,10 @@
 
 This Program read in a dictionary file from dict_w_defs.json and store it in a Trie Tree.\
 Define a wordNode to be a struct or a class to hold a word and definition.\
-The binary tree hold wordNodes. It Time how long it takes to load the data \ into your binary search tree (we will use that later as well).
-After the dictionary (tree) is loaded, it perform "autosuggestions" when a user types characters \ at the console.
-Suggestions start after 1 character is typed, however only the top 10 suggestions \ will be printed along with the total number of matching words.\
+The binary tree hold wordNodes. It Time how long it takes to load the data \
+into your binary search tree (we will use that later as well).
+After the dictionary (tree) is loaded, it perform "autosuggestions" when a user types characters \ 
+at the console. Suggestions start after 1 character is typed, however only the top 10 suggestions \ will be printed along with the total number of matching words.\
 The time it takes to find each suggestion will be displayed in seconds.
 
 ### Files
