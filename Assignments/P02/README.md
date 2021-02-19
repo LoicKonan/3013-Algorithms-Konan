@@ -4,22 +4,18 @@
 
 #### Description
 
-This program read in a dictionary file from dict_w_defs.json and store it in a linked list.\
-After the dictionary (linked list) is loaded, we are going to perform "autosuggestions" \
-when a user types characters at the console.
-Suggestions will start after 1 character is typed, however only the top 10 suggestions \
-will be printed along with the total number of matching words (example output below).\
-The time it takes to find each suggestion will be displayed in seconds.
+This project is about loading a singly linked list with dictionary words, then timing how it takes to look them up. We are doing this with the knowledge that this is slow, and we plan on applying our "lookup" code to other backend data structures with better performance. So, keep this in mind when designing your program.
 
 ### Files
 
-|  #  | File                           | Description                 |
-| :-: | ------------------------------ | --------------------------- |
-|  1  | [read_dict.cpp](read_dict.cpp) |  |
-|  2  | [dict_w_defs.json](dict_w_defs.json) |                       |
-|  3  | [Banner](Banner)               | Banner for Assignment       |
-|  4  | [Timer.hpp](Timer.hpp)         |                             |
-|  5  | []()                           |                             |
+|  #  | File                                 | Description                           |
+| :-: | ------------------------------------ | ------------------------------------- |
+|  1  | [read_dict.cpp](read_dict.cpp)       | Example json reader with some timing. |
+|  2  | [dict_w_defs.json](dict_w_defs.json) | Json input file                       |
+|  3  | [Banner](Banner)                     | Banner for Assignment                 |
+|  4  | [Timer.hpp](Timer.hpp)               | Timer helper class                    |
+|  5  | [JsonFacade.hpp](JsonFacade.hpp)     | Json helper class                     |
+|  6  | [json.hpp](json.hpp)                 | Json class written by nlohmann        |
 
 ### Instructions
 
