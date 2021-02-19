@@ -135,7 +135,7 @@
 
 - Comparisons = **10**
 
-- Complexity = **O(n)**
+- Complexity = **O(log n)**
 >
     bool found = 0;
     int n = 1024;
