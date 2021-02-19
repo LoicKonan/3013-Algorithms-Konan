@@ -4,7 +4,7 @@
 
 <hr style="border:2px solid gray"> </hr>
 
-- Count = **1024 * 1024 = __1048576__**
+- Count = **1024 * 1024 = _1048576_**
   
 - Complexity = **O(n^2)**
   
