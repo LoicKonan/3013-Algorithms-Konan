@@ -102,7 +102,7 @@
 - Count =
 
 - Complexity =
-  >
+>
     int count = 0;
     int n = 1024;
     int i = n;
