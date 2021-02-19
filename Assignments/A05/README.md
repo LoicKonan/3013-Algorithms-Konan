@@ -9,9 +9,9 @@
  >
     int count = 0;
     int n = 1024;
-    for(int i = 0; i < n; i++)
+    for (int i = 0; i < n; i++)
     {
-        for(int j = 0; j < n; j++)
+        for (int j = 0; j < n; j++)
         {
             count++;
         }
@@ -24,14 +24,14 @@
 >
     int count = 0;
     int n = 1024;
-    for(int i = 0; i < n; i++)
+    for (int i = 0; i < n; i++)
     {
         for(int j = 0; j < i; j++)
         {
             count++;
         }
     }
-    cout<<count<<endl;
+    cout << count << endl;
 
 - Count =
 
@@ -40,11 +40,11 @@
 >
     int count = 0;
     int n = 1024;
-    for(int i = 0; i < n; i++) 
+    for (int i = 0; i < n; i++) 
     {
-        for(int j = 0; j < i; j++)
+        for (int j = 0; j < i; j++)
         {
-            for(int k = 0; k < n; k++)
+            for (int k = 0; k < n; k++)
             {
                 count++;
             }
@@ -59,7 +59,7 @@
 >
     int count=0;
     int n = 1024;
-    for(int i = 0; i < 2*n; i++)
+    for (int i = 0; i < 2*n; i++)
     {
         count++;
     }
@@ -71,9 +71,9 @@
 >
     int count = 0;
     int n = 1024;
-    for(int i = 0; i < n; i++) 
+    for (int i = 0; i < n; i++) 
     {
-        for(int j = 0; j < 2n; j++)
+        for (int j = 0; j < 2n; j++)
         {
             count++;
         }
@@ -86,13 +86,13 @@
 >
     int count = 0;
     int n = 1024;
-    for(int i = 0; i < n; i++) 
+    for (int i = 0; i < n; i++) 
     {
         count++;
     }
-    for(int j = 0; j < n; j++)
+    for (int j = 0; j < n; j++)
     {
-        for(int k = 0; k < j; k++)
+        for (int k = 0; k < j; k++)
         {
             count++;
         }
@@ -107,9 +107,9 @@
     int n = 1024;
     int i = n;
 
-    while(i > 0)
+    while (i > 0)
     {
-        for(int j = 0; j < n; j++)
+        for (int j = 0; j < n; j++)
         {
             count++;
         }
@@ -137,7 +137,8 @@
 - Count =
 
 - Complexity =
-  >
+  
+>
     int count = 0;
     int n = 1024;
 
@@ -147,4 +148,4 @@
         cout << i << endl;
         i /= 2;  
     }
-    cout << count << endl;
+    cout<<count<<endl;
