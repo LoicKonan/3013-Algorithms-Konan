@@ -4,7 +4,7 @@
 
 <hr style="border:2px solid gray"> </hr>
 
-- Count = **1048576**
+- Count = **1024 * 1024 = 1048576**
   
 - Complexity = **O(n^2)**
   
@@ -22,9 +22,9 @@
 
 <hr style="border:2px solid gray"> </hr>
 
-- Count = **523776**
+- Count = **1024 * [(1024 - 1) / 2] = 523776**
   
-- Complexity = **O(n^2)**
+- Complexity = **O(n^2)** which was really **O[(n^2)/2]** but we just drop the constant(s).
 >
     int count = 0;
     int n = 1024;
@@ -39,9 +39,9 @@
 
 <hr style="border:2px solid gray"> </hr>
 
-- Count = **536346624**
+- Count = **1024^2 * [(1024 - 1) / 2] = 536346624**
 
-- Complexity = **O(n^3)**
+- Complexity = **O(n^3)** which was really **O[(n^3)/2]** but we just drop the constant(s).
 >
     int count = 0;
     int n = 1024;
@@ -59,9 +59,9 @@
 
 <hr style="border:2px solid gray"> </hr>
 
-- Count = **2048**
+- Count = **2 * 1024 = 2048**
 
-- Complexity = **O(n)**
+- Complexity = **O(n)** which was really **O(2n)** but we just drop the constant(s).
 
 >
     int count = 0;
@@ -74,9 +74,9 @@
 
 <hr style="border:2px solid gray"> </hr>
 
-- Count = **2097152**
+- Count = **1024 * (2 * 1024) = 2097152**
 
-- Complexity = **O(n^2)**
+- Complexity = **O(n^2)** which was really **O[2(n^2)]** but we just drop the constant(s).
 >
     int count = 0;
     int n = 1024;
@@ -91,7 +91,7 @@
 
 <hr style="border:2px solid gray"> </hr>
 
-- Count = **524800**
+- Count = **1024 + [1024 * (1024 - 1) / 2] = 524800**
 
 - Complexity = **O(n^2)**
 >
@@ -112,9 +112,9 @@
 
 <hr style="border:2px solid gray"> </hr>
 
-- Count = **11264**
+- Count = **1024 * [(log 1024) + 1] = 11264**
 
-- Complexity = **O(n)**
+- Complexity = **O(n log n)** which was really **O[n * ((log n) + 1) ]** but we just drop the constant(s).
 >
     int count = 0;
     int n = 1024;
@@ -133,7 +133,7 @@
 
 <hr style="border:2px solid gray"> </hr>
 
-- Comparisons = **10**
+- Comparisons = **log 1024 = 10**
 
 - Complexity = **O(log n)**
 >
@@ -153,8 +153,7 @@
 
 - Count = **0**
 
-- Complexity = **O(1)**
-  
+- Complexity = **O(log n)**  which was really **O[(log n) + 2]** but we just drop the constant(s).
 >
     int count = 0;
     int n = 1024;
