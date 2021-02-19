@@ -22,7 +22,7 @@
 
 <hr style="border:2px solid gray"> </hr>
 
-- Count = **1024 * [(1024 - 1) / 2] = 523776**
+- Count = **[1024 * (1024 - 1)] / 2 = 523776**
   
 - Complexity = **O(n^2)** which was really **O[(n^2)/2]** but we just drop the constant(s).
 >
@@ -39,7 +39,7 @@
 
 <hr style="border:2px solid gray"> </hr>
 
-- Count = **1024^2 * [(1024 - 1) / 2] = 536346624**
+- Count = **[1024^2 * (1024 - 1)] / 2 = 536346624**
 
 - Complexity = **O(n^3)** which was really **O[(n^3)/2]** but we just drop the constant(s).
 >
@@ -66,7 +66,7 @@
 >
     int count = 0;
     int n = 1024;
-    for(int i = 0; i < 2*n; i++)
+    for(int i = 0; i < 2n; i++)
     {
         count++;
     }
@@ -74,7 +74,7 @@
 
 <hr style="border:2px solid gray"> </hr>
 
-- Count = **1024 * (2 * 1024) = 2097152**
+- Count = **2 * 1024 * 1024 = 2097152**
 
 - Complexity = **O(n^2)** which was really **O[2(n^2)]** but we just drop the constant(s).
 >
@@ -91,9 +91,9 @@
 
 <hr style="border:2px solid gray"> </hr>
 
-- Count = **1024 + [1024 * (1024 - 1) / 2] = 524800**
+- Count = **1024 + [1024 * (1024 - 1)] / 2 = 524800**
 
-- Complexity = **O(n^2)**
+- Complexity = **O(n^2)** which was really **O[n + (n^2 / 2)]** but we just drop the constant(s).
 >
     int count = 0;
     int n = 1024;
