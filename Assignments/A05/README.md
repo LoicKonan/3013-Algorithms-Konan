@@ -2,9 +2,9 @@
 
 ### Loic Konan
 
-- Count = _____________________
+- Count =
 
-- Complexity = ________________
+- Complexity =
 
  >
     int count = 0;
@@ -18,10 +18,9 @@
     }
     cout << count << endl;
 
+- Count =
 
-- Count = _____________________
-
-- Complexity = ________________
+- Complexity =
 >
     int count = 0;
     int n = 1024;
@@ -34,10 +33,9 @@
     }
     cout<<count<<endl;
 
+- Count =
 
-- Count = _____________________
-
-- Complexity = ________________
+- Complexity =
 
 >
     int count = 0;
@@ -54,10 +52,9 @@
     }
     cout << count << endl;
 
+- Count =
 
-- Count = _____________________
-
-- Complexity = ________________
+- Complexity =
 
 >
     int count=0;
@@ -68,10 +65,9 @@
     }
     cout << count << endl;
 
+- Count =
 
-- Count = _____________________
-
-- Complexity = ________________
+- Complexity =
 >
     int count = 0;
     int n = 1024;
@@ -84,9 +80,9 @@
     }
     cout << count << endl;
 
-- Count = _____________________
+- Count =
 
-- Complexity = ________________
+- Complexity =
 >
     int count = 0;
     int n = 1024;
@@ -103,10 +99,10 @@
     }
     cout << count << endl;
 
-- Count = _____________________
+- Count =
 
-- Complexity = ________________
->
+- Complexity =
+  >
     int count = 0;
     int n = 1024;
     int i = n;
@@ -122,10 +118,9 @@
     }
     cout << count << endl;
 
+- Comparisons =
 
-- Comparisons = _______________
-
-- Complexity = ________________
+- Complexity =
 >
     bool found = 0;
     int n = 1024;
@@ -139,9 +134,9 @@
     // Whats the complexity ?
     found = BinarySearch (A, n);
 
-- Count = _____________________
+- Count =
 
-- Complexity = ________________
+- Complexity =
 >
     int count = 0;
     int n = 1024;
