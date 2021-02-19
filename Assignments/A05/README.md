@@ -22,7 +22,7 @@
 
 <hr style="border:2px solid gray"> </hr>
 
-- Count = **1048576**
+- Count = **523776**
   
 - Complexity = **O(n^2)**
   
