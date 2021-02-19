@@ -2,6 +2,8 @@
 
 ### Loic Konan
 
+<hr style="border:2px solid gray"> </hr>
+
 - Count =
 
 - Complexity =
@@ -18,7 +20,7 @@
     }
     cout << count << endl;
 
-#
+<hr style="border:2px solid gray"> </hr>
 
 - Count =
 
@@ -35,7 +37,7 @@
     }
     cout << count << endl;
 
-#
+<hr style="border:2px solid gray"> </hr>
 
 - Count =
 
@@ -56,7 +58,7 @@
     }
     cout << count << endl;
 
-#
+<hr style="border:2px solid gray"> </hr>
 
 - Count =
 
@@ -71,7 +73,7 @@
     }
     cout << count << endl;
 
-#
+<hr style="border:2px solid gray"> </hr>
 
 - Count =
 
@@ -88,7 +90,7 @@
     }
     cout << count << endl;
 
-#
+<hr style="border:2px solid gray"> </hr>
 
 - Count =
 
@@ -109,7 +111,7 @@
     }
     cout << count << endl;
 
-#
+<hr style="border:2px solid gray"> </hr>
 
 - Count =
 
@@ -130,7 +132,7 @@
     }
     cout << count << endl;
 
-#
+<hr style="border:2px solid gray"> </hr>
 
 - Comparisons =
 
@@ -148,7 +150,7 @@
     // Whats the complexity ?
     found = BinarySearch (A, n);
 
-#
+<hr style="border:2px solid gray"> </hr>
 
 - Count =
 
@@ -166,4 +168,4 @@
     }
     cout<<count<<endl;
 
-#
+<hr style="border:2px solid gray"> </hr>
