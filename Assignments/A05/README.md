@@ -24,25 +24,7 @@
 
 - Count = **523776**
   
-- Complexity = **O(n^2)**
-  
- >
-    int count = 0;
-    int n = 1024;
-    for(int i = 0; i < n; i++)
-    {
-        for(int j = 0; j < n; j++)
-        {
-            count++;
-        }
-    }
-    cout << count << endl;
-
-<hr style="border:2px solid gray"> </hr>
-
-- Count =
-
-- Complexity = **O[(n^2)/2]** which is really **O(n^2)** drop the constant.
+- Complexity =**O[(n^2)/2]** which is really **O(n^2)** because we drop the constant.
 >
     int count = 0;
     int n = 1024;
@@ -59,7 +41,7 @@
 
 - Count = **536346624**
 
-- Complexity = **O[(n^3)/2]** which is really **O(n^3)** drop the constant.
+- Complexity = **O[(n^3)/2]** which is really **O(n^3)** because we drop the constant.
 
 >
     int count = 0;
