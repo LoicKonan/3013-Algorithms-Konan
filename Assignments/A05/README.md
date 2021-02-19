@@ -4,7 +4,7 @@
 
 <hr style="border:2px solid gray"> </hr>
 
-- Count = **1024 * 1024 = 1048576**
+- Count = **1024 * 1024 = __1048576__**
   
 - Complexity = **O(n^2)**
   
@@ -22,7 +22,7 @@
 
 <hr style="border:2px solid gray"> </hr>
 
-- Count = **[1024 * (1024 - 1)] / 2 = 523776**
+- Count = **[1024 * (1024 - 1)] / 2 = __523776__**
   
 - Complexity = **O(n^2)** which was really **O[(n^2)/2]** but we just drop the constant(s).
 >
