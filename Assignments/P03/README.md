@@ -17,7 +17,7 @@ The time it takes to find each suggestion will be displayed in seconds.
 |  #  | File                                 | Description           |
 | :-: | ------------------------------------ | --------------------- |
 |  1  | [read_dict.cpp](read_dict.cpp)       |                       |
-|  2  | [dict_w_defs.json](dict_w_defs.json) |                       |
+|  2  | [dict_w_defs.json](dict_w_defs.json) | Json input file       |
 |  3  | [Banner](Banner)                     | Banner for Assignment |
 |  4  | [Timer.hpp](Timer.hpp)               |                       |
 |  5  | []()                                 |                       |
