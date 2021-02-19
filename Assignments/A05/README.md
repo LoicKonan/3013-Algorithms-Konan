@@ -137,13 +137,14 @@
 - Count =
 
 - Complexity =
->
-int count = 0;
-int n = 1024;
+  >
+    int count = 0;
+    int n = 1024;
 
-int i = n;
-while(i>0){
-    cout<<i<<endl;
-    i /= 2;  
-}
-cout<<count<<endl;
+    int i = n;
+    while (i > 0)
+    {
+        cout << i << endl;
+        i /= 2;  
+    }
+    cout << count << endl;
