@@ -1,6 +1,9 @@
 ## Assignment 4 - Commenting C++ Code
+
 ### Loic Konan
-#### Description:
+
+#### Description
+
 This assignment is more about breaking the ice with github, and how to properly organize and comment future programs.
 
 ### Files
