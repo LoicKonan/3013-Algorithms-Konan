@@ -24,7 +24,7 @@
 
 - Count = **523776**
   
-- Complexity =**O[(n^2)/2]** which is really **O(n^2)** because we drop the constant.
+- Complexity = **O(n^2)**
 >
     int count = 0;
     int n = 1024;
@@ -41,8 +41,7 @@
 
 - Count = **536346624**
 
-- Complexity = **O[(n^3)/2]** which is really **O(n^3)** because we drop the constant.
-
+- Complexity = **O(n^3)**
 >
     int count = 0;
     int n = 1024;
@@ -60,12 +59,12 @@
 
 <hr style="border:2px solid gray"> </hr>
 
-- Count =
+- Count = **2048**
 
-- Complexity = **O(n^2)**
+- Complexity = **O(n)**
 
 >
-    int count=0;
+    int count = 0;
     int n = 1024;
     for(int i = 0; i < 2*n; i++)
     {
@@ -75,7 +74,7 @@
 
 <hr style="border:2px solid gray"> </hr>
 
-- Count =
+- Count = **2097152**
 
 - Complexity = **O(n^2)**
 >
@@ -92,7 +91,7 @@
 
 <hr style="border:2px solid gray"> </hr>
 
-- Count =
+- Count = **524800**
 
 - Complexity = **O(n^2)**
 >
@@ -113,9 +112,9 @@
 
 <hr style="border:2px solid gray"> </hr>
 
-- Count =
+- Count = **11264**
 
-- Complexity = **O(n^2)**
+- Complexity = **O(n)**
 >
     int count = 0;
     int n = 1024;
@@ -134,9 +133,9 @@
 
 <hr style="border:2px solid gray"> </hr>
 
-- Comparisons =
+- Comparisons = **10**
 
-- Complexity = **O(n^2)**
+- Complexity = **O(n)**
 >
     bool found = 0;
     int n = 1024;
@@ -154,7 +153,7 @@
 
 - Count = **0**
 
-- Complexity = **O(n)**
+- Complexity = **O(1)**
   
 >
     int count = 0;
