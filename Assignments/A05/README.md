@@ -152,9 +152,9 @@
 
 <hr style="border:2px solid gray"> </hr>
 
-- Count =
+- Count = **0**
 
-- Complexity =
+- Complexity = **O(n)**
   
 >
     int count = 0;
