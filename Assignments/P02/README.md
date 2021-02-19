@@ -20,7 +20,7 @@ This project is about loading a singly linked list with dictionary words, then t
 
 ### Instructions
 
-- -$ ./read_dict.cpp
+-$ ./read_dict.cpp
 
 ### Example Command
 
