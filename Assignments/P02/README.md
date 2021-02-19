@@ -4,7 +4,7 @@
 
 #### Description
 
-This project is about loading a singly linked list with dictionary words, then timing how long it takes to look them up. We are doing this with the knowledge that this is slow, and we plan on applying our "lookup" code to other backend data structures with better performance.
+This project is about loading a **singly linked list** with dictionary words, then timing how long it takes to look them up. We are doing this with the knowledge that this is slow, and we plan on applying our "lookup" code to other backend data structures with better performance.
 
 ### Files
 

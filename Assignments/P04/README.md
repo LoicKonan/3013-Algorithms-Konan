@@ -4,7 +4,7 @@
 
 #### Description
 
-This project is about loading a Binary Search Tree with dictionary words, then timing how long it takes to look them up. We want to compare this with how long it took to look items up in the linked list from last program. For now we will keep the same interface for the previous program.
+This project is about loading a **Binary Search Tree** with dictionary words, then timing how long it takes to look them up. We want to compare this with how long it took to look items up in the **linked list** from last program. For now we will keep the same interface for the previous program.
 
 ### Files
 
