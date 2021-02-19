@@ -28,7 +28,7 @@
 #include <fstream>
 #include <iostream>
 #include <string>
-
+#include "trio.hpp"
 #include "json.hpp"
 
 //using namespace std;

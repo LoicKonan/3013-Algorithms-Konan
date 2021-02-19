@@ -12,6 +12,7 @@
 #include <time.h>
 #include <chrono> 
 #include "Timer.hpp"            // need to grab a copy from resources folder
+#include "trio.hpp"
 
 using namespace std;
 
