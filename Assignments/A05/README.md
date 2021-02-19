@@ -42,7 +42,7 @@
 
 - Count =
 
-- Complexity = **O(n^2)**
+- Complexity = **O[(n^2)/2]** which is really **O(n^2)** drop the constant.
 >
     int count = 0;
     int n = 1024;
@@ -57,9 +57,9 @@
 
 <hr style="border:2px solid gray"> </hr>
 
-- Count =
+- Count = **536346624**
 
-- Complexity = **O(n^2)**
+- Complexity = **O[(n^3)/2]** which is really **O(n^3)** drop the constant.
 
 >
     int count = 0;
