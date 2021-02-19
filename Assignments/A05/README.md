@@ -18,6 +18,8 @@
     }
     cout << count << endl;
 
+#
+
 - Count =
 
 - Complexity =
@@ -32,6 +34,8 @@
         }
     }
     cout << count << endl;
+
+#
 
 - Count =
 
@@ -52,6 +56,8 @@
     }
     cout << count << endl;
 
+#
+
 - Count =
 
 - Complexity =
@@ -64,6 +70,8 @@
         count++;
     }
     cout << count << endl;
+
+#
 
 - Count =
 
@@ -79,6 +87,8 @@
         }
     }
     cout << count << endl;
+
+#
 
 - Count =
 
@@ -99,6 +109,8 @@
     }
     cout << count << endl;
 
+#
+
 - Count =
 
 - Complexity =
@@ -118,6 +130,8 @@
     }
     cout << count << endl;
 
+#
+
 - Comparisons =
 
 - Complexity =
@@ -134,6 +148,8 @@
     // Whats the complexity ?
     found = BinarySearch (A, n);
 
+#
+
 - Count =
 
 - Complexity =
@@ -149,3 +165,5 @@
         i /= 2;  
     }
     cout<<count<<endl;
+
+#
