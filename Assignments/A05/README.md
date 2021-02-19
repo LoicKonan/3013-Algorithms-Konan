@@ -4,10 +4,28 @@
 
 <hr style="border:2px solid gray"> </hr>
 
-- Count =
+- Count = **1048576**
+  
+- Complexity = **O(n^2)**
+  
+>
+    int count = 0;
+    int n = 1024;
+    for(int i = 0; i < n; i++)
+    {
+        for(int j = 0; j < n; j++)
+        {
+            count++;
+        }
+    }
+    cout << count << endl;
 
-- Complexity =
+<hr style="border:2px solid gray"> </hr>
 
+- Count = **1048576**
+  
+- Complexity = **O(n^2)**
+  
  >
     int count = 0;
     int n = 1024;
@@ -24,7 +42,7 @@
 
 - Count =
 
-- Complexity =
+- Complexity = **O(n^2)**
 >
     int count = 0;
     int n = 1024;
@@ -41,7 +59,7 @@
 
 - Count =
 
-- Complexity =
+- Complexity = **O(n^2)**
 
 >
     int count = 0;
@@ -62,7 +80,7 @@
 
 - Count =
 
-- Complexity =
+- Complexity = **O(n^2)**
 
 >
     int count=0;
@@ -77,7 +95,7 @@
 
 - Count =
 
-- Complexity =
+- Complexity = **O(n^2)**
 >
     int count = 0;
     int n = 1024;
@@ -94,7 +112,7 @@
 
 - Count =
 
-- Complexity =
+- Complexity = **O(n^2)**
 >
     int count = 0;
     int n = 1024;
@@ -115,7 +133,7 @@
 
 - Count =
 
-- Complexity =
+- Complexity = **O(n^2)**
 >
     int count = 0;
     int n = 1024;
@@ -136,7 +154,7 @@
 
 - Comparisons =
 
-- Complexity =
+- Complexity = **O(n^2)**
 >
     bool found = 0;
     int n = 1024;
