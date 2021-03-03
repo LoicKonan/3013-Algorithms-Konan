@@ -5,7 +5,7 @@
 #### Description
 
 - This project is about loading a **singly linked list** with Animals names, Then perform "**autosuggestions**" when a user types characters at the console, the console will display the time it took to look them up.
-- >>
+>>
  - Suggestions will start after ***1 character*** is typed.
  - Only the top ***10 suggestions*** will be printed along with the total number of matching words.
  - Matching suggestions will ONLY be words that match the substring starting from ***position zero***.
