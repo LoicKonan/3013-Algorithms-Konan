@@ -31,7 +31,7 @@
 - $ ./animals.txt
 - $  Z to terminate the program.
 
-- **Example:** cat would match cat, caterpillar, and cattle. But NOT wildcat.
+- cat would match cat, caterpillar, and cattle. But NOT wildcat.
   
 - **Example:**
   > **CAT** 1365 words found in 0.0188522 seconds
