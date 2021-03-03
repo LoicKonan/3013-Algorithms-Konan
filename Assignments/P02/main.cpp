@@ -1,320 +1,231 @@
 #include <iostream>
-#include "JsonFacade.hpp"       
 #include <time.h>
 #include <chrono> 
-#include "Timer.hpp"            
+#include "Timer.hpp"           
 #include "mygetch.hpp"
+#include <string>
+#include <vector>
 #include <fstream>
+#include "termcolor.hpp"
 
 using namespace std;
 
-/**
- * Node
- * 
- * Description:
- *      A node that holds 2 strings for a dictionary 
- * 		and a next pointer
- * 
- * Public Methods:
- *      string 					definition
- *		string 					Word
- *		Node* 					next	
- * 
- * Private Methods:
- *      None
- * 
- * Usage: 
- * 		Node Temp;				//Creates node
- *      
- */
-struct Node
+
+struct wordNode
 {
-	string definition;			//holds def of word
-	string Word;				//holds the word
-	Node* next;					//pointer to a next node in the list
+    wordNode* Next;
+    string word;
+
+    wordNode()
+    {
+        Next = NULL;
+        word = "";
+    }
+
 };
 
-/**
- * ListDictionary
- * 
- * Description:
- *      A linked list that holds a dictionary and 
- * 		can search for substrings of chars
- * 
- * Public Methods:
- *      						ListDictionary() 
- *      void 					insert(string W, string D)
- *      void 					print()
- *		void 					search(string input) 
- * 		void 					printTenWords()
- * 		int 					getTermsFound()
- * 
- * Private Methods:
- *      Node* 					Head;
- *		Node* 					Tail;	
- *		int 					length;
- *		string 					TenWords[10];
- *		int 					TermsFound;
- * 
- * Usage: 
- * 
- *      ListDictionary LL; 		//creates list
- * 		LL.insert("A", "B");	//adds a word A and a definition b to list
- * 		LL.print();				//prints the list to a Checking.txt file
- * 		LL.search("ste");		//searches list for words with substring ste
- * 		ll.printTenWords();		//prints top ten results from searching
- * 		ll.getTermsFound();		//returns the terms found from searching
- *      
- */
-class ListDictionary
+
+class LinkedList
 {
-private:
-	Node* Head;					//pointer to the head of the list
-	Node* Tail;					//pointer to the tail of the list
-	int length;					//length of the list
-	string TenWords[10];		//top ten words found when searching the list
-	int TermsFound;				//how many items found after searching list
+protected:
+    wordNode* Head;
+    wordNode* Tail;
+    int Size;
 
 public:
-	
-	/**
-     * constructor : function_name
-     * 
-     * Description:
-     *      loads private variables with default values
-     * 
-     * Params:
-     *      None
-     * 
-     * Returns:
-     *      None
-     */
-	ListDictionary()
-	{
-		Head = nullptr;
-		Tail = nullptr;
-		length = 0;
-		TermsFound = 0;
-		for(int i = 0; i < 10; i++)
-		{
-			TenWords[i] = "ZZZ";
-		}
-	}
 
-	/**
-     * Public : insert(string W, string D)
-     * 
-     * Description:
-     *      places a new node onto the list with a 
-	 * 		given word and deginition
-     * 
-     * Params:
-     *     	string W			//string for word
-	 * 		string D			//string for definition
-     * 
-     * Returns:
-     *     	None
-     */
-	void insert(string W, string D)
-	{
-		Node* temp = new Node;
-		temp->Word = W;
-		temp->definition = D;
-		temp->next = nullptr;
-		if (Head == nullptr)
-		{
-			Head = temp;
-			length++;
-		}
-		else if (Head->next == nullptr)
-		{
-			Tail = temp;
-			Head->next = Tail;
-			length++;
-		}
-		else
-		{
-			Tail->next = temp;
-			Tail = temp;
-			length++;
-		}
-		temp = nullptr;
-	}
+    LinkedList()
+    {
+        Head = NULL;
+        Tail = NULL;
+        Size = 0;
+    }
 
-	/**
-     * Public : print()
-     * 
-     * Description:
-     *      prints the list onto a file "Checking.txt"
-     * 
-     * Params:
-     *      none
-     * 
-     * Returns:
-     *     None
-     */
-	void print()
-	{
-		ofstream outfile;
-    	outfile.open("Checking.txt");
-		Node* temp = new Node;	
-		temp = Head;
-		while (temp != nullptr)
-		{
-			outfile << '|' << temp->Word << "| -> (" << temp->definition 
-				<< ")\n";
-			temp = temp->next;
-		}
-		temp = nullptr;
-	}
+    int Get_Size()
+    {
+        return Size;
+    }
 
-	/**
-     * Public: search(string input)
-     * 
-     * Description:
-     *      Looks into the list for substrings of the given 
-	 * 		string and also loads the first ten similar strings 
-	 *      into an array. Also gets increments terms found
-     * 
-     * Params:
-     *      string input		//a given string for searching substrings
-     * 
-     * Returns:
-     *      None
-     */
-	void search(string input)
-	{
-		int timeSeen = 0;
-		Node* temp = new Node;	
-		temp = Head;
-		int i = 0;
-		while (temp != nullptr)
-		{
-			string check = temp->Word;
+    void Insert_Data(wordNode* entry)
+    {
+        if (!Head)
+        {
+            Head = Tail = entry;
+        }
 
-			size_t found = check.find(input);
+        else
+        {
+            Tail->Next = entry;
+            Tail = entry;
+        }
 
-			if (found != string::npos)
-			{
-				if(i < 10)
-				{
-					TenWords[i] = temp->Word;
-					i++;
-				}
-				timeSeen++;
-			}
+        Size++;
+    }
 
-			temp = temp->next;
-		}
-		TermsFound = timeSeen; 
-		temp = nullptr;
-	}
+    void Print() 
+    {
+        wordNode* Current = Head;                        // Always copy head so you don't destroy the list
+        while (Current)                                               
+        {                                                // Standard traversal Start at head and then goto next node
+            cout << Current->word << endl;
+            cout << "->";                                // awesome graphics
+            Current = Current->Next;                     // goto next node
+        }
+        cout << "NULL" << endl;                          // End of list points to NULL
+    }
 
-	/**
-     * Public : printTenWords()
-     * 
-     * Description:
-     *      Prints the top 10 results from "search" to 
-	 * 		the screen
-     * 
-     * Params:
-     *      None
-     * 
-     * Returns:
-     *      None
-     */
-	void printTenWords()
-	{
-		bool printed = false;
-		for(int i = 0; i < 10; i++)
-		{
-			if(TenWords[i] != "ZZZ")
-			{
-				printed = true;
-				cout << TenWords[i] << " -> ";
-			}
-			else if(!printed)
-			{
-				cout << "No matches";
-				printed = true;
-			}
-		}
-		cout << '\n';
-		for(int i = 0; i < 10; i++)
-		{
-			TenWords[i] = "ZZZ";
-		}
-	}
 
-	/**
-     * Public : getTermsFound()
-     * 
-     * Description:
-     *      gets the amount of terms found from the search
-     * 
-     * Params:
-     *      None
-     * 
-     * Returns:
-     *      return TermsFound	//the amount of terms found from search()
-     */
-	int getTermsFound()
-	{
-		return TermsFound;
-	}
-	
+   vector<string> Find(string typed)
+    {
+       cout << "Looking for matches.\n";
 
+       vector<string> Results;
+       size_t found;
+
+       wordNode* Current = Head;
+        
+       while (Current)
+       {
+           found = Current->word.find(typed);
+
+           if (found != string::npos)
+           {
+               Results.push_back(Current->word);
+           }
+
+           Current = Current->Next;
+       }
+
+       int len = typed.length();
+
+       for (int i = 0; i < Results.size(); i++)
+       {
+           string temp = Results[i].substr(0, len);
+
+           if (temp != typed)
+           {
+               Results[i].erase();
+           }
+       }
+
+        return Results;
+    }
 };
 
-int main()
+int main() 
 {
-    Timer Load;                                 //timer used for loading list
-    double TimeLoad;
-    JsonFacade J("dict_w_defs.json");
-    ListDictionary LList;                       //Linked list to hold dictionary
+    LinkedList L1;
+    vector<string> Dictionary;
 
-    char Typed;             
-    string word = "";
+    ifstream in;
+    in.open("Words.txt");
 
-    vector<string> keys = J.getKeys();           //list of words in alpha order
 
-    Load.Start();
-    for(int i = 0; i < keys.size(); i++)
+    Timer T1000;
+    T1000.Start();
+    while (!in.eof())
     {
-        string DicWord = J.getKey(i);            //gets terms in alpha order 0-X
-        string DicDef = J.getValue(DicWord);     //gets def of term
-        LList.insert(DicWord, DicDef);           //loads deg and term
+        string Temp;
+
+        in >> Temp;
+
+        Dictionary.push_back(Temp);
     }
-    
-    Load.End();
-    TimeLoad = Load.Seconds();                  //time in sec of loading
 
-    cout << "To exit program press capital Z\n\n\n";
+    T1000.End();
 
-    while ((Typed = getch()) != 'Z') 
+
+    cout << T1000.Seconds() << " seconds to read in the data." << endl;
+    cout << T1000.MilliSeconds() << " milliseconds to read in the data." << endl;
+
+
+    Timer T2;
+
+    T2.Start();
+
+    cout << "\nloading linked list\n";
+    for (int j = 0; j < Dictionary.size(); j++) 
     {
-        Timer T;                                  //makes timer for suggestion
-        T.Start();
-        word += Typed;                            //string for the chars typed
+        wordNode* Temp = new wordNode;
 
-        
+        string item = Dictionary[j];
 
-        if((int)Typed != 10)
-        {                                         //if Typed is not a space print
-            cout << word << "\n\n";
+        Temp->word = item;
+
+        L1.Insert_Data(Temp);
+    }
+
+    T2.End();
+
+
+    cout << T2.Seconds() << " seconds to read in the data." << endl;
+    cout << T2.MilliSeconds() << " milliseconds to read in the data." << endl;
+
+
+
+    char k;                                                     // holder for character being typed
+    string word = "";                                           // var to concatenate letters to
+    vector<string> Matches;                                     // any matches found in vector of Dictionary Words
+
+    string Top_Results[10];
+    int SearchResults;
+
+    cout << endl << "Type keys and watch what happens. Type capital Z to quit." << endl;
+
+    while ((k = getch()) != 'Z') 
+    {
+        if ((int)k == 127)                                       // Tests for a backspace and if pressed deletes 
+        {                                                        // last letter from "word".
+            if (word.size() > 0) 
+            {
+                word = word.substr(0, word.size() - 1);
+            }
         }
-        LList.search(word);                       //searches list for substrings
 
-        T.End();
-        double s = T.Seconds();                   //stores time of search
+        else 
+        {
+            if (!isalpha(k))                                      // Make sure a letter was pressed and only letter
+            {
+                cout << "Letters only!" << endl;
+                continue;
+            }
 
-        cout << LList.getTermsFound() << " words found in: " << s 
-            << " Seconds\n\n";
+            if ((int)k >= 97)                                     // We know its a letter, lets make sure its lowercase.
+            {                                                     // Any letter with ascii value < 97 is capital so we
+                k -= 32;                                          // lower it.
+            }
+            word += k;                                            // append char to word
+        }
 
-        LList.printTenWords();                    //prints top 10 results
 
-        cout <<"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
+       Timer Auto_Suggestion;
+
+       Auto_Suggestion.Start();
+       Matches = L1.Find(word);
+       Auto_Suggestion.End();
+
+       SearchResults = Matches.size();
+
+
+        if ((int)k != 32) 
+        {                                                          // if k is not a space print it
+            cout << "Keypressed: " << k << " = " << (int)k << endl;
+            cout << "Current Substr: " << word << termcolor::reset << endl;
+            cout << SearchResults << " words found in " << Auto_Suggestion.Seconds() << " seconds" << endl << endl;
+
+            cout << "Animals Found: " << termcolor::green;
+
+                                                                    
+            for (int i = 0; i < 10; i++)                            // This prints out the top ten results
+            {
+                Top_Results[i] = Matches[i];
+                cout << Top_Results[i] << " ";
+            }
+
+            cout << termcolor::reset << endl << endl;       
+             }
     }
+
 
     return 0;
 }

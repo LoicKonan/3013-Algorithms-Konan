@@ -8,22 +8,19 @@ This project is about loading a **singly linked list** with dictionary words, th
 
 ### Files
 
-|  #  | File                                 | Description                           |
-| :-: | ------------------------------------ | ------------------------------------- |
-|  1  | [read_dict.cpp](read_dict.cpp)       | Example json reader with some timing. |
-|  2  | [dict_w_defs.json](dict_w_defs.json) | Json input file                       |
-|  3  | [Banner](Banner)                     | Banner for Assignment                 |
-|  4  | [Timer.hpp](Timer.hpp)               | Timer helper class                    |
-|  5  | [JsonFacade.hpp](JsonFacade.hpp)     | Json helper class                     |
-|  6  | [json.hpp](json.hpp)                 | Json class written by nlohmann        |
-|  7  | [Trio.hpp](Trio.hpp)                 | Simple, portable IO in your terminal. |
-|  8  | [mygetch.hpp](mygetch.hpp)           |                                       |
-|  9  | [main.cpp](main.cpp)                 | The Diver (main program)              |
+|  #  | File                           | Description                              |
+| :-: | ------------------------------ | ---------------------------------------- |
+|  1  | [main.cpp](main.cpp)           | The main cpp file.                       |
+|  2  | [Banner](Banner)               | Banner for Assignment                    |
+|  3  | [Timer.hpp](Timer.hpp)         | Timer helper class                       |
+|  4  | [mygetch.hpp](mygetch.hpp)     | Get character, without printing it .     |
+|  5  | [animals.txt](animals.txt)     | Animals names ... lots of animals names. |
+|  6  | [termcolor.hpp](termcolor.hpp) | Class to color text                      |
 
 ### Instructions
 
--$ ./read_dict.cpp
+-$ ./main.cpp
 
 ### Example Command
 
--$ ./read_dict.cpp
+-$ ./main.cpp
