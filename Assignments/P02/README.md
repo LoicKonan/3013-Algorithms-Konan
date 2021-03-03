@@ -1,3 +1,13 @@
+body{
+    font-family: helvetica, arial, freesans, clean, sans-serif;
+    color: #333;
+    background-color: red;
+    border-color: #999999;
+    border-width: 2px;
+    line-height: 1.5;
+    text-align:left;
+}
+
 ## Program 2 - Processing in Linear Time
 
 ### Loic Konan
@@ -32,5 +42,5 @@
 - **Example:** cat would match cat, caterpillar, and cattle. But NOT wildcat.
   
 - **Example:**
-  > CAT 1365 words found in 0.0188522 seconds<br>
+  > **CAT** 1365 words found in 0.0188522 seconds<br>
   > ABDICATE ABDICATED ABDICATES ABDICATING ABDICATION ABDICATOR ACATALECTIC ACCIACCATURA ACETIFICATION ACIDIFICATION
