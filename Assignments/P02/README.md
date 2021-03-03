@@ -1,13 +1,3 @@
-body{
-    font-family: helvetica, arial, freesans, clean, sans-serif;
-    color: #333;
-    background-color: red;
-    border-color: #999999;
-    border-width: 2px;
-    line-height: 1.5;
-    text-align:left;
-}
-
 ## Program 2 - Processing in Linear Time
 
 ### Loic Konan
