@@ -10,8 +10,6 @@ Matching suggestions will ONLY be words that match the substring starting from *
 As typing, the time it takes to find suggestions will be displayed in ***seconds***.
 We are doing this with the knowledge that this is slow, and we plan on applying our "lookup" code to other backend data structures with better performance.
 
-- **Example:** cat would match cat, caterpillar, and cattle. But NOT wildcat.
-
 ### Files
 
 |  #  | File                           | Description                              |
@@ -27,4 +25,4 @@ We are doing this with the knowledge that this is slow, and we plan on applying 
 
 - $ ./main.cpp
 
-- Type a wor or character in the console: cat would match cat, caterpillar, and cattle. But NOT wildcat.
+- **Example:** cat would match cat, caterpillar, and cattle. But NOT wildcat.
