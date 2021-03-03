@@ -32,7 +32,7 @@
 |  3  | [commands.dat](commands.dat)   | Input file to test the code          |
 |  4  | [nums.dat](nums.dat)           | Input file to test the code          |
 |  5  | [output.txt](output.txt)       | The output file to print the results |
-|  1  | [Banner](Banner)               | Banner for Assignment                |
+|  6  | [Banner](Banner)               | Banner for Assignment                |
 
 ### Instructions
 
