@@ -28,6 +28,8 @@
 ### Instructions
 
 - $ ./main.cpp
+- $ ./animals.txt
+- $  Z to terminate the program.
 
 - **Example:** cat would match cat, caterpillar, and cattle. But NOT wildcat.
   
