@@ -4,7 +4,13 @@
 
 #### Description
 
-This project is about loading a **singly linked list** with dictionary words, then timing how long it takes to look them up. We are doing this with the knowledge that this is slow, and we plan on applying our "lookup" code to other backend data structures with better performance.
+This project is about loading a **singly linked list** with Animals names, Then perform "autosuggestions" when a user types characters at the console, the console will display the time it took to look them up.
+Suggestions will start after ***1 character*** is typed, however only the top ***10 suggestions*** will be printed along with the total number of matching words.
+Matching suggestions will ONLY be words that match the substring starting from ***position zero***.
+As typing, the time it takes to find suggestions will be displayed in ***seconds***.
+We are doing this with the knowledge that this is slow, and we plan on applying our "lookup" code to other backend data structures with better performance.
+
+- **Example:** cat would match cat, caterpillar, and cattle. But NOT wildcat.
 
 ### Files
 
@@ -19,8 +25,6 @@ This project is about loading a **singly linked list** with dictionary words, th
 
 ### Instructions
 
--$ ./main.cpp
+- $ ./main.cpp
 
-### Example Command
-
--$ ./main.cpp
+- Type a wor or character in the console: cat would match cat, caterpillar, and cattle. But NOT wildcat.
