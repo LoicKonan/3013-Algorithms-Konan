@@ -22,10 +22,14 @@ to other backend data structures with better performance.
 |  3  | [Timer.hpp](Timer.hpp)         | Timer helper class                       |
 |  4  | [mygetch.hpp](mygetch.hpp)     | Get character, without printing it .     |
 |  5  | [animals.txt](animals.txt)     | Animals names ... lots of animals names. |
-|  6  | [termcolor.hpp](termcolor.hpp) | Class to color text                      |
-
+|  6  | [termcolor.hpp](termcolor.hpp) | Class to color text                
 ### Instructions
 
 - $ ./main.cpp
 
 - **Example:** cat would match cat, caterpillar, and cattle. But NOT wildcat.
+-  
+- **Example:**
+  >
+  CAT 1365 words found in 0.0188522 seconds<br>
+  ABDICATE ABDICATED ABDICATES ABDICATING ABDICATION ABDICATOR ACATALECTIC ACCIACCATURA ACETIFICATION ACIDIFICATION 
