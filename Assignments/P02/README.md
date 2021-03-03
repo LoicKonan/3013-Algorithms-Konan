@@ -7,9 +7,10 @@
 This project is about loading a **singly linked list** with Animals names, Then perform "**autosuggestions**" when a user types characters at the console, the console will display the time it took to look them up.<br>
 Suggestions will start after ***1 character*** is typed, however only the top ***10 suggestions*** will be printed along with the total number of matching words.<br>
 >
-    Matching suggestions will ONLY be words that match the substring starting from ***position zero***.
-    As typing, the time it takes to find suggestions will be displayed in ***seconds***.
-    We are doing this with the knowledge that this is slow, and we plan on applying our "lookup" code to other backend data structures with better performance.
+Matching suggestions will ONLY be words that match the substring starting from ***position zero***.
+As typing, the time it takes to find suggestions will be displayed in ***seconds***.
+We are doing this with the knowledge that this is slow, and we plan on applying our "lookup" code <br>
+to other backend data structures with better performance.
 
 ### Files
 
