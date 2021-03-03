@@ -1,3 +1,32 @@
+/*****************************************************************************
+*
+*    Author:           Loic Konan
+*    Email:            loickonan.lk@gmail.com
+*    Label:            P01
+*    Title:            Assignment 4 - Resizing the Stack
+*    Course:           CMPS 3013
+*    Semester:         Spring 2021
+*    Description:
+*
+*       A linked list search program that stores a json file with a dictionary
+*       in it seperating the words and definition. With that information the program 
+*       then allowes the user to type in a series of charecters. Everytime a user 
+*       enters a char the program will search through the list to find all the words
+*       with a substring of the chars entered and returns the top ten results plus 
+*       the time it took to search the list.
+*
+*    Usage:
+*           Enter the main file name, then the input file and the output file.
+*           - $ ./ main.cpp
+*           - $ ./ nums_test.dat
+*           - $ ./ output.txt
+*
+*    Files:
+*           main.cpp          : driver program
+*           nums_test.dat     : Input file
+*           output.txt        : Output file
+*
+******************************************************************************/
 #include <iostream>
 #include <time.h>
 #include <chrono> 
@@ -10,6 +39,24 @@
 
 using namespace std;
 
+
+
+/**
+ * wordNode
+ * 
+ * Description:
+ *      A node that holds a next pointer string.
+ * 
+ * Public Methods:
+ *		string 					Word
+ *		wordNode* 				next	
+ * 
+ * Private Methods:
+ *      None
+ * 
+ * Usage: 
+ *      - 
+ */
 
 struct wordNode
 {
@@ -25,6 +72,34 @@ struct wordNode
 };
 
 
+/**
+ * LinkedList
+ * 
+ * Description:
+ *      A linked list that holds a dictionary and 
+ * 		can search for substrings of chars
+ * 
+ * Public Methods:
+ *      						LinkedList() 
+ *      void 					insert(string W, string D)
+ *      void 					print()
+ *		void 					search(string input) 
+ * 		void 					printTenWords()
+ * 
+ * Private Methods:
+ *      Node* 					Head;
+ *		Node* 					Tail;	
+ *		int 					length;
+ *		string 					TenWords[10];
+ *		int 					TermsFound;
+ * 
+ * Usage: 
+ * 
+ *      LinkedList ; 		    // creates list
+ * 		insert("A");	        // adds a word A and a definition b to list
+ * 		print();				// prints the list to a Checking.txt file
+ * 		search("cat");		    // searches list for words with substring ste
+ */
 class LinkedList
 {
 protected:
@@ -46,6 +121,20 @@ public:
         return Size;
     }
 
+/**
+     * Public : insert(string W, string D)
+     * 
+     * Description:
+     *      places a new node onto the list with a 
+	 * 		given word and deginition
+     * 
+     * Params:
+     *     	string W			//string for word
+	 * 		string D			//string for definition
+     * 
+     * Returns:
+     *     	None
+     */
     void Insert_Data(wordNode* entry)
     {
         if (!Head)
@@ -62,6 +151,19 @@ public:
         Size++;
     }
 
+
+	/**
+     * Public : print()
+     * 
+     * Description:
+     *      prints the list onto a file "animals.txt"
+     * 
+     * Params:
+     *      none
+     * 
+     * Returns:
+     *     None
+     */
     void Print() 
     {
         wordNode* Current = Head;                        // Always copy head so you don't destroy the list
@@ -75,6 +177,20 @@ public:
     }
 
 
+/**
+     * Public: search(string input)
+     * 
+     * Description:
+     *      Looks into the list for substrings of the given 
+	 * 		string and also loads the first ten similar strings 
+	 *      into an array. Also gets increments terms found
+     * 
+     * Params:
+     *      string input		//a given string for searching substrings
+     * 
+     * Returns:
+     *      None
+     */
    vector<string> Find(string typed)
     {
        cout << "Looking for matches.\n";
@@ -112,13 +228,19 @@ public:
     }
 };
 
+/**
+ * Main Driver
+ *
+ * For this program
+ * *
+ */
 int main() 
 {
     LinkedList L1;
     vector<string> Dictionary;
 
     ifstream in;
-    in.open("Words.txt");
+    in.open("animals.txt");
 
 
     Timer T1000;
@@ -143,7 +265,7 @@ int main()
 
     T2.Start();
 
-    cout << "\nloading linked list\n";
+    cout << "\nLoading linked list\n";
     for (int j = 0; j < Dictionary.size(); j++) 
     {
         wordNode* Temp = new wordNode;
