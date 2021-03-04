@@ -115,10 +115,10 @@ public:
         - Initialize with default values.
  
     Params:
-        None
+        - None
  
     Returns:
-        None
+        - None
  */
 LinkedList::LinkedList()
 {
@@ -134,10 +134,10 @@ LinkedList::LinkedList()
         - returns the size of the Linked List.
  
     Params:
-        None/Member Variables
+        - None
  
     Returns:
-            int
+        - int
  */
 int LinkedList::Get_Size()
 {
@@ -148,14 +148,14 @@ int LinkedList::Get_Size()
    Public : Insert_Data(wordNode* entry)
 
    Description:
-            - receives a wordNode. 
-            - insert the node.
+        - receives a wordNode. 
+        - insert the node.
 
    Params:
-       wordNode* entry
+       - wordNode* entry
 
    Returns:
-            void
+        - void
 */
 void LinkedList::Insert_Data(wordNode *entry)
 {
@@ -177,13 +177,13 @@ void LinkedList::Insert_Data(wordNode *entry)
    Public : Print()
 
    Description:
-                - prints the results of the Linked List.
+        - prints the results of the Linked List.
 
    Params:
-                - None/Member Variables
+        - None/Member Variables
 
    Returns:
-                - void
+        - void
 */
 void LinkedList::Display()
 {
@@ -203,14 +203,14 @@ void LinkedList::Display()
     Public : Find(string typed)
 
     Description:
-                - Receives the a character from the user.
-                - Compare it with the animals data.
-                - If a match is found, it is pushed to the Vector Results.
+        - Receives the a character from the user.
+        - Compare it with the animals data.
+        - If a match is found, it is pushed to the Vector Results.
     Params:
-                - string typed
+        - string typed
 
     Returns:
-                - vector<string> Results
+        - vector<string> Results
 */
 vector<string> LinkedList::Find(string typed)
 {
