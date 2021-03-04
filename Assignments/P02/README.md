@@ -33,7 +33,6 @@
   
 - **Example:**
   >>
-  
   <img src="owl.png">
   <img src="snake.png">
   <img src="rabbit.png">
