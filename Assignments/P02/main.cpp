@@ -46,8 +46,8 @@ using namespace std;
             - A node that holds a string word and a pointer next.
  
     Public Methods:
- 	            - string 	word
- 	            - wordNode* Next
+ 	        - string 	word
+ 	        - wordNode* Next
  
     Private Methods:
         None
