@@ -32,6 +32,8 @@
 - $  Z to terminate the program.
   
 - **Example:**
+  >>
+  
   <img src="owl.png">
   <img src="snake.png">
   <img src="rabbit.png">
