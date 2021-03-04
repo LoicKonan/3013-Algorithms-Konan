@@ -266,7 +266,8 @@ int main()
 
     time.End();
 
-    cout << termcolor::green << time.Seconds() << " seconds to read in the data." << endl;
+    cout << termcolor::green << time.Seconds() << termcolor::reset 
+         << " seconds to read in the data."    << endl;
 
     Timer Load_Words;                       // Time to load the words into the Linked List
 
@@ -333,10 +334,10 @@ int main()
 
         if ((int)k != 32)                   // When the key pressed is not "Space bar".
         {
-            cout << "Keypressed: " << termcolor::red  << k  << " = " 
+            cout << "Keypressed: "   << termcolor::red  << k  << " = " 
                  << termcolor::green << (int)k << termcolor::reset << endl;
             cout << "Current Substr: " << termcolor::red << word 
-                 << termcolor::reset << endl;
+                 << termcolor::reset   << endl;
             cout << termcolor::red << SearchResults << termcolor::reset 
                  << " words found in " << termcolor::green << Auto_Suggestion.Seconds() 
                  << termcolor::reset << " seconds" << termcolor::reset << endl;
@@ -359,8 +360,7 @@ int main()
                 }
             }
 
-            cout << termcolor::reset << endl
-                 << endl;
+            cout << termcolor::reset << endl << endl;
         }
     }
     return 0;
