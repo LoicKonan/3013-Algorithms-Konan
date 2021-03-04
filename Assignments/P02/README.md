@@ -32,10 +32,7 @@
 - $  Z to terminate the program.
   
 - **Example:**
-  <img src="owl.png" width="200" height= "200">
-  <img src="snake.png" width="200" height= "200">
-  <img src="rabbit.png" width="200" height= "200">
-  <img src="monkey.png" width="200" height= "200">
-
-
-
+  <img src="owl.png">
+  <img src="snake.png">
+  <img src="rabbit.png">
+  <img src="monkey.png">
