@@ -334,19 +334,11 @@ int main()
 
         if ((int)k != 32)                   // When the key pressed is not "Space bar".
         {
-<<<<<<< HEAD
-            cout << "Keypressed: "   << termcolor::red  << k  << " = " 
-                 << termcolor::green << (int)k << termcolor::reset << endl;
-            cout << "Current Substr: " << termcolor::red << word 
-                 << termcolor::reset   << endl;
-            cout << termcolor::red << SearchResults << termcolor::reset 
-=======
             cout << "Keypressed: "     << termcolor::red   << k      << " = " 
                  << termcolor::green   << (int)k << termcolor::reset << endl;
             cout << "Current Substr: " << termcolor::red   << word 
                  << termcolor::reset   << endl;
             cout << termcolor::red     << SearchResults    << termcolor::reset 
->>>>>>> c26d550b9394983f03ab69c612e24b5e86b0eec2
                  << " words found in " << termcolor::green << Auto_Suggestion.Seconds() 
                  << termcolor::reset   << " seconds"       << termcolor::reset << endl;
            
