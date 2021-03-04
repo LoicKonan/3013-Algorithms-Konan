@@ -339,7 +339,7 @@ int main()
                  << termcolor::reset << endl;
             cout << termcolor::red << SearchResults << termcolor::reset 
                  << " words found in " << termcolor::green << Auto_Suggestion.Seconds() 
-                << termcolor::reset << " seconds" << termcolor::reset << endl;
+                 << termcolor::reset << " seconds" << termcolor::reset << endl;
            
             if (Matches.size() >= 10)       // Prints out the top 10 results.
             {
