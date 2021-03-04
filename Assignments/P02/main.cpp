@@ -350,7 +350,6 @@ int main()
                     cout << Top_Results[i] << " ";
                 }
             }
-
             else
             {
                 for (int j = 0; j < Matches.size(); j++)
