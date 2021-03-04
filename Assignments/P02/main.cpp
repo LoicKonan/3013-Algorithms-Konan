@@ -53,7 +53,7 @@ using namespace std;
         - None
  
     Usage:
-  	    - Creates node for a Linked List.
+  	    - Creates node for a Linked List. 
  
  */
 
