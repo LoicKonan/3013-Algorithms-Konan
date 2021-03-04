@@ -2,35 +2,36 @@
 *
 *    Author:           Loic Konan
 *    Email:            loickonan.lk@gmail.com
-*    Label:            P01
-*    Title:            Assignment 4 - Resizing the Stack
+*    Label:            P02
+*    Title:            Processing in Linear Time
 *    Course:           CMPS 3013
 *    Semester:         Spring 2021
 *    Description:
 *
-*       A linked list search program that stores a json file with a dictionary
-*       in it seperating the words and definition. With that information the program 
-*       then allowes the user to type in a series of charecters. Everytime a user 
-*       enters a char the program will search through the list to find all the words
-*       with a substring of the chars entered and returns the top ten results plus 
+*       A linked list search program that stores a file with Animals name
+*       in it. Then allowes the user to type in a series of character. Everytime a user 
+*       enters a character the program will search through the list to find all the words
+*       with a substring of the chararcter entered and returns the top ten results plus 
 *       the time it took to search the list.
 *
-*    Usage:
-*           Enter the main file name, then the input file and the output file.
-*           - $ ./ main.cpp
-*           - $ ./ nums_test.dat
-*           - $ ./ output.txt
-*
 *    Files:
+*         main.cpp
+*         Timer.hpp
+*         mygetch.hpp
+*         termcolor.hpp
+*         Animals.txt
+*
+*    Usage:
 *           main.cpp          : driver program
-*           nums_test.dat     : Input file
-*           output.txt        : Output file
+*           animals.txt     : Input file
+*
+*           output will be display on the console in color.
 *
 ******************************************************************************/
 #include <iostream>
 #include <time.h>
-#include <chrono> 
-#include "Timer.hpp"           
+#include <chrono>
+#include "Timer.hpp"
 #include "mygetch.hpp"
 #include <string>
 #include <vector>
@@ -38,29 +39,27 @@
 #include "termcolor.hpp"
 
 using namespace std;
-
-
-
-/**
- * wordNode
- * 
- * Description:
- *      A node that holds a next pointer string.
- * 
- * Public Methods:
- *		string 					Word
- *		wordNode* 				next	
- * 
- * Private Methods:
- *      None
- * 
- * Usage: 
- *      - 
+/*
+    Struct Name: wordNode
+ 
+    Description:
+            - A node that holds a string word and a pointer next.
+ 
+    Public Methods:
+ 	    string 					word
+ 	    wordNode* 			    Next
+ 
+    Private Methods:
+        None
+ 
+    Usage:
+  	    - Creates node for a Linked List.
+ 
  */
 
 struct wordNode
 {
-    wordNode* Next;
+    wordNode *Next;
     string word;
 
     wordNode()
@@ -68,165 +67,177 @@ struct wordNode
         Next = NULL;
         word = "";
     }
-
 };
 
-
-/**
- * LinkedList
- * 
- * Description:
- *      A linked list that holds a dictionary and 
- * 		can search for substrings of chars
- * 
- * Public Methods:
- *      						LinkedList() 
- *      void 					insert(string W, string D)
- *      void 					print()
- *		void 					search(string input) 
- * 		void 					printTenWords()
- * 
- * Private Methods:
- *      Node* 					Head;
- *		Node* 					Tail;	
- *		int 					length;
- *		string 					TenWords[10];
- *		int 					TermsFound;
- * 
- * Usage: 
- * 
- *      LinkedList ; 		    // creates list
- * 		insert("A");	        // adds a word A and a definition b to list
- * 		print();				// prints the list to a Checking.txt file
- * 		search("cat");		    // searches list for words with substring ste
+/*
+    Class Name: LinkedList
+ 
+    Description:
+        - Implements Linked List consisting of wordNodes.
+        - Head and Tail wordNode pointers.
+        - Size variable.
+       
+    Public Methods:
+        - LinkedList()              :default constructor
+ 	    - int Get_Size()
+ 	    - void Insert_Data(wordNode* entry)
+ 	    - vector<string> Find(string typed)
+ 	    - void Print()
+ 
+    Private Methods:
+        - void
+ 
+    Usage:
+        - Load linked list of wordNodes.
+ 	    - Print the results
  */
+
 class LinkedList
 {
 protected:
-    wordNode* Head;
-    wordNode* Tail;
+    wordNode *Head;
+    wordNode *Tail;
     int Size;
 
 public:
-
-    LinkedList()
-    {
-        Head = NULL;
-        Tail = NULL;
-        Size = 0;
-    }
-
-    int Get_Size()
-    {
-        return Size;
-    }
-
-/**
-     * Public : insert(string W, string D)
-     * 
-     * Description:
-     *      places a new node onto the list with a 
-	 * 		given word and deginition
-     * 
-     * Params:
-     *     	string W			//string for word
-	 * 		string D			//string for definition
-     * 
-     * Returns:
-     *     	None
-     */
-    void Insert_Data(wordNode* entry)
-    {
-        if (!Head)
-        {
-            Head = Tail = entry;
-        }
-
-        else
-        {
-            Tail->Next = entry;
-            Tail = entry;
-        }
-
-        Size++;
-    }
-
-
-	/**
-     * Public : print()
-     * 
-     * Description:
-     *      prints the list onto a file "animals.txt"
-     * 
-     * Params:
-     *      none
-     * 
-     * Returns:
-     *     None
-     */
-    void Print() 
-    {
-        wordNode* Current = Head;                        // Always copy head so you don't destroy the list
-        while (Current)                                               
-        {                                                // Standard traversal Start at head and then goto next node
-            cout << Current->word << endl;
-            cout << "->";                                // awesome graphics
-            Current = Current->Next;                     // goto next node
-        }
-        cout << "NULL" << endl;                          // End of list points to NULL
-    }
-
-
-/**
-     * Public: search(string input)
-     * 
-     * Description:
-     *      Looks into the list for substrings of the given 
-	 * 		string and also loads the first ten similar strings 
-	 *      into an array. Also gets increments terms found
-     * 
-     * Params:
-     *      string input		//a given string for searching substrings
-     * 
-     * Returns:
-     *      None
-     */
-   vector<string> Find(string typed)
-    {
-       cout << "Looking for matches.\n";
-
-       vector<string> Results;
-       size_t found;
-
-       wordNode* Current = Head;
-        
-       while (Current)
-       {
-           found = Current->word.find(typed);
-
-           if (found != string::npos)
-           {
-               Results.push_back(Current->word);
-           }
-
-           Current = Current->Next;
-       }
-
-       int len = typed.length();
-
-       for (int i = 0; i < Results.size(); i++)
-       {
-           string temp = Results[i].substr(0, len);
-
-           if (temp != typed)
-           {
-               Results[i].erase();
-           }
-       }
-
-        return Results;
-    }
+    LinkedList();
+    int Get_Size();
+    void Insert_Data(wordNode *entry);
+    void Display();
+    vector<string> Find(string typed);
 };
+
+/*
+    Constructor : LinkedList
+ 
+    Description:
+         
+        - Initialize with default values.
+ 
+    Params:
+        None
+ 
+    Returns:
+        None
+ */
+LinkedList::LinkedList()
+{
+    Head = NULL;
+    Tail = NULL;
+    Size = 0;
+}
+
+/*
+    Public : Get_Size()
+ 
+    Description:
+        - returns the size of the Linked List.
+ 
+    Params:
+        None/Member Variables
+ 
+    Returns:
+            int
+ */
+int LinkedList::Get_Size()
+{
+    return Size;
+}
+
+/*
+   Public : Insert_Data(wordNode* entry)
+
+   Description:
+            - receives a wordNode. 
+            - insert the node.
+
+   Params:
+       wordNode* entry
+
+   Returns:
+            void
+*/
+void LinkedList::Insert_Data(wordNode *entry)
+{
+    if (!Head)
+    {
+        Head = Tail = entry;
+    }
+
+    else
+    {
+        Tail->Next = entry;
+        Tail = entry;
+    }
+
+    Size++;
+}
+
+/*
+   Public : Print()
+
+   Description:
+                - prints the results of the Linked List.
+
+   Params:
+                - None/Member Variables
+
+   Returns:
+                - void
+*/
+void LinkedList::Display()
+{
+    wordNode *Current = Head;
+
+    while (Current)                         // Standard traversal
+    {
+        cout << Current->word;              // Print name in node
+        cout << endl;
+        cout << "->";
+        Current = Current->Next;            // Point to the next node
+    }
+    cout << "Done" << endl;
+}
+
+/*
+    Public : Find(string typed)
+
+    Description:
+                - Receives the a character from the user.
+                - Compare it with the animals data.
+                - If a match is found, it is pushed to the Vector Results.
+    Params:
+                - string typed
+
+    Returns:
+                - vector<string> Results
+*/
+vector<string> LinkedList::Find(string typed)
+{
+
+    vector<string> Results;
+
+    wordNode *Current = Head;
+
+    while (Current)
+    {
+        string found = "";
+
+        found = Current->word;              // Temp variable for the word of the current wordNode stored
+
+        int len = typed.length();           // length variable for the length of the word typed/passed in
+
+        if (found.substr(0, len) == typed)  // if the length of the word from index 0 to the length of the
+        {                                   // typed word is equal then it is pushed to Results
+            Results.push_back(found);
+        }
+
+        Current = Current->Next;            // traverse to next wordNode
+    }
+
+    return Results;                         // return the vector of results
+}
+
 
 /**
  * Main Driver
@@ -234,120 +245,121 @@ public:
  * For this program
  * *
  */
-int main() 
+int main()
 {
-    LinkedList L1;
-    vector<string> Dictionary;
+    LinkedList L1;                          // Linked List object
+    vector<string> animals_Data;            // Placeholder animals_Data to read in the words.txt data
 
-    ifstream in;
-    in.open("animals.txt");
+    ifstream infile;
+    infile.open("animals.txt");
 
+    Timer time;                             // Create a timer.
+    time.Start();                           // Start the timer.
 
-    Timer T1000;
-    T1000.Start();
-    while (!in.eof())
+    while (!infile.eof())                   // If the file is not empty.
     {
         string Temp;
 
-        in >> Temp;
+        infile >> Temp;
 
-        Dictionary.push_back(Temp);
+        animals_Data.push_back(Temp);
     }
 
-    T1000.End();
+    time.End();
+
+    cout << time.Seconds() << " seconds to read in the data." << endl;
+
+    Timer Load_Words;                       // Time to load the words into the Linked List
+
+    Load_Words.Start();
 
 
-    cout << T1000.Seconds() << " seconds to read in the data." << endl;
-    cout << T1000.MilliSeconds() << " milliseconds to read in the data." << endl;
+    for (int j = 0; j < animals_Data.size(); j++)   
+    {                                       // Loop through the vector.
+        wordNode *Temp = new wordNode;      // Allocate new memories.
 
-
-    Timer T2;
-
-    T2.Start();
-
-    cout << "\nLoading linked list\n";
-    for (int j = 0; j < Dictionary.size(); j++) 
-    {
-        wordNode* Temp = new wordNode;
-
-        string item = Dictionary[j];
+        string item = animals_Data[j];
 
         Temp->word = item;
 
         L1.Insert_Data(Temp);
     }
 
-    T2.End();
+    Load_Words.End();
 
+    cout << Load_Words.Seconds() << " seconds to read in the data.\n";
 
-    cout << T2.Seconds() << " seconds to read in the data." << endl;
-    cout << T2.MilliSeconds() << " milliseconds to read in the data." << endl;
+    char k;                                 // Hold the character being typed.
+    string word = "";                       // Use to Concatenate letters.
+    vector<string> Matches;                 // Any matches found in vector of animals_Data Words.
 
+    string Top_Results[10];                 // Initializing 10 words to print.
+    int SearchResults;                      // Initializing the integer SearchResults.
 
+    cout << "Type keys and watch what happens. Type capital Z to quit.\n";
 
-    char k;                                                     // holder for character being typed
-    string word = "";                                           // var to concatenate letters to
-    vector<string> Matches;                                     // any matches found in vector of Dictionary Words
-
-    string Top_Results[10];
-    int SearchResults;
-
-    cout << endl << "Type keys and watch what happens. Type capital Z to quit." << endl;
-
-    while ((k = getch()) != 'Z') 
+    while ((k = getch()) != 'Z')            // While capital Z is not typed keep looping.
     {
-        if ((int)k == 127)                                       // Tests for a backspace and if pressed deletes 
-        {                                                        // last letter from "word".
-            if (word.size() > 0) 
+        if ((int)k == 127)                  // Tests for a backspace and if pressed deletes.
+        {
+            if (word.size() > 0)
             {
                 word = word.substr(0, word.size() - 1);
             }
         }
 
-        else 
+        else
         {
-            if (!isalpha(k))                                      // Make sure a letter was pressed and only letter
-            {
-                cout << "Letters only!" << endl;
+            if (!isalpha(k))                // Makeing sure a letter was pressed.
+            { 
+                cout << "Letters only!\n";
                 continue;
-            }
+           }
 
-            if ((int)k >= 97)                                     // We know its a letter, lets make sure its lowercase.
-            {                                                     // Any letter with ascii value < 97 is capital so we
-                k -= 32;                                          // lower it.
-            }
-            word += k;                                            // append char to word
-        }
-
-
-       Timer Auto_Suggestion;
-
-       Auto_Suggestion.Start();
-       Matches = L1.Find(word);
-       Auto_Suggestion.End();
-
-       SearchResults = Matches.size();
-
-
-        if ((int)k != 32) 
-        {                                                          // if k is not a space print it
-            cout << "Keypressed: " << k << " = " << (int)k << endl;
-            cout << "Current Substr: " << word << termcolor::reset << endl;
-            cout << SearchResults << " words found in " << Auto_Suggestion.Seconds() << " seconds" << endl << endl;
-
-            cout << "Animals Found: " << termcolor::green;
-
-                                                                    
-            for (int i = 0; i < 10; i++)                            // This prints out the top ten results
+            if ((int)k >= 97)               // Making sure its lowercase.
             {
-                Top_Results[i] = Matches[i];
-                cout << Top_Results[i] << " ";
+                k -= 32;                    // Make the input word  capital letters.
+            }
+        }
+        word += k;                          // Append character to word.
+
+    Timer Auto_Suggestion;                  // Timer for (word suggestions and total words found).
+
+    Auto_Suggestion.Start();
+    Matches = L1.Find(word);
+    Auto_Suggestion.End();
+
+    SearchResults = Matches.size();
+
+        if ((int)k != 32)                   // When the key pressed is not "Space bar".
+        {
+            cout << "Keypressed: " << termcolor::on_yellow << termcolor::blue << k 
+                 << " = " << (int)k << termcolor::reset << endl;
+            cout << "Current Substr: " << termcolor::red << word << termcolor::reset << endl;
+            cout << SearchResults << " words found in "
+                 << Auto_Suggestion.Seconds() << " seconds" << termcolor::green;
+
+         if (Matches.size() >= 10)          // Prints out the top 10 results.         
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    Top_Results[i] = Matches[i];
+                    cout << Top_Results[i] << " ";
+                }
             }
 
-            cout << termcolor::reset << endl << endl;       
-             }
+         else
+            {
+                for (int j = 0; j < Matches.size(); j++)
+                {
+                    Top_Results[j] = Matches[j];
+                    cout << Top_Results[j] << " ";
+                }
+            }
+
+         cout << termcolor::reset << endl << endl;
+        }
     }
+return 0;
 
-
-    return 0;
 }

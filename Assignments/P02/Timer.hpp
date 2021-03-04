@@ -37,7 +37,7 @@ typedef std::chrono::high_resolution_clock Time;
 typedef std::chrono::milliseconds Msec;
 typedef std::chrono::duration<float> Fsec;
 using std::chrono::duration_cast;
-using std::this_thread::sleep_for;
+// using std::this_thread::sleep_for;
 
 
 class Timer{
@@ -73,8 +73,8 @@ public:
         return millis.count();
     }
 
-    void Sleep(long x){
-        sleep_for(Msec(x));
-    }
+    // void Sleep(long x){
+    //     sleep_for(Msec(x));
+    // }
 
 };
