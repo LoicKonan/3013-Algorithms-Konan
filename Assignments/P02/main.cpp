@@ -50,7 +50,7 @@ using namespace std;
  	        - wordNode* Next
  
     Private Methods:
-        None
+        - None
  
     Usage:
   	    - Creates node for a Linked List.
