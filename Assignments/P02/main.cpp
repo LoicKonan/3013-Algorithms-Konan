@@ -266,7 +266,7 @@ int main()
 
     time.End();
 
-    cout << time.Seconds() << " seconds to read in the data." << endl;
+    cout << termcolor::green << time.Seconds() << " seconds to read in the data." << endl;
 
     Timer Load_Words;                       // Time to load the words into the Linked List
 
