@@ -285,7 +285,8 @@ int main()
 
     Load_Words.End();
 
-    cout << Load_Words.Seconds() << " seconds to read in the data.\n";
+    cout << termcolor::green << Load_Words.Seconds() << termcolor::reset 
+         << " seconds to read in the data." << termcolor::reset << endl;
 
     char k;                                 // Hold the character being typed.
     string word = "";                       // Use to Concatenate letters.
@@ -294,7 +295,8 @@ int main()
     string Top_Results[10];                 // Initializing 10 words to print.
     int SearchResults;                      // Initializing the integer SearchResults.
 
-    cout << "Type keys and watch what happens. Type capital Z to quit.\n";
+    cout << "Type keys and watch what happens. Type capital" << termcolor::red 
+         << " Z to quit." << termcolor::reset << endl;
 
     while ((k = getch()) != 'Z')            // While capital Z is not typed keep looping.
     {
@@ -331,12 +333,14 @@ int main()
 
         if ((int)k != 32)                   // When the key pressed is not "Space bar".
         {
-            cout << "Keypressed: " << termcolor::on_yellow << termcolor::blue << k
-                 << " = " << (int)k << termcolor::reset << endl;
-            cout << "Current Substr: " << termcolor::red << word << termcolor::reset << endl;
-            cout << SearchResults << " words found in "
-                 << Auto_Suggestion.Seconds() << " seconds" << termcolor::green;
-
+            cout << "Keypressed: " << termcolor::red  << k  << " = " 
+                 << termcolor::green << (int)k << termcolor::reset << endl;
+            cout << "Current Substr: " << termcolor::red << word 
+                 << termcolor::reset << endl;
+            cout << termcolor::red << SearchResults << termcolor::reset 
+                 << " words found in " << termcolor::green << Auto_Suggestion.Seconds() 
+                << termcolor::reset << " seconds" << termcolor::reset << endl;
+           
             if (Matches.size() >= 10)       // Prints out the top 10 results.
             {
                 for (int i = 0; i < 10; i++)
