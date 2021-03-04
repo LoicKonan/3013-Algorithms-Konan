@@ -32,5 +32,4 @@
 - $  Z to terminate the program.
   
 - **Example:**
-  > **CAT** 1365 words found in 0.0188522 seconds
-    CATABASIS -> CATABOLIC -> CATABOLICALLY -> CATABOLISM -> CATABOLITE -> CATABOLIZE -> CATACAUSTIC -> CATACHRESIS -> CATACHRESTI -> CATACHRESTIC
+  
