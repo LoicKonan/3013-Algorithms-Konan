@@ -189,12 +189,12 @@ void LinkedList::Display()
 {
     wordNode *Current = Head;
 
-    while (Current) // Standard traversal
+    while (Current)                         // Standard traversal
     {
-        cout << Current->word; // Print name in node
+        cout << Current->word;              // Print name in node
         cout << endl;
         cout << "->";
-        Current = Current->Next; // Point to the next node
+        Current = Current->Next;            // Point to the next node
     }
     cout << "Done" << endl;
 }
@@ -223,19 +223,19 @@ vector<string> LinkedList::Find(string typed)
     {
         string found = "";
 
-        found = Current->word; // Temp variable for the word of the current wordNode stored
+        found = Current->word;              // Temp variable for the word of the current wordNode stored
 
-        int len = typed.length(); // length variable for the length of the word typed/passed in
+        int len = typed.length();           // length variable for the length of the word typed/passed in
 
-        if (found.substr(0, len) == typed) // if the length of the word from index 0 to the length of the
-        {                                  // typed word is equal then it is pushed to Results
+        if (found.substr(0, len) == typed)  // if the length of the word from index 0 to the length of the
+        {                                   // typed word is equal then it is pushed to Results
             Results.push_back(found);
         }
 
-        Current = Current->Next; // traverse to next wordNode
+        Current = Current->Next;            // traverse to next wordNode
     }
 
-    return Results; // return the vector of results
+    return Results;                         // return the vector of results
 }
 
 /**
@@ -246,16 +246,16 @@ vector<string> LinkedList::Find(string typed)
  */
 int main()
 {
-    LinkedList L1;               // Linked List object
-    vector<string> animals_Data; // Placeholder animals_Data to read in the words.txt data
+    LinkedList L1;                          // Linked List object
+    vector<string> animals_Data;            // Placeholder animals_Data to read in the words.txt data
 
     ifstream infile;
     infile.open("animals.txt");
 
-    Timer time;   // Create a timer.
-    time.Start(); // Start the timer.
+    Timer time;                             // Create a timer.
+    time.Start();                           // Start the timer.
 
-    while (!infile.eof()) // If the file is not empty.
+    while (!infile.eof())                   // If the file is not empty.
     {
         string Temp;
 
@@ -268,13 +268,13 @@ int main()
 
     cout << time.Seconds() << " seconds to read in the data." << endl;
 
-    Timer Load_Words; // Time to load the words into the Linked List
+    Timer Load_Words;                       // Time to load the words into the Linked List
 
     Load_Words.Start();
 
     for (int j = 0; j < animals_Data.size(); j++)
-    {                                  // Loop through the vector.
-        wordNode *Temp = new wordNode; // Allocate new memories.
+    {                                       // Loop through the vector.
+        wordNode *Temp = new wordNode;      // Allocate new memories.
 
         string item = animals_Data[j];
 
@@ -287,18 +287,18 @@ int main()
 
     cout << Load_Words.Seconds() << " seconds to read in the data.\n";
 
-    char k;                 // Hold the character being typed.
-    string word = "";       // Use to Concatenate letters.
-    vector<string> Matches; // Any matches found in vector of animals_Data Words.
+    char k;                                 // Hold the character being typed.
+    string word = "";                       // Use to Concatenate letters.
+    vector<string> Matches;                 // Any matches found in vector of animals_Data Words.
 
-    string Top_Results[10]; // Initializing 10 words to print.
-    int SearchResults;      // Initializing the integer SearchResults.
+    string Top_Results[10];                 // Initializing 10 words to print.
+    int SearchResults;                      // Initializing the integer SearchResults.
 
     cout << "Type keys and watch what happens. Type capital Z to quit.\n";
 
-    while ((k = getch()) != 'Z') // While capital Z is not typed keep looping.
+    while ((k = getch()) != 'Z')            // While capital Z is not typed keep looping.
     {
-        if ((int)k == 127) // Tests for a backspace and if pressed deletes.
+        if ((int)k == 127)                  // Tests for a backspace and if pressed deletes.
         {
             if (word.size() > 0)
             {
@@ -308,20 +308,20 @@ int main()
 
         else
         {
-            if (!isalpha(k)) // Makeing sure a letter was pressed.
+            if (!isalpha(k))                // Makeing sure a letter was pressed.
             {
                 cout << "Letters only!\n";
                 continue;
             }
 
-            if ((int)k >= 97) // Making sure its lowercase.
+            if ((int)k >= 97)               // Making sure its lowercase.
             {
-                k -= 32; // Make the input word  capital letters.
+                k -= 32;                    // Make the input word  capital letters.
             }
         }
-        word += k; // Append character to word.
+        word += k;                          // Append character to word.
 
-        Timer Auto_Suggestion; // Timer for (word suggestions and total words found).
+        Timer Auto_Suggestion;              // Timer for (word suggestions and total words found).
 
         Auto_Suggestion.Start();
         Matches = L1.Find(word);
@@ -329,7 +329,7 @@ int main()
 
         SearchResults = Matches.size();
 
-        if ((int)k != 32) // When the key pressed is not "Space bar".
+        if ((int)k != 32)                   // When the key pressed is not "Space bar".
         {
             cout << "Keypressed: " << termcolor::on_yellow << termcolor::blue << k
                  << " = " << (int)k << termcolor::reset << endl;
@@ -337,7 +337,7 @@ int main()
             cout << SearchResults << " words found in "
                  << Auto_Suggestion.Seconds() << " seconds" << termcolor::green;
 
-            if (Matches.size() >= 10) // Prints out the top 10 results.
+            if (Matches.size() >= 10)       // Prints out the top 10 results.
             {
                 for (int i = 0; i < 10; i++)
                 {
@@ -359,10 +359,5 @@ int main()
                  << endl;
         }
     }
-<<<<<<< HEAD
     return 0;
 }
-== == == =
-             return 0;
-}
->>>>>>> 9689df85f8f1b600bc7fab4e39fc652d689ebff4
