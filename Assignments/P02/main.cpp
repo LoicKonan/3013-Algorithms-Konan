@@ -295,8 +295,8 @@ int main()
     string Top_Results[10];                 // Initializing 10 words to print.
     int SearchResults;                      // Initializing the integer SearchResults.
 
-    cout << "Type keys and watch what happens. Type capital" << termcolor::red 
-         << " Z to quit." << termcolor::reset << endl;
+    cout << "Type keys and watch what happens. Type capital" 
+         << termcolor::red << " Z to quit." << termcolor::reset << endl;
 
     while ((k = getch()) != 'Z')            // While capital Z is not typed keep looping.
     {
