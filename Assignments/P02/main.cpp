@@ -53,7 +53,7 @@ using namespace std;
         - None
  
     Usage:
-  	    - Creates node for a Linked List.
+  	    - Creates node for a Linked List. 
  
  */
 
@@ -359,5 +359,10 @@ int main()
                  << endl;
         }
     }
+<<<<<<< HEAD
     return 0;
 }
+== == == =
+             return 0;
+}
+>>>>>>> 9689df85f8f1b600bc7fab4e39fc652d689ebff4
