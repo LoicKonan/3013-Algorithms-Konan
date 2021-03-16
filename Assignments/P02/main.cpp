@@ -23,7 +23,7 @@
 *
 *    Usage:
 *           main.cpp          : driver program
-*           animals.txt       : Input file
+*           animals.txt     : Input file
 *
 *           output will be display on the console in color.
 *
@@ -267,7 +267,7 @@ int main()
     time.End();
 
     cout << termcolor::green << time.Seconds() << termcolor::reset 
-         << " seconds to read in the data."    << endl;
+         << " first around of seconds to read in the data."    << endl;
 
     Timer Load_Words;                       // Time to load the words into the Linked List
 
@@ -287,7 +287,7 @@ int main()
     Load_Words.End();
 
     cout << termcolor::green << Load_Words.Seconds() << termcolor::reset 
-         << " seconds to read in the data." << termcolor::reset << endl;
+         << " Second to read in the data." << termcolor::reset << endl;
 
     char k;                                 // Hold the character being typed.
     string word = "";                       // Use to Concatenate letters.

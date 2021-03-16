@@ -2,14 +2,15 @@
 *
 *    Author:           Loic Konan
 *    Email:            loickonan.lk@gmail.com
-*    Label:            P02
-*    Title:            Processing in Linear Time
+*    Label:            P03
+*    Title:             Processing in Log Time
 *    Course:           CMPS 3013
 *    Semester:         Spring 2021
 *    Description:
 *
-*       A linked list search program that stores a file with Animals name
-*       in it. Then allowes the user to type in a series of character. Everytime a user 
+*      
+*
+*       Everytime a user 
 *       enters a character the program will search through the list to find all the words
 *       with a substring of the chararcter entered and returns the top ten results plus 
 *       the time it took to search the list.
@@ -23,7 +24,7 @@
 *
 *    Usage:
 *           main.cpp          : driver program
-*           animals.txt       : Input file
+*           animals.txt     : Input file
 *
 *           output will be display on the console in color.
 *
@@ -267,7 +268,7 @@ int main()
     time.End();
 
     cout << termcolor::green << time.Seconds() << termcolor::reset 
-         << " seconds to read in the data."    << endl;
+         << " first around of seconds to read in the data."    << endl;
 
     Timer Load_Words;                       // Time to load the words into the Linked List
 
@@ -287,7 +288,7 @@ int main()
     Load_Words.End();
 
     cout << termcolor::green << Load_Words.Seconds() << termcolor::reset 
-         << " seconds to read in the data." << termcolor::reset << endl;
+         << " Second to read in the data." << termcolor::reset << endl;
 
     char k;                                 // Hold the character being typed.
     string word = "";                       // Use to Concatenate letters.
