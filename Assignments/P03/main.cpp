@@ -10,10 +10,11 @@
 *
 *      
 *
-*       Everytime a user 
-*       enters a character the program will search through the list to find all the words
-*       with a substring of the chararcter entered and returns the top ten results plus 
-*       the time it took to search the list.
+*       This Project is about loading a Binary Search Tree with words, then timing how it takes to look them up,
+*       it will perform **"autosuggestions"** when a user types characters at the console.
+*       Suggestions start after **1 character** is typed, however only the top **10 suggestions**
+*       will be printed along with the total number of **matching words**.
+*       The time it takes to find each suggestion will be displayed in **seconds**.
 *
 *    Files:
 *         main.cpp
@@ -23,10 +24,8 @@
 *         Animals.txt
 *
 *    Usage:
-*           main.cpp          : driver program
-*           animals.txt     : Input file
-*
-*           output will be display on the console in color.
+*           - Look up word in a log time.
+*           - output will be display on the console in Fancy color.
 *
 ******************************************************************************/
 #include <iostream>
