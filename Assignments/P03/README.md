@@ -4,7 +4,7 @@
 
 #### Description
 
-This Program read in a dictionary file from dict_w_defs.json and store it in a Trie Tree.\
+This Program read in a file and store it in a Binary Search Tree.\
 Define a **wordNode** to be a **struct** or a **class** to hold a word and definition.\
 The **binary tree** hold ***wordNodes***. It Time how long it takes to load the data \
 into your binary search tree (we will use that later as well).
@@ -17,12 +17,10 @@ The time it takes to find each suggestion will be displayed in **seconds**.
 |  #  | File                                 | Description                                         |
 | :-: | ------------------------------------ | --------------------------------------------------- |
 |  1  | [read_dict.cpp](read_dict.cpp)       | Example json reader with some timing.               |
-|  2  | [dict_w_defs.json](dict_w_defs.json) | Json input file                                     |
 |  3  | [Banner](Banner)                     | Banner for Assignment                               |
 |  4  | [Timer.hpp](Timer.hpp)               | Timer helper class                                  |
 |  5  | [JsonFacade.hpp](JsonFacade.hpp)     | Json helper class                                   |
 |  6  | [json.hpp](json.hpp)                 | Json class written by nlohmann                      |
-|  7  | [Trio.hpp](Trio.hpp)                 | Simple, portable IO customization in your terminal. |
 
 ### Instructions
 
@@ -30,4 +28,4 @@ The time it takes to find each suggestion will be displayed in **seconds**.
 
 ### Example Command
 
--$ ./read_dict.cpp
+-$ ./main.cpp
