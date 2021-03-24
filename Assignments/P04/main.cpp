@@ -46,24 +46,83 @@ using namespace std;
 // #define CHAR_SIZE 128
 #define CHAR_SIZE 26
 
+
+
+/**
+ *
+ * Function Name: isUpper ()
+ *
+ *  Description:  Checking to see if the character entered
+ *                by the user is Capitalize.
+ *               
+ *  Parameters: char 
+ *
+ * Returns:
+ *              bool
+ *
+ */
 bool isUpper(char letter) 
 {
     int l = letter;
     return (l >= 65 && l <= 90);
 }
 
+
+
+/**
+ *
+ * Function Name: isLower ()
+ *
+ *  Description:  Checking to see if the character entered
+ *                by the user is Lower Case.
+ *               
+ *  Parameters: char 
+ *
+ * Returns:
+ *              bool
+ *
+ */
 bool isLower(char letter) 
 {
     int l = letter;
     return (l >= 97 && l <= 122);
 }
 
+
+
+/**
+ *
+ * Function Name: isLetter ()
+ *
+ *  Description:  Checking to see if the character entered
+ *                by the user is actually a letter.
+ *               
+ *  Parameters: char 
+ *
+ * Returns:
+ *              bool
+ *
+ */
 bool isLetter(char letter) 
 {
     int l = letter;
     return isUpper(l) || isLower(l);
 }
 
+
+/**
+ *
+ * Function Name: isLetter ()
+ *
+ *  Description:  Checking to see if the character entered
+ *                by the user is actually a letter.
+ *               
+ *  Parameters: char 
+ *
+ * Returns:
+ *              bool
+ *
+ */
 bool isAlphaOnly(string word) 
 {
 
@@ -77,6 +136,20 @@ bool isAlphaOnly(string word)
     return true;
 }
 
+
+/**
+ *
+ * Function Name: isLetter ()
+ *
+ *  Description:  Checking to see if the character entered
+ *                by the user is actually a letter.
+ *               
+ *  Parameters: char 
+ *
+ * Returns:
+ *              bool
+ *
+ */
 void makeUpper(string &word) 
 {
     for (int i = 0; i < word.length(); i++) 
