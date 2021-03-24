@@ -1,3 +1,33 @@
+/*****************************************************************************
+*
+*    Author:           Loic Konan
+*    Email:            loickonan.lk@gmail.com
+*    Label:            P04
+*    Title:            Processing in Trie Tree Time
+*    Course:           CMPS 3013
+*    Semester:         Spring 2021
+*    Description:
+*
+*       This program will read in a dictionary file and store it in a Trie Tree.
+*       Then allowes the user to type in a series of character. Everytime a user 
+*       enters a character the program will search through the list to find all the words
+*       with a substring of the chararcter entered and returns the top ten results plus 
+*       the time it took to search the list.
+*
+*    Files:a
+*         main.cpp
+*         Timer.hpp
+*         mygetch.hpp
+*         termcolor.hpp
+*         Animals.txt
+*
+*    Usage:
+*           main.cpp          : driver program
+*           animals.txt       : Input file
+*
+*           output will be display on the console in color.
+*
+******************************************************************************/
 #include <iostream>
 #include <time.h>
 #include <chrono>

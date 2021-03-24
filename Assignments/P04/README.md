@@ -4,7 +4,7 @@
 
 #### Description
 
-- This project is about loading a **singly linked list** with Animals names, Then perform "**autosuggestions**" when a user types characters at the console, the console will display the time it took to look them up.
+- This program will read in a dictionary file and store it in a Trie Tree.
 
   - Suggestions will start after **_1 character_** is typed.
   - Only the top **_10 suggestions_** will be printed along with the total number of matching words.
