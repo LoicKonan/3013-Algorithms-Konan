@@ -37,6 +37,7 @@
 #include <vector>
 #include <fstream>
 #include "termcolor.hpp"
+#include <algorithm>
 
 using namespace std;
 
