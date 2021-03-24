@@ -31,16 +31,16 @@
 #include <time.h>
 #include <chrono> 
 #include <thread>
-#include "trio.hpp"
 
 typedef std::chrono::high_resolution_clock Time;
 typedef std::chrono::milliseconds Msec;
 typedef std::chrono::duration<float> Fsec;
 using std::chrono::duration_cast;
-using std::this_thread::sleep_for;
+// using std::this_thread::sleep_for;
 
 
-class Timer{
+class Timer
+{
 private:
     int seed;
     int micro;
@@ -50,7 +50,8 @@ private:
     Msec milliseconds;
 
 public:
-    Timer(){
+    Timer()
+    {
     }
 
     void Start(){
@@ -73,8 +74,8 @@ public:
         return millis.count();
     }
 
-    void Sleep(long x){
-        sleep_for(Msec(x));
-    }
+    // void Sleep(long x){
+    //     sleep_for(Msec(x));
+    // }
 
 };

@@ -1,27 +1,39 @@
-### Program 4 - Processing in Log Time
+## Program 2 - Processing in Linear Time
 
 ### Loic Konan
 
 #### Description
 
-This project is about loading a **Binary Search Tree** with dictionary words, then timing how long it takes to look them up. We want to compare this with how long it took to look items up in the **linked list** from last program. For now we will keep the same interface for the previous program.
+- This project is about loading a **singly linked list** with Animals names, Then perform "**autosuggestions**" when a user types characters at the console, the console will display the time it took to look them up.
+
+  - Suggestions will start after **_1 character_** is typed.
+  - Only the top **_10 suggestions_** will be printed along with the total number of matching words.
+  - Matching suggestions will ONLY be words that match the **substring** starting from **_position zero_**.
+  - As typing, the time it takes to find suggestions will be displayed in **_seconds_** with some **_color effects_**.
+
+- We are doing this with the knowledge that this is slow, and we plan on applying our "lookup" code <br>
+  to other backend data structures with better performance.
 
 ### Files
 
-|  #  | File                                 | Description                                         |
-| :-: | ------------------------------------ | --------------------------------------------------- |
-|  1  | [read_dict.cpp](read_dict.cpp)       | Example json reader with some timing.               |
-|  2  | [dict_w_defs.json](dict_w_defs.json) | Json input file                                     |
-|  3  | [Banner](Banner)                     | Banner for Assignment                               |
-|  4  | [Timer.hpp](Timer.hpp)               | Timer helper class                                  |
-|  5  | [JsonFacade.hpp](JsonFacade.hpp)     | Json helper class                                   |
-|  6  | [json.hpp](json.hpp)                 | Json class written by nlohmann                      |
-|  7  | [Trio.hpp](Trio.hpp)                 | Simple, portable IO customization in your terminal. |
+|  #  | File                           | Description                              |
+| :-: | ------------------------------ | ---------------------------------------- |
+|  1  | [main.cpp](main.cpp)           | The main cpp file.                       |
+|  2  | [Banner](Banner)               | Banner for Assignment                    |
+|  3  | [Timer.hpp](Timer.hpp)         | Timer helper class                       |
+|  4  | [mygetch.hpp](mygetch.hpp)     | Get character, without printing it .     |
+|  5  | [animals.txt](animals.txt)     | Animals names ... lots of animals names. |
+|  6  | [termcolor.hpp](termcolor.hpp) | Class to color text                      |
 
 ### Instructions
 
-- This program does not require any non standard libraries
-
-### Example Command
-
--$ ./read_dict.cpp
+- $ ./main.cpp
+- $ ./animals.txt
+- $  Z to terminate the program.
+  
+- **Example:**
+  >>
+  <img src="owl.png">
+  <img src="snake.png">
+  <img src="rabbit.png">
+  <img src="monkey.png">
