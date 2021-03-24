@@ -116,7 +116,6 @@ public:
 
 void Trie::find_all(TrieNode *&curr,string key)
 {
-
     if(curr->isLeaf){
         results.push_back(key);
     }
@@ -327,16 +326,29 @@ void TestSearch(Trie *T, string word)
 int main() 
 {
     Trie *T = new Trie();
-    vector<string> results;
-
+    Trie L1;                          // Linked List object
+    vector<string> animals_Data;            // Placeholder animals_Data to read in the words.txt data
+    
     cout << "loading dictionary..." << endl;
     loadDictionary(T, "dictionary.txt");
 
     Timer Load_Words;                       // Time to load the words into the Linked List
     Load_Words.Start();
 
-    results = T->find_all("");
+    for (int j = 0; j < animals_Data.size(); j++)
+    {                                       // Loop through the vector.
+        TrieNode *T = new TrieNode;      // Allocate new memories.
 
+        string item = animals_Data[j];
+
+       // Temp->word = item;
+
+        L1.Insert_Data(Temp);
+    }
+
+
+
+    // animals_Data = T->find_all("");
     // cout << results.size() << endl;
 
     // for (int i = 0; i < results.size(); i++)
@@ -389,7 +401,7 @@ int main()
         Auto_Suggestion.Start();
         Auto_Suggestion.End();
 
-        SearchResults = results.size();
+        SearchResults = animals_Data.size();
 
         if ((int)k != 32)                   // When the key pressed is not "Space bar".
         {
@@ -401,19 +413,19 @@ int main()
                  << " words found in " << termcolor::green << Auto_Suggestion.Seconds() 
                  << termcolor::reset   << " seconds"       << termcolor::reset << endl;
            
-            if (results.size() >= 10)       // Prints out the top 10 results.
+            if (animals_Data.size() >= 10)       // Prints out the top 10 results.
             {
                 for (int i = 0; i < 10; i++)
                 {
-                    Top_Results[i] = results[i];
+                    Top_Results[i] = animals_Data[i];
                     cout << Top_Results[i] << " ";
                 }
             }
             else
             {
-                for (int j = 0; j < results.size(); j++)
+                for (int j = 0; j < animals_Data.size(); j++)
                 {
-                    Top_Results[j] = results[j];
+                    Top_Results[j] = animals_Data[j];
                     cout << Top_Results[j] << " ";
                 }
             }
