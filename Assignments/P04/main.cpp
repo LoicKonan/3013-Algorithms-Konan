@@ -329,7 +329,6 @@ void TestSearch(Trie *T, string word)
 int main() 
 {
     Trie *T = new Trie();
-    Trie L1;                          // Linked List object
     vector<string> animals_Data;            // Placeholder animals_Data to read in the words.txt data
 
     cout << "loading dictionary..." << endl;
@@ -338,26 +337,13 @@ int main()
     Timer Load_Words;                       // Time to load the words into the Linked List
     Load_Words.Start();
 
-    for (int j = 0; j < animals_Data.size(); j++)
-    {                                       // Loop through the vector.
-        TrieNode *T = new TrieNode;      // Allocate new memories.
-
-        string item = animals_Data[j];
-
-        T->word = item;
-
-        L1.insert(T);
+    animals_Data = T->find_all("");
+    
+    cout << animals_Data.size() << endl;
+    for (int i = 0; i < animals_Data.size(); i++)
+    {
+        cout << animals_Data[i] << endl;
     }
-
-
-
-    // animals_Data = T->find_all("");
-    // cout << results.size() << endl;
-
-    // for (int i = 0; i < results.size(); i++)
-    // {
-    //     cout << results[i] << endl;
-    // }
 
     Load_Words.End();
 

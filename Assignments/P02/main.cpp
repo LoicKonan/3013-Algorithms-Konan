@@ -311,7 +311,7 @@ int main()
 
         else
         {
-            if (!isalpha(k))                // Makeing sure a letter was pressed.
+            if (!isalpha(k))                // Making sure a letter was pressed.
             {
                 cout << "Letters only!\n";
                 continue;
