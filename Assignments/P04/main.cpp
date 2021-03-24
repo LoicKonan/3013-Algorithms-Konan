@@ -14,7 +14,7 @@
 *       with a substring of the chararcter entered and returns the top ten results plus 
 *       the time it took to search the list.
 *
-*    Files:a
+*    Files:
 *         main.cpp
 *         Timer.hpp
 *         mygetch.hpp
@@ -41,94 +41,88 @@
 
 using namespace std;
 
-
-// Define the character size
-// #define CHAR_SIZE 128
+/**
+ * 
+ *   Define the character size
+ */
 #define CHAR_SIZE 26
-
-
 
 /**
  *
  * Function Name: isUpper ()
  *
- *  Description:  Checking to see if the character entered
+ * Description:   Checking to see if the character entered
  *                by the user is Capitalize.
  *               
- *  Parameters: char 
+ * Parameters:    char 
  *
  * Returns:
- *              bool
+ *                bool
  *
  */
-bool isUpper(char letter) 
+bool isUpper(char letter)
 {
     int l = letter;
     return (l >= 65 && l <= 90);
 }
 
-
-
 /**
  *
  * Function Name: isLower ()
  *
- *  Description:  Checking to see if the character entered
+ * Description:   Checking to see if the character entered
  *                by the user is Lower Case.
  *               
- *  Parameters: char 
+ * Parameters:    char 
  *
  * Returns:
- *              bool
+ *                bool
  *
  */
-bool isLower(char letter) 
+bool isLower(char letter)
 {
     int l = letter;
     return (l >= 97 && l <= 122);
 }
 
-
-
 /**
  *
  * Function Name: isLetter ()
  *
- *  Description:  Checking to see if the character entered
+ * Description:   Checking to see if the character entered
  *                by the user is actually a letter.
  *               
- *  Parameters: char 
+ * Parameters:    char 
  *
  * Returns:
- *              bool
+ *                bool
  *
  */
-bool isLetter(char letter) 
+bool isLetter(char letter)
 {
     int l = letter;
     return isUpper(l) || isLower(l);
 }
 
-
 /**
  *
- * Function Name: isLetter ()
+ * Function Name: isAlphaOnly ()
  *
- *  Description:  Checking to see if the character entered
- *                by the user is actually a letter.
+ * Description:   Checking to see each letter of the word entered
+ *                is part of the Alphabet.
  *               
- *  Parameters: char 
+ * Parameters:    string 
  *
  * Returns:
- *              bool
+ *                bool
  *
  */
-bool isAlphaOnly(string word) 
+bool isAlphaOnly(string word)
 {
 
-    for (int i = 0; i < word.length(); i++) 
+    for (int i = 0; i < word.length(); i++)
     {
-        if (!isLetter(word[i])) 
+        if (!isLetter(word[i]))
         {
             return false;
         }
@@ -136,48 +130,76 @@ bool isAlphaOnly(string word)
     return true;
 }
 
-
 /**
  *
- * Function Name: isLetter ()
+ * Function Name: makeUpper ()
  *
- *  Description:  Checking to see if the character entered
- *                by the user is actually a letter.
+ * Description:   Making the word entered into Upper case(Capitalizing it)
  *               
- *  Parameters: char 
+ * Parameters:    string &word
  *
  * Returns:
- *              bool
+ *                void
  *
  */
-void makeUpper(string &word) 
+void makeUpper(string &word)
 {
-    for (int i = 0; i < word.length(); i++) 
+    for (int i = 0; i < word.length(); i++)
     {
-        if (isLower(word[i])) {
+        if (isLower(word[i]))
+        {
             word[i] -= 32;
         }
     }
 }
 
-struct TrieNode 
+/*
+    Struct Name: TrieNode
+ 
+    Description:
+        - A node that holds a string word and a pointer character.
+        - A bool to see if it is a leaf node.
+ 
+    Public Methods:
+ 	    - TrieNode()
+ 
+    Private Methods:
+        - None
+ 
+    Usage:
+  	    - Creates node for a Linked List. 
+ 
+ */
+struct TrieNode
 {
     bool isLeaf;
     TrieNode *character[CHAR_SIZE];
     string word;
-    
-    TrieNode() 
+
+    TrieNode()
     {
         this->isLeaf = false;
 
-        for (int i = 0; i < CHAR_SIZE; i++) 
+        for (int i = 0; i < CHAR_SIZE; i++)
         {
             this->character[i] = nullptr;
         }
     }
 };
 
-vector<char> countLetters(string filename) 
+/**
+ *
+ *  Function Name: countLetters ()
+ *
+ *  Description:   To count each letters and adding it to the vectors.
+ *               
+ *  Parameters:    string filename
+ *
+ *  Returns:
+ *                 vector<char>
+ *
+ */
+vector<char> countLetters(string filename)
 {
     ifstream fin;
     vector<char> alph;
@@ -185,12 +207,12 @@ vector<char> countLetters(string filename)
     fin.open(filename);
 
     string word;
-    while (!fin.eof()) 
+    while (!fin.eof())
     {
         fin >> word;
-        for (int j = 0; j < word.size(); j++) 
+        for (int j = 0; j < word.size(); j++)
         {
-            if (std::find(alph.begin(), alph.end(), word[j]) == alph.end()) 
+            if (std::find(alph.begin(), alph.end(), word[j]) == alph.end())
             {
                 alph.push_back(word[j]);
             }
@@ -199,8 +221,30 @@ vector<char> countLetters(string filename)
     return alph;
 }
 
-// A class to store a Trie node
-class Trie 
+/*
+    Class Name: Trie
+ 
+    Description:
+        - A class to store a Trie node.
+        - root TrieNode pointers.
+       
+    private Methods:
+        - bool deletion(TrieNode *&, string);
+        - void find_all(TrieNode *&, string);
+        - vector<string> results;
+
+    public Methods:
+        - Trie()                        : Default Constructor.
+        - void insert(string);
+        - bool deletion(string);
+        - bool search(string);
+        - bool haveChildren(TrieNode const *);
+        - vector<string> find_all(string);
+ 
+    Usage:
+        - Load linked list of string, to find them, or delete.
+ */
+class Trie
 {
     TrieNode *root;
     bool deletion(TrieNode *&, string);
@@ -208,7 +252,7 @@ class Trie
     vector<string> results;
 
 public:
-    Trie() 
+    Trie()
     {
         root = new TrieNode;
     }
@@ -219,172 +263,242 @@ public:
     vector<string> find_all(string);
 };
 
+/*
+   Private : find_all()
 
-void Trie::find_all(TrieNode *&curr,string key)
+   Description:
+        - Receives a key and a TrieNode current. 
+        - Check to see if the current node is not leaf.
+        - if it is then it get added to the vector.
+
+   Params:
+       - TrieNode *&curr, string key
+
+   Returns:
+        - void
+*/
+void Trie::find_all(TrieNode *&curr, string key)
 {
-    if(curr->isLeaf){
+    if (curr->isLeaf)
+    {
         results.push_back(key);
     }
 
-    for (int i = 0; i < 26; i++) {
-        if(curr->character[i]){
-            find_all(curr->character[i],key+char(i+65));
+    for (int i = 0; i < 26; i++)
+    {
+        if (curr->character[i])
+        {
+            find_all(curr->character[i], key + char(i + 65));
         }
     }
 }
 
+/*
+   Public : find_all()
+
+   Description:
+        - Receives the a key.
+        - If a match is found, it is pushed to the Vector Results.
+   Params:
+       - string key
+
+   Returns:
+        - vector<string>
+*/
 vector<string> Trie::find_all(string key)
 {
-    TrieNode* curr = root;
+    TrieNode *curr = root;
 
     results.clear();
 
-    for (int i = 0; i < key.length(); i++) 
-    {
-        // go to the next node
+    for (int i = 0; i < key.length(); i++)
+    {                                       // go to the next node
         curr = curr->character[key[i] - 65];
-
     }
 
-    find_all(curr,key);
+    find_all(curr, key);
     return results;
 }
 
-// Iterative function to insert a key into a Trie
-void Trie::insert(string key) 
+/*
+   Public : insert()
+
+   Description:
+        - receives a key. 
+        - Iterative function to insert a key into a Trie
+
+   Params:
+       - string key
+
+   Returns:
+        - void
+*/
+void Trie::insert(string key)
 {
-    makeUpper(key);
+    makeUpper(key);                         // Making the key Upper Case.
 
-    // start from the root node
-    TrieNode *curr = root;
-    for (int i = 0; i < key.length(); i++) 
-    {
-
-        // create a new node if the path doesn't exist
-        if (curr->character[key[i] - 65] == nullptr) {
+    TrieNode *curr = root;                  // start from the root node
+    for (int i = 0; i < key.length(); i++)
+    {                                       // create a new node if the path doesn't exist
+        if (curr->character[key[i] - 65] == nullptr)
+        {
             curr->character[key[i] - 65] = new TrieNode();
         }
 
-        // go to the next node
-        curr = curr->character[key[i] - 65];
+        curr = curr->character[key[i] - 65]; // go to the next node
     }
 
-    // mark the current node as a leaf
-    curr->isLeaf = true;
+    curr->isLeaf = true;                    // mark the current node as a leaf
 }
 
-// Iterative function to search a key in a Trie. It returns true
-// if the key is found in the Trie; otherwise, it returns false
-bool Trie::search(string key) 
+/*
+   Public : search()
+
+   Description:
+        - Iterative function to search a key in a Trie.
+        - It returns true.
+        - if the key is found in the Trie. 
+        - Otherwise, it returns false.
+
+   Params:
+       - string key
+
+   Returns:
+        - bool
+*/
+bool Trie::search(string key)
 {
     makeUpper(key);
     TrieNode *curr = root;
-    // return false if Trie is empty
-    if (curr == nullptr) 
+
+    if (curr == nullptr)                    // return false if Trie is empty
     {
         return false;
     }
 
-    for (int i = 0; i < key.length(); i++) 
+    for (int i = 0; i < key.length(); i++)
     {
+        curr = curr->character[key[i] - 65];   // go to the next node
 
-        // go to the next node
-        curr = curr->character[key[i] - 65];
-
-        // if the string is invalid (reached end of a path in the Trie)
-        if (curr == nullptr) 
-        {
+        if (curr == nullptr)
+        {                                   // if the string is invalid (reached end of a path in the Trie)
             return false;
         }
-    }
-
-    // return true if the current node is a leaf and the
-    // end of the string is reached
-    return curr->isLeaf;
+    }                                       // return true if the current node is a leaf and the
+    return curr->isLeaf;                    // end of the string is reached
 }
 
-// Returns true if a given node has any children
-bool Trie::haveChildren(TrieNode const *curr) 
+/*
+   Public : haveChildren()
+
+   Description:
+        - Returns true if a given node has any children
+   Params:
+       - TrieNode const *curr
+
+   Returns:
+        - bool
+*/
+bool Trie::haveChildren(TrieNode const *curr)
 {
-    for (int i = 0; i < CHAR_SIZE; i++) 
+    for (int i = 0; i < CHAR_SIZE; i++)
     {
-        if (curr->character[i]) {
-            return true; // child found
+        if (curr->character[i])
+        {
+            return true;                    // child found
         }
     }
 
     return false;
 }
 
+/*
+   Public : deletion()
 
-bool Trie::deletion(string key) 
+   Description:
+        - make the key upper and delete the key.
+   Params:
+       -  string key
+
+   Returns:
+        - bool
+*/
+bool Trie::deletion(string key)
 {
     makeUpper(key);
     return deletion(root, key);
 }
 
-// Recursive function to delete a key in the Trie
-bool Trie::deletion(TrieNode *&curr, string key) 
-{
+/*
+   Public : deletion()
 
-    // return if Trie is empty
-    if (curr == nullptr) 
+   Description:
+        - Recursive function to delete a key in the Trie.
+   Params:
+       -  TrieNode *&curr, string key
+
+   Returns:
+        - bool
+*/
+bool Trie::deletion(TrieNode *&curr, string key)
+{                                           // return if Trie is empty
+    if (curr == nullptr)
     {
         return false;
     }
 
-    // if the end of the key is not reached
-    if (key.length()) 
-    {
-        // recur for the node corresponding to the next character in the key
-        // and if it returns true, delete the current node (if it is non-leaf)
-
+    if (key.length())                       // if the end of the key is not reached
+    {                                       // recur for the node corresponding to the next character in the key
         if (curr != nullptr &&
             curr->character[key[0] - 65] != nullptr &&
             deletion(curr->character[key[0] - 65], key.substr(1)) &&
-            curr->isLeaf == false) {
-            if (!haveChildren(curr)) 
+            curr->isLeaf == false)          // and if it returns true, delete the current node (if it is non-leaf)
+
+        {
+            if (!haveChildren(curr))
             {
                 delete curr;
                 curr = nullptr;
                 return true;
-            } 
-            else 
+            }
+            else
             {
                 return false;
             }
         }
     }
 
-    // if the end of the key is reached
-    if (key.length() == 0 && curr->isLeaf) 
-    {
-        // if the current node is a leaf node and doesn't have any children
-        if (!haveChildren(curr)) 
-        {
-            // delete the current node
+    if (key.length() == 0 && curr->isLeaf)  // if the end of the key is reached
+    {                                       // if the current node is a leaf node and doesn't have any children
+        if (!haveChildren(curr))
+        {                                   // delete the current node
             delete curr;
             curr = nullptr;
-
-            // delete the non-leaf parent nodes
-            return true;
+            return true;                    // delete the non-leaf parent nodes
         }
-
-        // if the current node is a leaf node and has children
-        else 
-        {
-            // mark the current node as a non-leaf node (DON'T DELETE IT)
+        else                                // if the current node is a leaf node and has children
+        {                                   // mark the current node as a non-leaf node (DON'T DELETE IT)
             curr->isLeaf = false;
-
-            // don't delete its parent nodes
-            return false;
+            return false;                   // don't delete its parent nodes
         }
     }
-
     return false;
 }
 
 
+/**
+ *
+ * Function Name: loadDictionary ()
+ *
+ * Description:  
+ *      - To read in a file and to see how long it takes.
+ *               
+ * Parameters:    Trie *&T, string filename 
+ *
+ * Returns:
+ *                bool
+ *
+ */
 void loadDictionary(Trie *&T, string filename = "")
 {
     string word;
@@ -399,42 +513,60 @@ void loadDictionary(Trie *&T, string filename = "")
     Timer time;                             // Create a timer.
     time.Start();                           // Start the timer.
 
-    while (!fin.eof()) 
+    while (!fin.eof())                      // while not end of the file.
     {
         fin >> word;
-        if (isAlphaOnly(word)) 
+        if (isAlphaOnly(word))              // If the word is alphabetic.
         {
-            T->insert(word);
+            T->insert(word);                // Then insert it in out linked list.
         }
     }
 
-     time.End();
+    time.End();
 
-       cout << termcolor::green << time.Seconds() << termcolor::reset 
+    cout << termcolor::green << time.Seconds() << termcolor::reset
          << " seconds to read in the 1st data." << endl;
 }
 
-void TestSearch(Trie *T, string word) 
+/**
+ *
+ * Function Name: TestSearch ()
+ *
+ * Description:  
+ *      - Receive a word and compare it to our linkedlist..
+ *               
+ * Parameters:    Trie *T, string word 
+ *
+ * Returns:
+ *                bool
+ *
+ */
+void TestSearch(Trie *T, string word)
 {
-    cout << word;
-    if (T->search(word)) {
+    cout << word;                           // Print the word.
+    if (T->search(word))                    // If the word is found print found.
+    {
         cout << " found." << endl;
-    } else {
-        cout << " not found." << endl;
+    }
+    else
+    {
+        cout << " not found." << endl;      // If the word is not in our data base print not found.
     }
 }
 
-
-
-// C++ implementation of Trie data structure
-int main() 
+/**
+ * Main Driver
+ *
+ * For this program
+ * *
+ */
+int main()
 {
     Trie *T = new Trie();
     vector<string> animals_Data;            // Placeholder animals_Data to read in the words.txt data
 
     cout << "loading dictionary..." << endl;
     loadDictionary(T, "dictionary.txt");
-
 
     char k;                                 // Hold the character being typed.
     string word = "";                       // Use to Concatenate letters.
@@ -443,7 +575,7 @@ int main()
     string Top_Results[10];                 // Initializing 10 words to print.
     int SearchResults;                      // Initializing the integer SearchResults.
 
-    cout << "Type keys and watch what happens. Type capital" 
+    cout << "Type keys and watch what happens. Type capital"
          << termcolor::red << " Z to quit." << termcolor::reset << endl;
 
     while ((k = getch()) != 'Z')            // While capital Z is not typed keep looping.
@@ -472,22 +604,22 @@ int main()
         word += k;                          // Append character to word.
 
         Timer Auto_Suggestion;              // Timer for (word suggestions and total words found).
-        Auto_Suggestion.Start();  
+        Auto_Suggestion.Start();
         Matches = T->find_all(word);
         Auto_Suggestion.End();
-        
+
         SearchResults = Matches.size();
 
         if ((int)k != 32)                   // When the key pressed is not "Space bar".
         {
-            cout << "Keypressed: "     << termcolor::red   << k      << " = " 
-                 << termcolor::green   << (int)k << termcolor::reset << endl;
-            cout << "Current Substr: " << termcolor::red   << word 
-                 << termcolor::reset   << endl;
-            cout << termcolor::red     << SearchResults    << termcolor::reset 
-                 << " words found in " << termcolor::green << Auto_Suggestion.Seconds() 
-                 << termcolor::reset   << " seconds"       << termcolor::reset << endl;
-           
+            cout << "Keypressed: " << termcolor::red << k << " = "
+                 << termcolor::green << (int)k << termcolor::reset << endl;
+            cout << "Current Substr: " << termcolor::red << word
+                 << termcolor::reset << endl;
+            cout << termcolor::red << SearchResults << termcolor::reset
+                 << " words found in " << termcolor::green << Auto_Suggestion.Seconds()
+                 << termcolor::reset << " seconds" << termcolor::reset << endl;
+
             if (Matches.size() >= 10)       // Prints out the top 10 results.
             {
                 for (int i = 0; i < 10; i++)
@@ -505,7 +637,8 @@ int main()
                 }
             }
 
-            cout << termcolor::reset << endl << endl;
+            cout << termcolor::reset << endl
+                 << endl;
         }
     }
 
