@@ -152,8 +152,6 @@ void Trie::insert(string key)
 {
     makeUpper(key);
 
-    //cout<<key<<endl;
-
     // start from the root node
     TrieNode *curr = root;
     for (int i = 0; i < key.length(); i++) 
@@ -334,25 +332,10 @@ int main()
     cout << "loading dictionary..." << endl;
     loadDictionary(T, "dictionary.txt");
 
-    Timer Load_Words;                       // Time to load the words into the Linked List
-    Load_Words.Start();
-
-    animals_Data = T->find_all("");
-    
-    cout << animals_Data.size() << endl;
-    for (int i = 0; i < animals_Data.size(); i++)
-    {
-        cout << animals_Data[i] << endl;
-    }
-
-    Load_Words.End();
-
-    cout << termcolor::green << Load_Words.Seconds() << termcolor::reset 
-         << " seconds to read in the 2nd data." << termcolor::reset << endl;
-
 
     char k;                                 // Hold the character being typed.
     string word = "";                       // Use to Concatenate letters.
+    vector<string> Matches;                 // Any matches found in vector of animals_Data Words.
 
     string Top_Results[10];                 // Initializing 10 words to print.
     int SearchResults;                      // Initializing the integer SearchResults.
@@ -372,7 +355,7 @@ int main()
 
         else
         {
-            if (!isalpha(k))                // Makeing sure a letter was pressed.
+            if (!isalpha(k))                // Making sure a letter was pressed.
             {
                 cout << "Letters only!\n";
                 continue;
@@ -386,11 +369,11 @@ int main()
         word += k;                          // Append character to word.
 
         Timer Auto_Suggestion;              // Timer for (word suggestions and total words found).
-
-        Auto_Suggestion.Start();
+        Auto_Suggestion.Start();  
+        Matches = T->find_all(word);
         Auto_Suggestion.End();
-
-        SearchResults = animals_Data.size();
+        
+        SearchResults = Matches.size();
 
         if ((int)k != 32)                   // When the key pressed is not "Space bar".
         {
@@ -402,19 +385,19 @@ int main()
                  << " words found in " << termcolor::green << Auto_Suggestion.Seconds() 
                  << termcolor::reset   << " seconds"       << termcolor::reset << endl;
            
-            if (animals_Data.size() >= 10)       // Prints out the top 10 results.
+            if (Matches.size() >= 10)       // Prints out the top 10 results.
             {
                 for (int i = 0; i < 10; i++)
                 {
-                    Top_Results[i] = animals_Data[i];
+                    Top_Results[i] = Matches[i];
                     cout << Top_Results[i] << " ";
                 }
             }
             else
             {
-                for (int j = 0; j < animals_Data.size(); j++)
+                for (int j = 0; j < Matches.size(); j++)
                 {
-                    Top_Results[j] = animals_Data[j];
+                    Top_Results[j] = Matches[j];
                     cout << Top_Results[j] << " ";
                 }
             }
