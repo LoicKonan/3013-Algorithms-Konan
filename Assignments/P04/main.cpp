@@ -61,7 +61,10 @@ struct TrieNode
 {
     bool isLeaf;
     TrieNode *character[CHAR_SIZE];
-    TrieNode() {
+    string word;
+    
+    TrieNode() 
+    {
         this->isLeaf = false;
 
         for (int i = 0; i < CHAR_SIZE; i++) 
@@ -328,7 +331,7 @@ int main()
     Trie *T = new Trie();
     Trie L1;                          // Linked List object
     vector<string> animals_Data;            // Placeholder animals_Data to read in the words.txt data
-    
+
     cout << "loading dictionary..." << endl;
     loadDictionary(T, "dictionary.txt");
 
@@ -341,9 +344,9 @@ int main()
 
         string item = animals_Data[j];
 
-       // Temp->word = item;
+        T->word = item;
 
-        L1.Insert_Data(Temp);
+        L1.insert(T);
     }
 
 
