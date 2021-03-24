@@ -1,33 +1,3 @@
-/*****************************************************************************
-*
-*    Author:           Loic Konan
-*    Email:            loickonan.lk@gmail.com
-*    Label:            P04
-*    Title:            Processing in Trie Tree Time
-*    Course:           CMPS 3013
-*    Semester:         Spring 2021
-*    Description:
-*
-*       A program that read in a file and store it in a Trie Tree.
-*       Then allowes the user to type in a series of character. Everytime a user 
-*       enters a character the program will search through the list to find all the words
-*       with a substring of the chararcter entered and returns the top ten results plus 
-*       the time it took to search the list.
-*
-*    Files:a
-*         main.cpp
-*         Timer.hpp
-*         mygetch.hpp
-*         termcolor.hpp
-*         Animals.txt
-*
-*    Usage:
-*           main.cpp          : driver program
-*           animals.txt       : Input file
-*
-*           output will be display on the console in color.
-*
-******************************************************************************/
 #include <iostream>
 #include <time.h>
 #include <chrono>
@@ -42,259 +12,346 @@
 using namespace std;
 
 
-/*
-    Struct Name: wordNode
- 
-    Description:
-        - A node that holds a string word and a pointer next.
- 
-    Public Methods:
- 	    - string word
- 	    - wordNode* Next
- 
-    Private Methods:
-        - None
- 
-    Usage:
-  	    - Creates node for a Linked List. 
- 
- */
+// Define the character size
+// #define CHAR_SIZE 128
+#define CHAR_SIZE 26
 
-struct wordNode
+bool isUpper(char letter) 
 {
-    wordNode *Next;
-    string word;
+    int l = letter;
+    return (l >= 65 && l <= 90);
+}
 
-    wordNode()
+bool isLower(char letter) 
+{
+    int l = letter;
+    return (l >= 97 && l <= 122);
+}
+
+bool isLetter(char letter) 
+{
+    int l = letter;
+    return isUpper(l) || isLower(l);
+}
+
+bool isAlphaOnly(string word) 
+{
+
+    for (int i = 0; i < word.length(); i++) 
     {
-        Next = NULL;
-        word = "";
+        if (!isLetter(word[i])) 
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
+void makeUpper(string &word) 
+{
+    for (int i = 0; i < word.length(); i++) 
+    {
+        if (isLower(word[i])) {
+            word[i] -= 32;
+        }
+    }
+}
+
+struct TrieNode 
+{
+    bool isLeaf;
+    TrieNode *character[CHAR_SIZE];
+    TrieNode() {
+        this->isLeaf = false;
+
+        for (int i = 0; i < CHAR_SIZE; i++) 
+        {
+            this->character[i] = nullptr;
+        }
     }
 };
 
-/*
-    Class Name: LinkedList
- 
-    Description:
-        - Implements Linked List consisting of wordNodes.
-        - Head and Tail wordNode pointers.
-        - Size variable.
-       
-    Public Methods:
-        - LinkedList()              :default constructor
- 	    - int Get_Size()
- 	    - void Insert_Data(wordNode* entry)
- 	    - vector<string> Find(string typed)
- 	    - void Print()
- 
-    Private Methods:
-        - void
- 
-    Usage:
-        - Load linked list of wordNodes.
- 	    - Print the results
- */
-
-class LinkedList
+vector<char> countLetters(string filename) 
 {
-protected:
-    wordNode *Head;
-    wordNode *Tail;
-    int Size;
+    ifstream fin;
+    vector<char> alph;
+
+    fin.open(filename);
+
+    string word;
+    while (!fin.eof()) 
+    {
+        fin >> word;
+        for (int j = 0; j < word.size(); j++) 
+        {
+            if (std::find(alph.begin(), alph.end(), word[j]) == alph.end()) 
+            {
+                alph.push_back(word[j]);
+            }
+        }
+    }
+    return alph;
+}
+
+// A class to store a Trie node
+class Trie 
+{
+    TrieNode *root;
+    bool deletion(TrieNode *&, string);
+    void find_all(TrieNode *&, string);
+    vector<string> results;
 
 public:
-    LinkedList();
-    int Get_Size();
-    void Insert_Data(wordNode *entry);
-    void Display();
-    vector<string> Find(string typed);
+    Trie() 
+    {
+        root = new TrieNode;
+    }
+    void insert(string);
+    bool deletion(string);
+    bool search(string);
+    bool haveChildren(TrieNode const *);
+    vector<string> find_all(string);
 };
 
-/*
-    Constructor : LinkedList
- 
-    Description:
-         
-        - Initialize with default values.
- 
-    Params:
-        - None
- 
-    Returns:
-        - None
- */
-LinkedList::LinkedList()
+
+void Trie::find_all(TrieNode *&curr,string key)
 {
-    Head = NULL;
-    Tail = NULL;
-    Size = 0;
-}
 
-/*
-    Public : Get_Size()
- 
-    Description:
-        - returns the size of the Linked List.
- 
-    Params:
-        - None
- 
-    Returns:
-        - int
- */
-int LinkedList::Get_Size()
-{
-    return Size;
-}
-
-/*
-   Public : Insert_Data(wordNode* entry)
-
-   Description:
-        - receives a wordNode. 
-        - insert the node.
-
-   Params:
-       - wordNode* entry
-
-   Returns:
-        - void
-*/
-void LinkedList::Insert_Data(wordNode *entry)
-{
-    if (!Head)
-    {
-        Head = Tail = entry;
+    if(curr->isLeaf){
+        results.push_back(key);
     }
 
-    else
-    {
-        Tail->Next = entry;
-        Tail = entry;
+    for (int i = 0; i < 26; i++) {
+        if(curr->character[i]){
+            find_all(curr->character[i],key+char(i+65));
+        }
     }
-
-    Size++;
 }
 
-/*
-   Public : Print()
-
-   Description:
-        - prints the results of the Linked List.
-
-   Params:
-        - None/Member Variables
-
-   Returns:
-        - void
-*/
-void LinkedList::Display()
+vector<string> Trie::find_all(string key)
 {
-    wordNode *Current = Head;
+    TrieNode* curr = root;
 
-    while (Current)                         // Standard traversal
+    results.clear();
+
+    for (int i = 0; i < key.length(); i++) 
     {
-        cout << Current->word;              // Print name in node
-        cout << endl;
-        cout << "->";
-        Current = Current->Next;            // Point to the next node
+        // go to the next node
+        curr = curr->character[key[i] - 65];
+
     }
-    cout << "Done" << endl;
+
+    find_all(curr,key);
+    return results;
 }
 
-/*
-    Public : Find(string typed)
-
-    Description:
-        - Receives the a character from the user.
-        - Compare it with the animals data.
-        - If a match is found, it is pushed to the Vector Results.
-    Params:
-        - string typed
-
-    Returns:
-        - vector<string> Results
-*/
-vector<string> LinkedList::Find(string typed)
+// Iterative function to insert a key into a Trie
+void Trie::insert(string key) 
 {
+    makeUpper(key);
 
-    vector<string> Results;
+    //cout<<key<<endl;
 
-    wordNode *Current = Head;
-
-    while (Current)
+    // start from the root node
+    TrieNode *curr = root;
+    for (int i = 0; i < key.length(); i++) 
     {
-        string found = "";
 
-        found = Current->word;              // Temp variable for the word of the current wordNode stored
-
-        int len = typed.length();           // length variable for the length of the word typed/passed in
-
-        if (found.substr(0, len) == typed)  // if the length of the word from index 0 to the length of the
-        {                                   // typed word is equal then it is pushed to Results
-            Results.push_back(found);
+        // create a new node if the path doesn't exist
+        if (curr->character[key[i] - 65] == nullptr) {
+            curr->character[key[i] - 65] = new TrieNode();
         }
 
-        Current = Current->Next;            // traverse to next wordNode
+        // go to the next node
+        curr = curr->character[key[i] - 65];
     }
 
-    return Results;                         // return the vector of results
+    // mark the current node as a leaf
+    curr->isLeaf = true;
 }
 
-/**
- * Main Driver
- *
- * For this program
- * *
- */
-int main()
+// Iterative function to search a key in a Trie. It returns true
+// if the key is found in the Trie; otherwise, it returns false
+bool Trie::search(string key) 
 {
-    LinkedList L1;                          // Linked List object
-    vector<string> animals_Data;            // Placeholder animals_Data to read in the words.txt data
+    makeUpper(key);
+    TrieNode *curr = root;
+    // return false if Trie is empty
+    if (curr == nullptr) 
+    {
+        return false;
+    }
 
-    ifstream infile;
-    infile.open("animals.txt");
+    for (int i = 0; i < key.length(); i++) 
+    {
+
+        // go to the next node
+        curr = curr->character[key[i] - 65];
+
+        // if the string is invalid (reached end of a path in the Trie)
+        if (curr == nullptr) 
+        {
+            return false;
+        }
+    }
+
+    // return true if the current node is a leaf and the
+    // end of the string is reached
+    return curr->isLeaf;
+}
+
+// Returns true if a given node has any children
+bool Trie::haveChildren(TrieNode const *curr) 
+{
+    for (int i = 0; i < CHAR_SIZE; i++) 
+    {
+        if (curr->character[i]) {
+            return true; // child found
+        }
+    }
+
+    return false;
+}
+
+
+bool Trie::deletion(string key) 
+{
+    makeUpper(key);
+    return deletion(root, key);
+}
+
+// Recursive function to delete a key in the Trie
+bool Trie::deletion(TrieNode *&curr, string key) 
+{
+
+    // return if Trie is empty
+    if (curr == nullptr) 
+    {
+        return false;
+    }
+
+    // if the end of the key is not reached
+    if (key.length()) 
+    {
+        // recur for the node corresponding to the next character in the key
+        // and if it returns true, delete the current node (if it is non-leaf)
+
+        if (curr != nullptr &&
+            curr->character[key[0] - 65] != nullptr &&
+            deletion(curr->character[key[0] - 65], key.substr(1)) &&
+            curr->isLeaf == false) {
+            if (!haveChildren(curr)) 
+            {
+                delete curr;
+                curr = nullptr;
+                return true;
+            } 
+            else 
+            {
+                return false;
+            }
+        }
+    }
+
+    // if the end of the key is reached
+    if (key.length() == 0 && curr->isLeaf) 
+    {
+        // if the current node is a leaf node and doesn't have any children
+        if (!haveChildren(curr)) 
+        {
+            // delete the current node
+            delete curr;
+            curr = nullptr;
+
+            // delete the non-leaf parent nodes
+            return true;
+        }
+
+        // if the current node is a leaf node and has children
+        else 
+        {
+            // mark the current node as a non-leaf node (DON'T DELETE IT)
+            curr->isLeaf = false;
+
+            // don't delete its parent nodes
+            return false;
+        }
+    }
+
+    return false;
+}
+
+
+void loadDictionary(Trie *&T, string filename = "")
+{
+    string word;
+    size_t found;
+    ifstream fin;
+
+    if (filename == "")
+        fin.open("dictionary.txt");
+    else
+        fin.open(filename);
 
     Timer time;                             // Create a timer.
     time.Start();                           // Start the timer.
 
-    while (!infile.eof())                   // If the file is not empty.
+    while (!fin.eof()) 
     {
-        string Temp;
-
-        infile >> Temp;
-
-        animals_Data.push_back(Temp);
+        fin >> word;
+        if (isAlphaOnly(word)) 
+        {
+            T->insert(word);
+        }
     }
 
-    time.End();
+     time.End();
 
-    cout << termcolor::green << time.Seconds() << termcolor::reset 
-         << " first around of seconds to read in the data."    << endl;
+       cout << termcolor::green << time.Seconds() << termcolor::reset 
+         << " seconds to read in the 1st data." << endl;
+}
+
+void TestSearch(Trie *T, string word) 
+{
+    cout << word;
+    if (T->search(word)) {
+        cout << " found." << endl;
+    } else {
+        cout << " not found." << endl;
+    }
+}
+
+
+
+// C++ implementation of Trie data structure
+int main() 
+{
+    Trie *T = new Trie();
+    vector<string> results;
+
+    cout << "loading dictionary..." << endl;
+    loadDictionary(T, "dictionary.txt");
 
     Timer Load_Words;                       // Time to load the words into the Linked List
-
     Load_Words.Start();
 
-    for (int j = 0; j < animals_Data.size(); j++)
-    {                                       // Loop through the vector.
-        wordNode *Temp = new wordNode;      // Allocate new memories.
+    results = T->find_all("");
 
-        string item = animals_Data[j];
+    // cout << results.size() << endl;
 
-        Temp->word = item;
-
-        L1.Insert_Data(Temp);
-    }
+    // for (int i = 0; i < results.size(); i++)
+    // {
+    //     cout << results[i] << endl;
+    // }
 
     Load_Words.End();
 
     cout << termcolor::green << Load_Words.Seconds() << termcolor::reset 
-         << " Second to read in the data." << termcolor::reset << endl;
+         << " seconds to read in the 2nd data." << termcolor::reset << endl;
+
 
     char k;                                 // Hold the character being typed.
     string word = "";                       // Use to Concatenate letters.
-    vector<string> Matches;                 // Any matches found in vector of animals_Data Words.
 
     string Top_Results[10];                 // Initializing 10 words to print.
     int SearchResults;                      // Initializing the integer SearchResults.
@@ -330,10 +387,9 @@ int main()
         Timer Auto_Suggestion;              // Timer for (word suggestions and total words found).
 
         Auto_Suggestion.Start();
-        Matches = L1.Find(word);
         Auto_Suggestion.End();
 
-        SearchResults = Matches.size();
+        SearchResults = results.size();
 
         if ((int)k != 32)                   // When the key pressed is not "Space bar".
         {
@@ -345,19 +401,19 @@ int main()
                  << " words found in " << termcolor::green << Auto_Suggestion.Seconds() 
                  << termcolor::reset   << " seconds"       << termcolor::reset << endl;
            
-            if (Matches.size() >= 10)       // Prints out the top 10 results.
+            if (results.size() >= 10)       // Prints out the top 10 results.
             {
                 for (int i = 0; i < 10; i++)
                 {
-                    Top_Results[i] = Matches[i];
+                    Top_Results[i] = results[i];
                     cout << Top_Results[i] << " ";
                 }
             }
             else
             {
-                for (int j = 0; j < Matches.size(); j++)
+                for (int j = 0; j < results.size(); j++)
                 {
-                    Top_Results[j] = Matches[j];
+                    Top_Results[j] = results[j];
                     cout << Top_Results[j] << " ";
                 }
             }
@@ -365,5 +421,6 @@ int main()
             cout << termcolor::reset << endl << endl;
         }
     }
+
     return 0;
 }
