@@ -267,7 +267,7 @@ int main()
     time.End();
 
     cout << termcolor::green << time.Seconds() << termcolor::reset 
-         << " first around of seconds to read in the data."    << endl;
+         << " seconds to read in the 1st data."    << endl;
 
     Timer Load_Words;                       // Time to load the words into the Linked List
 
@@ -287,7 +287,7 @@ int main()
     Load_Words.End();
 
     cout << termcolor::green << Load_Words.Seconds() << termcolor::reset 
-         << " Second to read in the data." << termcolor::reset << endl;
+         << " seconds to read in the 2nd data." << termcolor::reset << endl;
 
     char k;                                 // Hold the character being typed.
     string word = "";                       // Use to Concatenate letters.
