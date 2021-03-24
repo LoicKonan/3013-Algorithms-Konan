@@ -14,7 +14,7 @@
 *       with a substring of the chararcter entered and returns the top ten results plus 
 *       the time it took to search the list.
 *
-*    Files:
+*    Files:a
 *         main.cpp
 *         Timer.hpp
 *         mygetch.hpp
