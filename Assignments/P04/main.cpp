@@ -171,13 +171,13 @@ void makeUpper(string &word)
  *       - A bool to see if it is a leaf node.
  *
  *   Public Methods:
- * 	    - TrieNode()
+ * 	     - TrieNode()
  *
  *   Private Methods:
  *       - None
  *
  *   Usage:
- * 	    - Creates node for a Linked List. 
+ * 	     - Creates node for a Linked List. 
  * 
  */
 struct TrieNode
