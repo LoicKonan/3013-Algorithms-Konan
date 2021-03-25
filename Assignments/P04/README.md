@@ -1,4 +1,4 @@
-## Program 2 - Processing in Linear Time
+## Program 4 - Processing in Trie Tree Time
 
 ### Loic Konan
 
