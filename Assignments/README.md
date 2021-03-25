@@ -8,4 +8,4 @@
 | [06](./P02) | [P02](./P02) | [Processing in Linear Time](./P02)              |
 | [08](./P03) | [P03](./P02) | [Processing in Trie Tree Time](./P03)           |
 | [09](./A05) | [A05](./A05) | [Run Times](./A05)                              |
-| [10](./P04) | [P04](./P04) | [Processing in Log Time](./P04)           |
+| [10](./P04) | [P04](./P04) | [Processing in Trie Tree Time](./P04)           |
