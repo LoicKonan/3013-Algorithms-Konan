@@ -10,9 +10,9 @@
 *
 *       This program will read in a dictionary file and store it in a Trie Tree.
 *       Then allowes the user to type in a series of character. Everytime a user 
-*       enters a character the program will search through the list to find all the words
-*       with a substring of the chararcter entered and returns the top ten results plus 
-*       the time it took to search the list.
+*       enters a character the program will search through the list to find all
+*       the words with a substring of the chararcter entered and returns the top
+*       ten results plus the time it took to search the list.
 *
 *    Files:
 *         main.cpp
@@ -143,7 +143,7 @@ bool isAlphaOnly(string word)
  * Function Name: makeUpper ()
  *
  * Description:   
- *      - Making the word entered into Upper case(Capitalizing it)
+ *      - Making the word entered into Upper case(Capitalizing it).
  *               
  * Parameters:    
  *      - string &word
@@ -164,21 +164,21 @@ void makeUpper(string &word)
 }
 
 /*
-    Struct Name: TrieNode
- 
-    Description:
-        - A node that holds a string word and a pointer character.
-        - A bool to see if it is a leaf node.
- 
-    Public Methods:
- 	    - TrieNode()
- 
-    Private Methods:
-        - None
- 
-    Usage:
-  	    - Creates node for a Linked List. 
- 
+ *    Struct Name: TrieNode
+ * 
+ *   Description:
+ *       - A node that holds a string word and a pointer character.
+ *       - A bool to see if it is a leaf node.
+ *
+ *   Public Methods:
+ * 	    - TrieNode()
+ *
+ *   Private Methods:
+ *       - None
+ *
+ *   Usage:
+ * 	    - Creates node for a Linked List. 
+ * 
  */
 struct TrieNode
 {
@@ -234,27 +234,27 @@ vector<char> countLetters(string filename)
 }
 
 /*
-    Class Name: Trie
- 
-    Description:
-        - A class to store a Trie node.
-        - root TrieNode pointers.
-       
-    private Methods:
-        - bool deletion(TrieNode *&, string);
-        - void find_all(TrieNode *&, string);
-        - vector<string> results;
-
-    public Methods:
-        - Trie()                        : Default Constructor.
-        - void insert(string);
-        - bool deletion(string);
-        - bool search(string);
-        - bool haveChildren(TrieNode const *);
-        - vector<string> find_all(string);
- 
-    Usage:
-        - Load linked list of string, to find them, or delete.
+ *    Class Name: Trie
+ * 
+ *    Description:
+ *        - A class to store a Trie node.
+ *        - root TrieNode pointers.
+ *       
+ *    private Methods:
+ *        - bool deletion(TrieNode *&, string);
+ *        - void find_all(TrieNode *&, string);
+ *        - vector<string> results;
+ *
+ *   public Methods:
+ *      - Trie()                        : Default Constructor.
+ *       - void insert(string);
+ *       - bool deletion(string);
+ *       - bool search(string);
+ *       - bool haveChildren(TrieNode const *);
+ *       - vector<string> find_all(string);
+ *
+ *   Usage:
+ *       - Load linked list of string, to find them, or delete.
  */
 class Trie
 {
@@ -264,7 +264,7 @@ class Trie
     vector<string> results;
 
 public:
-    Trie()
+    Trie()                                  // Default Constructor.
     {
         root = new TrieNode;
     }
@@ -275,20 +275,20 @@ public:
     vector<string> find_all(string);
 };
 
-/*
-   Private : find_all()
-
-   Description:
-        - Receives a key and a TrieNode current. 
-        - Check to see if the current node is not leaf.
-        - if it is then it get added to the vector.
-
-   Params:
-        - TrieNode *&curr, string key
-
-   Returns:
-        - void
-*/
+/**
+ *   Private : find_all()
+ *
+ *  Description:
+ *       - Receives a key and a TrieNode current. 
+ *       - Check to see if the current node is not leaf.
+ *       - if it is then it get added to the vector.
+ *
+ *  Params:
+ *       - TrieNode *&curr, string key
+ *
+ *  Returns:
+ *       - void
+ */
 void Trie::find_all(TrieNode *&curr, string key)
 {
     if (curr->isLeaf)
@@ -305,18 +305,18 @@ void Trie::find_all(TrieNode *&curr, string key)
     }
 }
 
-/*
-   Public : find_all()
-
-   Description:
-        - Receives the a key.
-        - If a match is found, it is pushed to the Vector Results.
-   Params:
-       - string key
-
-   Returns:
-        - vector<string>
-*/
+/**
+ *  Public : find_all()
+ *
+ *  Description:
+ *       - Receives the a key.
+ *       - If a match is found, it is pushed to the Vector Results.
+ *  Params:
+ *       - string key
+ *
+ *  Returns:
+ *       - vector<string>
+ */
 vector<string> Trie::find_all(string key)
 {
     TrieNode *curr = root;
@@ -332,19 +332,19 @@ vector<string> Trie::find_all(string key)
     return results;
 }
 
-/*
-   Public : insert()
-
-   Description:
-        - receives a key. 
-        - Iterative function to insert a key into a Trie
-
-   Params:
-       - string key
-
-   Returns:
-        - void
-*/
+/**
+ *  Public : insert()
+ *
+ *  Description:
+ *       - receives a key. 
+ *       - Iterative function to insert a key into a Trie
+ *
+ *  Params:
+ *       - string key
+ *
+ *  Returns:
+ *       - void
+ */
 void Trie::insert(string key)
 {
     makeUpper(key);                         // Making the key Upper Case.
@@ -363,21 +363,21 @@ void Trie::insert(string key)
     curr->isLeaf = true;                    // mark the current node as a leaf
 }
 
-/*
-   Public : search()
-
-   Description:
-        - Iterative function to search a key in a Trie.
-        - It returns true.
-        - if the key is found in the Trie. 
-        - Otherwise, it returns false.
-
-   Params:
-       - string key
-
-   Returns:
-        - bool
-*/
+/**
+ *  Public : search()
+ *
+ *  Description:
+ *       - Iterative function to search a key in a Trie.
+ *       - It returns true.
+ *       - if the key is found in the Trie. 
+ *       - Otherwise, it returns false.
+ *
+ *  Params:
+ *       - string key
+ *
+ *  Returns:
+ *       - bool
+ */
 bool Trie::search(string key)
 {
     makeUpper(key);
@@ -400,17 +400,17 @@ bool Trie::search(string key)
     return curr->isLeaf;                    // end of the string is reached
 }
 
-/*
-   Public : haveChildren()
-
-   Description:
-        - Returns true if a given node has any children
-   Params:
-       - TrieNode const *curr
-
-   Returns:
-        - bool
-*/
+/**
+ *   Public : haveChildren()
+ *
+ *  Description:
+ *       -    Returns true if a given node has any children
+ *  Params:
+ *       -    TrieNode const *curr
+ *
+ *  Returns:
+ *       -    bool
+ */
 bool Trie::haveChildren(TrieNode const *curr)
 {
     for (int i = 0; i < CHAR_SIZE; i++)
@@ -424,34 +424,34 @@ bool Trie::haveChildren(TrieNode const *curr)
     return false;
 }
 
-/*
-   Public : deletion()
-
-   Description:
-        - make the key upper and delete the key.
-   Params:
-       -  string key
-
-   Returns:
-        - bool
-*/
+/**
+ *   Public : deletion()
+ *
+ *   Description:
+ *        -   make the key upper and delete the key.
+ *   Params:
+ *       -    string key
+ * 
+ *   Returns:
+ *        -   bool
+ */
 bool Trie::deletion(string key)
 {
     makeUpper(key);
     return deletion(root, key);
 }
 
-/*
-   Public : deletion()
-
-   Description:
-        - Recursive function to delete a key in the Trie.
-   Params:
-       -  TrieNode *&curr, string key
-
-   Returns:
-        - bool
-*/
+/**
+ *   Public : deletion()
+ *
+ *   Description:
+ *        -   Recursive function to delete a key in the Trie.
+ *   Params:
+ *        -   TrieNode *&curr, string key
+ *
+ *   Returns:
+ *        -   bool
+ */
 bool Trie::deletion(TrieNode *&curr, string key)
 {                                           // return if Trie is empty
     if (curr == nullptr)
