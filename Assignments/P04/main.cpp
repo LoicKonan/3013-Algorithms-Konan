@@ -537,7 +537,8 @@ void loadDictionary(Trie *&T, string filename = "")
 
     time.End();
 
-    cout << termcolor::green << time.Seconds() << termcolor::reset
+    cout << termcolor::green << time.Seconds() 
+         << termcolor::reset
          << " seconds to read in the data." << endl;
 }
 
@@ -590,7 +591,8 @@ int main()
     int SearchResults;                      // Initializing the integer SearchResults.
 
     cout << "Type keys and watch what happens. Type capital"
-         << termcolor::red << " Z to quit." << termcolor::reset << endl;
+         << termcolor::red << " Z to quit." 
+         << termcolor::reset << endl;
 
     while ((k = getch()) != 'Z')            // While capital Z is not typed keep looping.
     {
