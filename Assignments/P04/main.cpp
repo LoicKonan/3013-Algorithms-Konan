@@ -505,10 +505,11 @@ bool Trie::deletion(TrieNode *&curr, string key)
  * Description:  
  *      - To read in a file and to see how long it takes.
  *               
- * Parameters:    Trie *&T, string filename 
+ * Parameters:    
+ *      - Trie *&T, string filename 
  *
  * Returns:
- *                bool
+ *      - bool
  *
  */
 void loadDictionary(Trie *&T, string filename = "")
@@ -545,12 +546,13 @@ void loadDictionary(Trie *&T, string filename = "")
  * Function Name: TestSearch ()
  *
  * Description:  
- *      - Receive a word and compare it to our linkedlist..
+ *      - Receive a word and compare it to our linkedlist.
  *               
- * Parameters:    Trie *T, string word 
+ * Parameters:    
+ *      - Trie *T, string word 
  *
  * Returns:
- *                bool
+ *      - bool
  *
  */
 void TestSearch(Trie *T, string word)
