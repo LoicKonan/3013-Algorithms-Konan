@@ -51,13 +51,15 @@ using namespace std;
  *
  * Function Name: isUpper ()
  *
- * Description:   Checking to see if the character entered
- *                by the user is Capitalize.
+ * Description:   
+ *      - Checking to see if the character entered
+ *      - by the user is Capitalize.
  *               
- * Parameters:    char 
+ * Parameters:    
+ *      - char 
  *
  * Returns:
- *                bool
+ *      - bool
  *
  */
 bool isUpper(char letter)
@@ -70,13 +72,15 @@ bool isUpper(char letter)
  *
  * Function Name: isLower ()
  *
- * Description:   Checking to see if the character entered
- *                by the user is Lower Case.
+ * Description:   
+ *       - Checking to see if the character entered
+ *       - by the user is Lower Case.
  *               
- * Parameters:    char 
+ * Parameters:    
+ *       - char 
  *
  * Returns:
- *                bool
+ *       - bool
  *
  */
 bool isLower(char letter)
@@ -89,13 +93,15 @@ bool isLower(char letter)
  *
  * Function Name: isLetter ()
  *
- * Description:   Checking to see if the character entered
- *                by the user is actually a letter.
+ * Description:   
+ *       - Checking to see if the character entered
+ *       - by the user is actually a letter.
  *               
- * Parameters:    char 
+ * Parameters:    
+ *      -  char 
  *
  * Returns:
- *                bool
+ *      -  bool
  *
  */
 bool isLetter(char letter)
@@ -108,13 +114,15 @@ bool isLetter(char letter)
  *
  * Function Name: isAlphaOnly ()
  *
- * Description:   Checking to see each letter of the word entered
- *                is part of the Alphabet.
+ * Description:  
+ *      -  Checking to see each letter of the word entered
+ *      -  is part of the Alphabet.
  *               
- * Parameters:    string 
+ * Parameters:    
+ *      -  string 
  *
  * Returns:
- *                bool
+ *      -  bool
  *
  */
 bool isAlphaOnly(string word)
@@ -134,12 +142,14 @@ bool isAlphaOnly(string word)
  *
  * Function Name: makeUpper ()
  *
- * Description:   Making the word entered into Upper case(Capitalizing it)
+ * Description:   
+ *      - Making the word entered into Upper case(Capitalizing it)
  *               
- * Parameters:    string &word
+ * Parameters:    
+ *      - string &word
  *
  * Returns:
- *                void
+ *      - void
  *
  */
 void makeUpper(string &word)
@@ -191,12 +201,14 @@ struct TrieNode
  *
  *  Function Name: countLetters ()
  *
- *  Description:   To count each letters and adding it to the vectors.
+ *  Description:   
+ *       - To count each letters and adding it to the vectors.
  *               
- *  Parameters:    string filename
+ *  Parameters:   
+ *       - string filename
  *
  *  Returns:
- *                 vector<char>
+ *       - vector<char>
  *
  */
 vector<char> countLetters(string filename)
@@ -272,7 +284,7 @@ public:
         - if it is then it get added to the vector.
 
    Params:
-       - TrieNode *&curr, string key
+        - TrieNode *&curr, string key
 
    Returns:
         - void
