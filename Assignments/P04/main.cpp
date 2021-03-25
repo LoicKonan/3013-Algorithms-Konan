@@ -617,8 +617,8 @@ int main()
             cout << "Current Substr: " << termcolor::red << word
                  << termcolor::reset << endl;
             cout << termcolor::red << SearchResults << termcolor::reset
-                 << " words found in " << termcolor::green << Auto_Suggestion.MilliSeconds()
-                 << termcolor::reset << " seconds" << termcolor::reset << endl;
+                 << " words found in " << termcolor::green << Auto_Suggestion.Seconds()
+                 << termcolor::reset << " Seconds" << termcolor::reset << endl;
 
             if (Matches.size() >= 10)       // Prints out the top 10 results.
             {
