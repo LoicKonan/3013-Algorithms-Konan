@@ -538,7 +538,7 @@ void loadDictionary(Trie *&T, string filename = "")
     time.End();
 
     cout << termcolor::green << time.Seconds() << termcolor::reset
-         << " seconds to read in the 1st data." << endl;
+         << " seconds to read in the data." << endl;
 }
 
 /**
