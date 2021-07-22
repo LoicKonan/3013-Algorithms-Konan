@@ -3,7 +3,7 @@
 *    Author:           Loic Konan
 *    Email:            loickonan.lk@gmail.com
 *    Label:            P03
-*    Title:             Processing in Log Time
+*    Title:            Processing in Log Time
 *    Course:           CMPS 3013
 *    Semester:         Spring 2021
 *    Description:
